@@ -51,9 +51,11 @@
           "bottom": 25,
           "relativeTo": "map"
         },
-        "version": "2.10",
+        "version": "2.1",
         "id": "widgets_Scalebar_Widget_2",
-        "name": "Scalebar"
+        "icon": "widgets/Scalebar/images/icon.png?wab_dv=2.1",
+        "name": "Scalebar",
+        "label": "Scalebar"
       },
       {
         "uri": "widgets/Search/Widget",
@@ -62,9 +64,11 @@
           "top": 5,
           "relativeTo": "map"
         },
-        "version": "2.10",
+        "version": "2.1",
         "id": "widgets_Search_Widget_3",
-        "name": "Search"
+        "icon": "widgets/Search/images/icon.png?wab_dv=2.1",
+        "name": "Search",
+        "label": "Search"
       },
       {
         "uri": "widgets/Coordinate/Widget",
@@ -73,9 +77,11 @@
           "bottom": 5,
           "relativeTo": "map"
         },
-        "version": "2.10",
+        "version": "2.1",
         "id": "widgets_Coordinate_Widget_4",
-        "name": "Coordinate"
+        "icon": "widgets/Coordinate/images/icon.png?wab_dv=2.1",
+        "name": "Coordinate",
+        "label": "Coordinate"
       },
       {
         "position": {
@@ -84,7 +90,13 @@
           "relativeTo": "map"
         },
         "placeholderIndex": 1,
-        "id": "_5"
+        "id": "_5",
+        "name": "eSearch",
+        "label": "Enhanced Search",
+        "version": "1.1.8",
+        "uri": "widgets/eSearch/Widget",
+        "config": "configs/eSearch/config_Enhanced Search.json",
+        "icon": "widgets/eSearch/images/icon.png?wab_dv=2.1"
       },
       {
         "position": {
@@ -130,9 +142,11 @@
           "zIndex": 1,
           "relativeTo": "map"
         },
-        "version": "2.10",
+        "version": "2.1",
         "id": "widgets_OverviewMap_Widget_10",
-        "name": "OverviewMap"
+        "icon": "widgets/OverviewMap/images/icon.png?wab_dv=2.1",
+        "name": "OverviewMap",
+        "label": "Overview Map"
       },
       {
         "uri": "widgets/HomeButton/Widget",
@@ -141,9 +155,11 @@
           "top": 75,
           "relativeTo": "map"
         },
-        "version": "2.10",
+        "version": "2.1",
         "id": "widgets_HomeButton_Widget_11",
-        "name": "HomeButton"
+        "icon": "widgets/HomeButton/images/icon.png?wab_dv=2.1",
+        "name": "HomeButton",
+        "label": "Home"
       },
       {
         "uri": "widgets/MyLocation/Widget",
@@ -152,18 +168,32 @@
           "top": 110,
           "relativeTo": "map"
         },
-        "version": "2.10",
+        "version": "2.1",
         "id": "widgets_MyLocation_Widget_12",
-        "name": "MyLocation"
+        "icon": "widgets/MyLocation/images/icon.png?wab_dv=2.1",
+        "name": "MyLocation",
+        "label": "My Location"
       },
       {
         "uri": "widgets/AttributeTable/Widget",
         "position": {
           "relativeTo": "browser"
         },
-        "version": "2.10",
+        "version": "2.1",
         "id": "widgets_AttributeTable_Widget_13",
-        "name": "AttributeTable"
+        "icon": "widgets/AttributeTable/images/icon.png?wab_dv=2.1",
+        "name": "AttributeTable",
+        "label": "Attribute Table",
+        "featureActions": [
+          {
+            "name": "ShowRelatedRecords",
+            "uri": "actions/ShowRelatedRecordsFeatureAction"
+          },
+          {
+            "name": "ViewInTable",
+            "uri": "actions/ViewInAttributeTableFeatureAction"
+          }
+        ]
       },
       {
         "uri": "widgets/Splash/Widget",
@@ -171,9 +201,11 @@
         "position": {
           "relativeTo": "browser"
         },
-        "version": "2.10",
+        "version": "2.1",
         "id": "widgets_Splash_Widget_14",
-        "name": "Splash"
+        "icon": "widgets/Splash/images/icon.png?wab_dv=2.1",
+        "name": "Splash",
+        "label": "Splash"
       },
       {
         "uri": "widgets/ZoomSlider/Widget",
@@ -182,9 +214,11 @@
           "left": 7,
           "relativeTo": "map"
         },
-        "version": "2.10",
+        "version": "2.1",
         "id": "widgets_ZoomSlider_Widget_15",
-        "name": "ZoomSlider"
+        "icon": "widgets/ZoomSlider/images/icon.png?wab_dv=2.1",
+        "name": "ZoomSlider",
+        "label": "Zoom Slider"
       },
       {
         "uri": "widgets/ExtentNavigate/Widget",
