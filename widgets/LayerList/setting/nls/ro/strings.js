@@ -1,15 +1,11 @@
 define({
   "showLegend": "Afişare legendă",
-  "controlPopupMenuTitle": "Alegeți ce acțiuni sunt afișate în meniul contextual al stratului tematic",
+  "controlPopupMenuTitle": "Alegeţi ce acţiuni sunt afişate în meniul contextual al stratului tematic.",
   "zoomto": "Transfocare la",
   "transparency": "Transparenţă",
   "controlPopup": "Activare/dezactivare pop-up",
   "moveUpAndDown": "Mutare în sus/Mutare în jos",
-  "attributeTable": "Vizualizare în tabelul de atribute",
-  "url": "Descriere/Afişare detalii element/Descărcare",
-  "expandAllLayers": "Extindeți toate straturile tematice",
-  "expandAllLayersByDefault": "Extindeți toate straturile tematice în mod implicit",
-  "layerSelectorTitle": "Alegeți ce straturi tematice vor fi afișate în listă",
-  "showTitle": "Afișare titlu",
-  "showBasemap": "Afișare hartă fundal"
+  "attributeTable": "Deschidere tabel de atribute",
+  "url": "Descriere / Afişare detalii element / Descărcare",
+  "layerSelectorTitle": "Alegeţi ce straturi tematice vor fi afişate în listă."
 });

@@ -11,7 +11,7 @@ define({
   "itemMoveDown": "Ниже",
   "itemDesc": "Описание",
   "itemDownload": "Загрузить",
-  "itemToAttributeTable": "Просмотреть в таблице атрибутов",
+  "itemToAttributeTable": "Открыть таблицу атрибутов",
   "itemShowItemDetails": "Показать информацию об элементе",
   "empty": "пусто",
   "removePopup": "Отключить всплывающее окно",
@@ -23,9 +23,5 @@ define({
   "turnAllLabelsOff": "Выключить все надписи",
   "turnAllLabelsOn": "Включить все надписи",
   "showLabels": "Показать подписи",
-  "hideLables": "Скрыть надписи",
-  "keyword": "Ключевое слово",
-  "basemapLayers": "Слои базовой карты",
-  "typeAKeywork": "Введите ключевое слово",
-  "layers": "Слои"
+  "hideLables": "Скрыть надписи"
 });

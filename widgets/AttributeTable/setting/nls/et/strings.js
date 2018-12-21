@@ -5,12 +5,6 @@ define({
   "actions": "Kihi väljade seadistamine",
   "field": "Väli",
   "alias": "Alias",
-  "url": "URL",
-  "sortField": "Sortimise väli",
-  "sortOrderTooltips": {
-    "toDescending": "Vali laskuv järjestus",
-    "toAscending": "Vali tõusev järjestus"
-  },
   "visible": "Nähtav",
   "linkField": "Lingi väli",
   "noLayers": "Objektikihte pole saadaval",
@@ -18,8 +12,6 @@ define({
   "exportCSV": "Luba eksportimine CSV faili",
   "expand": "Laienda vidin alustamisel",
   "filterByExtent": "Luba vaikimisi filtreerimine kaardi ulatuse järgi",
-  "allowTextSelection": "Luba teksti valimine",
-  "highlightColor": "Esiletõstmise värv",
   "restore": "Taasta vaikeväärtus",
   "ok": "OK",
   "cancel": "Tühista",
@@ -33,8 +25,5 @@ define({
   "fieldName": "Nimi",
   "fieldAlias": "Alias",
   "fieldVisibility": "Nähtavus",
-  "fieldActions": "Tegevused",
-  "showAttachments": "Kuva manused",
-  "syncWithLayers": "Sünkroniseeri kihtide nähtavusega",
-  "syncWithLayersHint": "Atribuuditabelis kuvatavad kihid sünkroniseeritakse dünaamiliselt kihtide nähtavusega."
+  "fieldActions": "Tegevused"
 });

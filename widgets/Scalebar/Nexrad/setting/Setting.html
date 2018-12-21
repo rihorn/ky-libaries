@@ -1,0 +1,36 @@
+<div style="width:100%;">
+  <table class="setting-table input-table" cellspacing="0">
+    <tbody>
+      <tr>
+      	<td class="first">${nls.url}</td>
+        <td class="second">
+          <input type="text" data-dojo-type="dijit/form/TextBox" required="true" placeHolder="http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi"
+          data-dojo-attach-point="url" data-dojo-props='style:{width:"500px"}'/>
+        </td>
+        <td class="third">
+          <div class="help-icon"></div>
+        </td>
+       </tr>
+       <tr>
+        <td class="first">${nls.interval}</td>
+        <td class="second">
+          <input type="text" data-dojo-type="dijit/form/NumberTextBox" required="true" placeHolder="1000"
+          data-dojo-attach-point="interval" data-dojo-props='style:{width:"100px"}, constraints:{min:500}'/> (ms)
+        </td>
+        <td class="third">
+          <div class="help-icon"></div>
+        </td>
+      </tr>
+      <tr>
+        <td class="first">${nls.opacity}</td>
+        <td class="second">
+          <input type="text" data-dojo-type="dijit/form/NumberTextBox" required="true" placeHolder="30"
+          data-dojo-attach-point="opacity" data-dojo-props='style:{width:"100px"}, constraints:{min:0, max:100}'/> (%)
+        </td>
+        <td class="third">
+          <div class="help-icon"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

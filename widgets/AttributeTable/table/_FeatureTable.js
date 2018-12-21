@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 - 2018 Esri. All Rights Reserved.
+// Copyright © 2014 Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ define([
   'dojo/_base/declare',
   'dojo/_base/html',
   'dijit/_WidgetBase',
+  'jimu/dijit/Popup',
   'jimu/dijit/Message',
   'jimu/dijit/Filter',
   "dgrid/OnDemandGrid",
@@ -46,35 +47,31 @@ define([
   "esri/tasks/QueryTask",
   "esri/tasks/query",
   "esri/tasks/ProjectParameters",
-  // "esri/graphic",
-  // "esri/geometry/Point",
+  "esri/graphic",
+  "esri/geometry/Point",
   "esri/geometry/Multipoint",
-  "esri/geometry/geometryEngine",
-  // "esri/geometry/Polyline",
-  // "esri/geometry/Polygon",
-  // "esri/symbols/SimpleLineSymbol",
-  // "esri/symbols/SimpleFillSymbol",
-  // "esri/Color",
+  "esri/geometry/Polyline",
+  "esri/geometry/Polygon",
+  "esri/symbols/SimpleLineSymbol",
+  "esri/symbols/SimpleFillSymbol",
+  "esri/Color",
   "esri/geometry/normalizeUtils",
-  "esri/IdentityManager",
   'dojo/_base/lang',
   "dojo/on",
   "dojo/aspect",
   "dojo/_base/array",
   'jimu/dijit/LoadingIndicator',
   'jimu/dijit/FieldStatistics',
-  'jimu/dijit/Popup',
-  "jimu/dijit/CheckBox",
   'jimu/SelectionManager',
   'jimu/CSVUtils',
   'jimu/utils',
   '../utils',
-  'dojo/query',
-  'dojo/string'
+  'dojo/query'
 ], function(
   declare,
   html,
   _WidgetBase,
+  Popup,
   Message,
   Filter,
   OnDemandGrid,
@@ -104,44 +101,35 @@ define([
   QueryTask,
   Query,
   ProjectParameters,
-  // Graphic,
-  // Point,
+  Graphic,
+  Point,
   Multipoint,
-  geometryEngine,
-  // Polyline,
-  // Polygon,
-  // SimpleLineSymbol,
-  // SimpleFillSymbol,
-  // Color,
+  Polyline,
+  Polygon,
+  SimpleLineSymbol,
+  SimpleFillSymbol,
+  Color,
   normalizeUtils,
-  esriId,
   lang,
   on,
   aspect,
   array,
   LoadingIndicator,
   FieldStatistics,
-  Popup,
-  CheckBox,
   SelectionManager,
   CSVUtils,
   jimuUtils,
   tableUtils,
-  query,
-  string
+  query
 ) {
   return declare([_WidgetBase, Evented], {
     baseClass: 'jimu-widget-attributetable-feature-table',
-    _defaultFeatureCount: 2000, //default max records by one request
-    _defaultBatchCount: 25, //default records per page
-    _batchCount: 0,//records per page
+    _defaultFeatureCount: 2000,
+    _defaultBatchCount: 25,
+    _batchCount: 0,
 
-    _filterObj: null, // come from filter popup
+    _filterObj: null,
     _currentDef: null,
-    //initial: initial state
-    //processing: querying data
-    //canceled: stop querying data to save network brandwidth
-    //fullfilled: get the data
     _requestStatus: 'initial', // initial, processing, canceled, fulfilled
 
     map: null,
@@ -152,35 +140,30 @@ define([
     // parentWidget: null,
     footerHeight: 25,
 
-    layer: null, // layerInfo.layerObject
-    loading: null, // LoadingIndicator
-    grid: null, // dgrid
-    footer: null, // footer div
-    selectedRowsLabel: null, // selected div on footer
-    selectionRows: null, // id of rows was selected,[id]
+    layer: null,
+    loading: null,
+    grid: null,
+    footer: null,
+    selectedRowsLabel: null,
+    selectionRows: null,
     // griaphicLayer: null,
     nls: null,
 
     //_layerDefinition: null,
     // _filterObj: null,
-    _dblClickResult: null,// a feature which be zoom to and show pupup by double click row
+    _dblClickResult: null,
 
-    actived: false, // tabcontent is selected
-    showSelected: false, // if true only show selected rows
-    tableCreated: false, // if true dgrid is created
+    actived: false,
+    showSelected: false,
+    tableCreated: false,
 
-    // for queryRelatedIds
-    // it is set to true when click "Show Related Records" from another _FeatureTable
-    // If true, when click "Show All Records", it will be set to false and layerType will be changed
-    _relatedQuery: false,
-    _relatedQueryIds: null,//[originalFeatureLayerObjectId]
+    _relatedQuery: false, // for queryRelatedIds
+    _relatedQueryIds: null,
 
-    _selectionHandles: null,//save handles for selecion-complete event of FeatureLayer
-    _selectionResults: null,//[Feature], used for SelectionManager.selectFeatures()
-
-    _normalizedExtent: null,//normalized extent of the current layer's extent 
+    _selectionHandles: null,
+    _selectionResults: null,
     //events:
-    //data-loaded//emit after one query requst is done, but maybe not get real features
+    //data-loaded
     //row-click
     //clear-selection
     //sort
@@ -192,6 +175,7 @@ define([
     //apply-filter
     //toggle-columns
     //export-csv
+    //filter-by-mapextent
     //zoom-to
     //refresh
 
@@ -206,7 +190,6 @@ define([
       this.set('relatedOriginalInfo', options.relatedOriginalInfo || null);
       this.set('relationship', options.relationship || null);
 
-      // syncSelection if true scroll record to view after click feature in map
       this.set('syncSelection', !!options.syncSelection || true);
     },
 
@@ -220,7 +203,6 @@ define([
       this.selectionManager = SelectionManager.getInstance();
       this._selectionResults = [];
       this.selectionRows = [];
-      this._normalizedExtent = null;
 
       html.setAttr(this.domNode, 'data-layerinfoid', lang.getObject('layerInfo.id', false, this));
 
@@ -230,8 +212,6 @@ define([
         })));
         this.own(on(this.map, 'extent-change', lang.hitch(this, '_onExtentChange')));
       }
-
-      this.own(on(window, 'resize', lang.hitch(this, this._resize)));
     },
 
     startup: function() {
@@ -393,14 +373,12 @@ define([
       );
     },
 
-    //queryByStoreObjectIds: [objectId]
-    //queryByStoreObjectIds exists when layerType is RELATIONSHIPTABLE and matchingMapExtent is true
-    startQuery: function(/*optional*/ queryByStoreObjectIds) {
+    startQuery: function(queryByStoreObjectIds) {
       this.cancelThread();
-      // if (this.tableCreated && this.layerInfo &&
-      //   this.layerInfo.isTable && !this._relatedQuery) {
-      //   return;
-      // }
+      if (this.tableCreated && this.layerInfo &&
+        this.layerInfo.isTable && !this._relatedQuery) {
+        return;
+      }
 
       this._requestStatus = 'processing';
       this.loading.show();
@@ -421,14 +399,12 @@ define([
         this.layer = layerObject;
         var extent = (!this.layerInfo.isTable && this.matchingMap && this.map.extent) || null;
         if (extent && extent.spatialReference && extent.spatialReference.isWebMercator()) {
-          //normalizeUtils.normalizeCentralMeridian is called because the extent maybe cross 180
           var normalizeDef = this._currentDef = normalizeUtils.normalizeCentralMeridian(
             [extent], null, lang.hitch(this, function(normalizedGeo) {
               return normalizedGeo[0];
             }));
           normalizeDef.then(lang.hitch(this, function(_extent) {
             this._doQuery(_extent, queryByStoreObjectIds);
-            this._normalizedExtent = _extent;
           }), lang.hitch(this, function(err) {
             if (err && err.message !== 'Request canceled') {
               console.error(err);
@@ -446,10 +422,9 @@ define([
       }));
     },
 
-    //this method is called when click "Show Related Records" option.
     queryRecordsByRelationship: function(params) {
       var layer = params && params.layer;
-      var selectedIds = params && params.selectedIds; // original feautrelayer ids
+      var selectedIds = params && params.selectedIds;
       if (params && params.relationship) {
         this.set('relationship', params.relationship);
       }
@@ -458,8 +433,6 @@ define([
       }
       var ship = this.relationship;
 
-      //this._relatedQueryIds is previous selectedIds
-      //selectedIds is new ids
       if (layer && ship && selectedIds && selectedIds.length > 0 &&
         !jimuUtils.isEqual(this._relatedQueryIds, selectedIds) &&
         lang.getObject('relatedOriginalInfo.layerObject.url', false, this)) {
@@ -469,7 +442,6 @@ define([
 
         // unchecked filter by map extent if query related records
         this.matchingCheckBox.set('checked', false);
-
         this.cancelThread();
 
         this._currentDef = this._getLayerObject();
@@ -481,7 +453,7 @@ define([
           this.layer = layerObject;
 
           var ofs = [];
-          var response = this.layer;//point to related layer
+          var response = this.layer;
           array.forEach(response.fields, function(f) {
             if (!esriLang.isDefined(f.show) || f.show === true ||
               (f.type === 'esriFieldTypeOID' ||
@@ -511,7 +483,6 @@ define([
               fieldAliases: null
             };
             var featureIds = {};
-            //start to reduce duplicate features
             var unique = function(rf) {
               var rfId = rf.attributes[this.layer.objectIdField];
               if (!featureIds[rfId]) {
@@ -524,7 +495,6 @@ define([
               var _set = relatedFeatures[p];
               array.forEach(_set && _set.features, unique, this);
             }
-            //end
 
             html.destroy(this.tipNode);
             if (results.features.length > 0) {
@@ -568,7 +538,7 @@ define([
 
     getSelectedRows: function() {
       if (!this.tableCreated) {
-        return [];
+        return;
       }
       return this.selectionRows;
     },
@@ -578,14 +548,19 @@ define([
     },
 
     toggleSelectedRecords: function() {
+      if (!this.tableCreated) {
+        return;
+      }
+
       if (this._relatedQuery && !this.showSelected && this.getSelectedRows().length === 0) {
-        //from RELATIONSHIPTABLE to FEATURELAYER and need to send request to get all data
-        this._relatedQuery = false;
-        this._relatedQueryIds = [];
         if (this.layerInfo && !this.layerInfo.isTable) {
+          this._relatedQuery = false;
+          this._relatedQueryIds = [];
+
           this.matchingCheckBox.set('checked', true);
+        } else {
+          this.startQuery();
         }
-        this.startQuery();
         this.showSelectedRecordsMenuItem.set('label', this.nls.showSelectedRecords);
         this.showSelected = false;
         this.emit('show-all-records', {
@@ -593,13 +568,7 @@ define([
         });
         return;
       }
-
-      if (!this.tableCreated) {
-        return;
-      }
       if (this.showSelected) {
-        //both for FEATURELAYER and RELATIONSHIP
-        //from selected mode to all mode, don't need to request data
         this.showAllSelectedRecords();
         this.showSelectedRecordsMenuItem.set('label', this.nls.showSelectedRecords);
         this.showSelected = false;
@@ -607,8 +576,6 @@ define([
           layerInfoId: this.layerInfo.id
         });
       } else {
-        //both for FEATURELAYER and RELATIONSHIP
-        //from all mode to selected mode, don't need to request data
         this.showSelectedRecords();
         this.showSelectedRecordsMenuItem.set('label', this.nls.showAllRecords);
         this.showSelected = true;
@@ -620,24 +587,10 @@ define([
     },
 
     onShowRelatedRecordsClick: function() {
-      var selectedRows = this.getSelectedRows();
-      if(selectedRows.length > 0) {
-        this.emit('show-related-records', {
-          layerInfoId: this.layerInfo.id,
-          objectIds: selectedRows
-        }); 
-      } else {
-        this._getFeatureIds(
-          this.layer && this.layer.objectIdField,
-          this.matchingMap && this._normalizedExtent
-        ).then(lang.hitch(this, function(objectIds) {
-          console.log(objectIds);
-          this.emit('show-related-records', {
-            layerInfoId: this.layerInfo.id,
-            objectIds: objectIds
-          }); 
-        }));
-      }
+      this.emit('show-related-records', {
+        layerInfoId: this.layerInfo.id,
+        objectIds: this.getSelectedRows()
+      });
     },
 
     onFilterMenuItemClick: function() {
@@ -654,19 +607,13 @@ define([
 
           var filter = new Filter({
             noFilterTip: this.nls.noFilterTip,
-            style: "width:100%;",
-            featureLayerId: this.layerInfo.id,
-            runtime: true
+            style: "width:100%;margin-top:22px;"
           });
-
-          var size = this._getFilterPopupSize();
-
           this._filterPopup = new Popup({
             titleLabel: this.nls.filter,
-            width: size.w,
-            height: size.h,
+            width: 720,
+            height: 485,
             content: filter,
-            autoHeight: true,
             buttons: [{
               label: this.nls.ok,
               onClick: lang.hitch(this, function() {
@@ -692,8 +639,6 @@ define([
               label: this.nls.cancel
             }]
           });
-          filter.startup();
-          html.addClass(this._filterPopup.domNode, 'widget-at-filter-popup');
           var filterObj = this.getFilterObj();
           if (filterObj) {
             filter.buildByFilterObj(this.layer.url, filterObj, definition);
@@ -713,29 +658,6 @@ define([
       });
     },
 
-    _getFilterPopupSize: function(){
-      var size = {
-        w: 720,
-        h: 485
-      };
-
-      if(window.appInfo.isRunInMobile){
-        size = {
-          w: window.innerWidth,
-          h: window.innerHeight
-        };
-      }
-
-      return size;
-    },
-
-    _resize: function(){
-      if(this._filterPopup){
-        var size = this._getFilterPopupSize();
-        this._filterPopup.resize(size);
-      }
-    },
-
     onToggleColumnsClick: function() {
       this.toggleColumns();
       this.emit('toggle-columns', {
@@ -744,18 +666,14 @@ define([
     },
 
     onExportCSVClick: function() {
-      var richTextFields = this._getRichTextFields();
-      var message = this._getExportCSVPopupMessage(richTextFields);
       var popup = new Message({
-        'class': this.baseClass + '-popup',
-        message: message,
+        message: this.nls.exportMessage,
         titleLabel: this.nls.exportFiles,
         autoHeight: true,
         buttons: [{
           label: this.nls.ok,
           onClick: lang.hitch(this, function() {
-            var check = message._check;
-            this.exportToCSV(null, typeof check !== 'undefined' && !check.checked ? richTextFields : null);
+            this.exportToCSV();
             popup.close();
           })
         }, {
@@ -767,122 +685,22 @@ define([
       });
     },
 
-    _getExportCSVPopupMessage: function(richTextFields) {
-      var messageWrapper = document.createElement('div');
-      messageWrapper.className = 'message-wrapper';
-      messageWrapper.appendChild(document.createTextNode(this.nls.exportMessage));
-
-      // create extra UI elements if rich text field(s) exist(s)
-      if(richTextFields.length) {
-        var richTextInputWrapper = document.createElement('div');
-        richTextInputWrapper.className = 'input-row';
-        // checkbox
-        var check = new CheckBox({
-          label: this.nls.keepRichTextLabel,
-          checked: true // set default to keeping rich text format
-        });
-        // hint button
-        var hintButton = document.createElement('a');
-        hintButton.className = 'hint-button';
-        hintButton.href = '#';
-        hintButton.role = 'button';
-        hintButton.appendChild(document.createTextNode(this.nls.whatsThis));
-        richTextInputWrapper.appendChild(check.domNode);
-        richTextInputWrapper.appendChild(hintButton);
-        messageWrapper.appendChild(richTextInputWrapper);
-        messageWrapper._check = check;
-
-        this.own(on(hintButton, 'click', lang.hitch(this, function(evt) {
-          evt.preventDefault();
-          var options = {
-            'class': this.baseClass + '-popup',
-            message: this._getRichTextMessage(richTextFields)
-          };
-          if(!window.appInfo.isRunInMobile) {
-            options.width = 500;
-          }
-          new Message(options);
-        })));
-      }
-      return messageWrapper;
-    },
-
-    _getRichTextMessage: function(richTextFields) {
-      if(!richTextFields || richTextFields.hasOwnProperty("length") && !richTextFields.length) return "";
-
-      var _EXAMPLE = {
-        preview: '<font color="#31aacd">Web AppBuilder</font> for <u>ArcGIS</u>',
-        withHTMLTags: '&ltfont color=\"#31aacd\"&gtWeb AppBuilder&lt/font&gt for &ltu&gtArcGIS&lt/u&gt',
-        withoutHTMLTags: 'Web AppBuilder for ArcGIS'
-      };
-      var messageWrapper = document.createElement('div');
-      var messageHTML = '', richTextFieldsHTML = '';
-      for(var i = 0, len = richTextFields.length; i < len; i++) {
-        richTextFieldsHTML += '<mark>' + richTextFields[i].fieldName + '</mark>';
-      }
-      messageHTML += '<p>' + string.substitute(this.nls.richTextMessage.explanatoryText.line1, {
-        layerName: '<strong>' + this.layer.name + '</strong>'
-      }) + '</p>';
-      messageHTML += '<div class="tags">' + richTextFieldsHTML + '</div>';
-      messageHTML += '<p>' + this.nls.richTextMessage.explanatoryText.line2 + '</p>' +
-                    '<p>' + this.nls.richTextMessage.explanatoryText.line3 + '</p>'+
-                    '<h3>' + this.nls.richTextMessage.example.label + '</h3>' +
-                    '<div class="example-block"><pre>' + _EXAMPLE.preview + '</pre>' +
-                    this.nls.richTextMessage.example.scenarios.first +
-                    '<pre>' + _EXAMPLE.withHTMLTags + '</pre>' +
-                    this.nls.richTextMessage.example.scenarios.second +
-                    '<pre>' + _EXAMPLE.withoutHTMLTags + '</pre></div>';
-      messageWrapper.innerHTML = messageHTML;
-      return messageWrapper;
-    },
-
-    // get fields that display as rich text fields
-    _getRichTextFields: function() {
-      var pInfos = this.layerInfo && this.layerInfo.getPopupInfo && this.layerInfo.getPopupInfo(),
-          lFields = pInfos && pInfos.fieldInfos,
-          rFields = [];
-      if(lFields) {
-        for(var i = 0, len = lFields.length; i < len; i++) {
-          var lField = lFields[i];
-          if(lField.stringFieldOption && lField.stringFieldOption === "richtext") {
-            rFields.push(lField);
-          }
-        }
-      }
-      return rFields;
-    },
-
-
-    onSelectionComplete: function() {
-      var features = this.layer && this.layer.getSelectedFeatures();
+    onSelectionComplete: function(evt) {
+      var features = evt.features;
       if (!features) {
         return;
       }
       if (features.length === 0) {
-          this.clearSelection(false, this._selectionResults.length > 0);
+        this.clearSelection(false);
       } else if (!this._selectBySelf(features)) {
         this.clearSelection(false);
-        this._updateSelectRowsByFeatures(features);
+        this._updateSelectRowsByFeatures(evt.features);
       }
     },
 
-    onSelectionClear: function() {
-      this.clearSelection(false, true);
-    },
-
     changeToolbarStatus: function() {
-      //selected/all option
-
       if (!this.tableCreated) {
-        //dgrid not created, set initial state
-        if (this._relatedQuery) {
-          //if RELATIONSHIPTABLE mode, show "Show All Records"
-          this.showSelectedRecordsMenuItem.set('disabled', false);
-          this.showSelectedRecordsMenuItem.set('label', this.nls.showAllRecords);
-        } else {
-          this.showSelectedRecordsMenuItem.set('disabled', true);
-        }
-
+        this.showSelectedRecordsMenuItem.set('disabled', true);
         this.showRelatedRecordsMenuItem.set('disabled', true);
         this.matchingCheckBox.set('disabled', true);
         this.filterMenuItem.set('disabled', true);
@@ -894,11 +712,8 @@ define([
         return;
       }
 
-      //now dgid is created
       var selectionRows = this.getSelectedRows();
       if (this.showSelected) {
-        //if this.showSelected is true, means we are in selected mode
-        //now we need to show "Show All Records"
         this.showSelectedRecordsMenuItem.set('label', this.nls.showAllRecords);
       } else {
         this.showSelectedRecordsMenuItem.set('label', this.nls.showSelectedRecords);
@@ -919,10 +734,9 @@ define([
         }
       }
 
-      //related records option
-
       this.showRelatedRecordsMenuItem.set('disabled', true);
       if (this.layerInfo && this.isSupportQueryToServer() &&
+        selectionRows && selectionRows.length > 0 &&
         this.layer && this.layer.objectIdField) {
         if (this._relatedDef && !this._relatedDef.isFulfilled()) {
           this._relatedDef.cancel();
@@ -934,30 +748,28 @@ define([
           if (!this.domNode) {
             return;
           }
-          if (this.tableCreated && tableInfos && tableInfos.length > 0) {
+          var selectionRows = this.getSelectedRows();
+          if (this.tableCreated && tableInfos && tableInfos.length > 0 &&
+            selectionRows && selectionRows.length > 0) {
             this.showRelatedRecordsMenuItem.set('disabled', false);
           }
         }));
       }
 
-      //filter option
       if (this.tableCreated && this.isSupportQueryToServer() && !this._relatedQuery) {
         this.filterMenuItem.set('disabled', false);
       } else {
         this.filterMenuItem.set('disabled', true);
       }
 
-      //map extent option
       this.matchingCheckBox.set('disabled', false);
 
-      //Show/Hide Columns option
       if (this.tableCreated) {
         this.toggleColumnsMenuItem.set('disabled', false);
       } else {
         this.toggleColumnsMenuItem.set('disabled', true);
       }
 
-      //export option
       if (!this.hideExportButton) {
         if (selectionRows && selectionRows.length > 0) {
           this.exportCSVMenuItem.set('label', this.nls.exportSelected);
@@ -971,7 +783,6 @@ define([
         }
       }
 
-      //zoom to option
       if (this.layerInfo.isShowInMap()) {
         // this.showGraphic();
         if (this.tableCreated && selectionRows && selectionRows.length > 0) {
@@ -1036,14 +847,11 @@ define([
       this.grid.clearSelection();
       this.selectionRows = [];
       if (requery) {
-        //from selected mode to all mode
         this.grid.set('query', {});
       }
       if (clearSelectionSet) {
+        this.selectionManager.clearSelection(this.layer);
         this._selectionResults = [];
-        if(this.layer && this.layer.getSelectedFeatures().length > 0) {
-          this.selectionManager.clearSelection(this.layer);
-        }
       }
       this._closePopup();
       // this.graphicsLayer.clear();
@@ -1069,90 +877,93 @@ define([
       });
     },
 
-    exportToCSV: function(fileName, richTextFieldsToClear) {
+    exportToCSV: function(fileName) {
       if (!this.layerInfo || !this.layer || !this.tableCreated) {
         return;
       }
+      var _outFields = null;
+      var pk = this.layer.objectIdField;
       // var types = this.layer.types;
-      this.getSelectedRowsData().then(lang.hitch(
-          this,
-          function(datas) {
-            // seleted data process.
-            var oid = this.layer.objectIdField;
-            var _exportData = [];
-            var isSameProjection = this.layer.fullExtent.spatialReference.equals(
-              this.map.extent.spatialReference);
+      var data = this.getSelectedRowsData();
 
-            var hasArcadeExpressionFields = this._hasArcadeExpressionFields();
+      _outFields = this._getOutFieldsFromLayerInfos(pk);
+      _outFields = this._processExecuteFields(this.layer.fields, _outFields);
 
-            // if the output layer's spatial reference is the same as map's, which means
-            // a spatial reference conversion to make output data (X, Y fileds) consistent with
-            //layer's original projection system is NOT needed. then we can use data from client side.
-            // if they are different, then it needs to send a query request to
-            // server side (handle by "_getExportDataFromServer" method in jimu/CSVUtils.js)
-            // to get the data with correct spatial reference
-            if(isSameProjection) {
-              var rows = array.map(
-                this._getTableSelectedIds(),
-                lang.hitch(this, function(id) {
-                  for (var i = 0, len = datas.length; i < len; i++) {
-                    if (datas[i] && datas[i][oid] === id) {
-                      return datas[i];
-                    }
-                  }
-                  return {};
-                })
-              );
-              var _selectedData = rows || [];// get selected data
-              // if table were in selection mode and no records were selected, we push an
-              // empty object to _selectedData, for the following logic compatible.
-              if(_selectedData.length === 0 && this.isSelectionMode()){
-                _selectedData.push({});
-              }
+      var options = {};
+      if (data && data.length > 0) {
+        options.datas = data;
+      } else if (this.grid.store instanceof Memory) {
+        data = this.grid.store.data;
+        options.datas = data;
+      }
 
-              _exportData = _selectedData;
-
-              if(_selectedData.length === 0 &&  this.grid.store instanceof Memory){
-                _exportData = lang.clone(this.grid.store.data);
-              }
-
-              if(_exportData.length){
-                this._appendXY(_exportData);
-              }
+      //export geometry if shape type of layer is point
+      if ('datas' in options && this.layer.geometryType === 'esriGeometryPoint') {
+        var datas = lang.clone(options.datas);
+        array.forEach(datas, function(d) {
+          var geometry = d.geometry;
+          if (geometry.type === 'point') {
+            if ('x' in d) {
+              d._x = geometry.x;
+            } else {
+              d.x = geometry.x;
             }
 
-            var options = {};
-            var _outFields = this.getOutFields(!!_exportData.length);
-            options.datas = _exportData;
-            options.fromClient = false;
-            options.withGeometry = this.layer.geometryType === 'esriGeometryPoint';
-            options.outFields = _outFields;
-            options.formatNumber = false;
-            options.formatDate = true;
-            options.formatCodedValue = true;
-            options.popupInfo = this.layerInfo.getPopupInfo();
-            //if spatial reference needs to be converted:
-            // 1. query data using object ids
-            options.objectIds = !isSameProjection && this._getExportObjectIds();
-            // 2. use layer's default spatial reference as the output to do
-            // the conversion on the server side
-            options.outSpatialReference = !isSameProjection &&
-              lang.clone(this.layer.fullExtent.spatialReference);
-            // pass in rich text fields to be cleared:
-            options.richTextFieldsToClear = richTextFieldsToClear;
-            // if the output layer has arcade expressions configured, the computed values
-            // need to be added to each data to be exported
-            if(hasArcadeExpressionFields) {
-              options.arcadeExpressions = {
-                expressionInfos: this.layerInfo.getPopupInfo().expressionInfos,
-                layerDefinition: jimuUtils.getFeatureLayerDefinition(this.layer)
-              };
+            if ('y' in d) {
+              d._y = geometry.y;
+            } else {
+              d.y = geometry.y;
             }
-            return CSVUtils.exportCSVFromFeatureLayer(
-              fileName || this.configedInfo.name,
-              this.layer, options);
           }
-        ));
+
+          delete d.geometry;
+        });
+        options.datas = datas;
+
+        _outFields = lang.clone(_outFields);
+        var name = "";
+        if (_outFields.indexOf('x') !== -1) {
+          name = '_x';
+        } else {
+          name = 'x';
+        }
+        _outFields.push({
+          'name': name,
+          alias: name,
+          format: {
+            'digitSeparator': false,
+            'places': 6
+          },
+          show: true,
+          type: "esriFieldTypeDouble"
+        });
+        if (_outFields.indexOf('y') !== -1) {
+          name = '_y';
+        } else {
+          name = 'y';
+        }
+        _outFields.push({
+          'name': name,
+          alias: name,
+          format: {
+            'digitSeparator': false,
+            'places': 6
+          },
+          show: true,
+          type: "esriFieldTypeDouble"
+        });
+      }
+
+      options.fromClient = false;
+      options.withGeometry = this.layer.geometryType === 'esriGeometryPoint';
+      options.outFields = _outFields;
+      options.formatNumber = false;
+      options.formatDate = true;
+      options.formatCodedValue = true;
+      options.popupInfo = this.layerInfo.getPopupInfo();
+      return CSVUtils.exportCSVFromFeatureLayer(
+        fileName || this.configedInfo.name,
+        this.layer, options);
     },
 
     toggleColumns: function() {
@@ -1249,15 +1060,8 @@ define([
       if (features.length !== this._selectionResults.length) {
         return false;
       } else {
-        var oidField = this.layer.objectIdField;
-        return array.every(this._selectionResults, function (sr) {
-          //was: return features.indexOf(sr) > -1;
-
-          // use the native Array.prototype.some() method for better performance
-          return features.some(function(f) {
-            // use object id to do a more strict comparison
-            return sr.attributes[oidField] === f.attributes[oidField];
-          })
+        return array.every(this._selectionResults, function(sr) {
+          return features.indexOf(sr) > -1;
         });
       }
     },
@@ -1267,8 +1071,6 @@ define([
         return f.attributes[this.layer.objectIdField];
       }));
       this._updateSelectRowsByIds(selectedIds);
-
-      this._selectionResults = features;
     },
 
     _updateSelectRowsByIds: function(selectedIds) {
@@ -1348,8 +1150,6 @@ define([
 
         this._selectionHandles.push(
           on(layer, 'selection-complete', lang.hitch(this, 'onSelectionComplete')));
-        this._selectionHandles.push(
-          on(layer, 'selection-clear', lang.hitch(this, 'onSelectionClear')));
       }
       return objectDef.then(lang.hitch(this, function(layerObject) {
         var def = new Deferred();
@@ -1397,23 +1197,13 @@ define([
       });
     },
 
-    _getExportObjectIds: function() {
-      var exportIds = this._getTableSelectedIds() || []; // try to get selected ids first
-      if(exportIds.length === 0 && this.grid.store instanceof Memory) {
-        var oid = this.layer.objectIdField;
-        this.grid.store.query(function(object) {
-          exportIds.push(object[oid]);
-        })
-      } // if nothing is selected, get ids from current dgrid's store object
-      return exportIds;
-    },
-
     _doQuery: function(normalizedExtent, queryByStoreObjectIds) {
       if (!this.layer) {
         return;
       }
       var pk = this.layer.objectIdField; // primary key always be display
 
+      // Does not support queries that need to be performed on the server
       if (this.isSupportQueryToServer()) {
         this._queryToServer(normalizedExtent, pk, queryByStoreObjectIds);
       } else if (this.isSupportQueryOnClient()) {
@@ -1422,13 +1212,11 @@ define([
     },
 
     _queryOnClient: function(normalizedExtent, pk, queryByStoreObjectIds) {
-      var json = {};//json has the similay structure with FeatureSet.
+      var json = {};
       if (this.layer.declaredClass === "esri.layers.StreamLayer") {
         json.features = this.layer.getLatestObservations();
       } else {
-        json.features = array.filter(this.layer.graphics, lang.hitch(this, function(feature){
-          return !feature.wabIsTemp;
-        }));
+        json.features = this.layer.graphics;
       }
 
       if (queryByStoreObjectIds && queryByStoreObjectIds.length > 0) {
@@ -1441,7 +1229,6 @@ define([
       var liFields = this.configedInfo.layer.fields;
 
       if (liFields) {
-        //user has open AT setting page and we get this.configedInfo.layer.fields
         json.fields = array.filter(liFields, lang.hitch(this, function(field) {
           if (!esriLang.isDefined(field.show)) { // first open
             field.show = true;
@@ -1450,8 +1237,6 @@ define([
             (field.type === 'esriFieldTypeOID' || field.type === 'esriFieldTypeInteger')) {
             field._pk = true;
           }
-
-          //add esri field type to liField
           for (var i = 0, len = lFields.length; i < len; i++) {
             if (lFields[i].name === field.name && !field.type) {
               field.type = lFields[i].type;
@@ -1460,7 +1245,6 @@ define([
           return field.show || field._pk;
         }));
       } else {
-        //user doesn't open AT setting page
         json.fields = array.filter(lFields, lang.hitch(this, function(field) {
           if (!esriLang.isDefined(field.show)) { // first open
             field.show = true;
@@ -1481,64 +1265,46 @@ define([
         }
       }
       if (normalizedExtent && esriConfig.defaults.geometryService && geometries.length > 0) {
-        var sr1 = normalizedExtent.spatialReference;
-        var sr2 = geometries[0].spatialReference;
-        if(sr1.equals(sr2)){
-          json.features = array.filter(json.features, lang.hitch(this, function(g) {
-            if(g && g.geometry){
-              return geometryEngine.intersects(normalizedExtent, g.geometry);
-            }
+        var params = new RelationParameters();
+        params.geometries1 = geometries;
+        params.geometries2 = [normalizedExtent];
+        params.relation = RelationParameters.SPATIAL_REL_INTERSECTION;
+
+        var relationDef = this._currentDef = esriConfig.defaults.geometryService.relation(
+          params, lang.hitch(this, function(pairs) {
+            return pairs;
           }));
+        relationDef.then(lang.hitch(this, function(json, pairs) {
+          var n = pairs.length;
+          var gs = [];
+          for (var m = 0; m < n; m++) {
+            gs.push(json.features[pairs[m].geometry1Index]);
+          }
+          json.features = gs;
           this.queryExecute(
             json.fields, json.features.length, false, json, normalizedExtent
           );
-        }else{
-          var params = new RelationParameters();
-          params.geometries1 = geometries;
-          params.geometries2 = [normalizedExtent];
-          params.relation = RelationParameters.SPATIAL_REL_INTERSECTION;
-
-          var relationDef = this._currentDef = esriConfig.defaults.geometryService.relation(
-            params, lang.hitch(this, function(pairs) {
-              return pairs;
-            }));
-          relationDef.then(lang.hitch(this, function(json, pairs) {
-            var n = pairs.length;
-            //the filtered features
-            var gs = [];
-            for (var m = 0; m < n; m++) {
-              gs.push(json.features[pairs[m].geometry1Index]);
-            }
-            json.features = gs;
-            this.queryExecute(
-              json.fields, json.features.length, false, json, normalizedExtent
-            );
-          }, json), lang.hitch(this, function(err) {
-            if (err && err.message !== 'Request canceled') {
-              console.error(err);
-            }
-            this.changeToolbarStatus();
-            this.loading.hide();
-          }));
-        }
+        }, json), lang.hitch(this, function(err) {
+          if (err && err.message !== 'Request canceled') {
+            console.error(err);
+          }
+          this.changeToolbarStatus();
+          this.loading.hide();
+        }));
       } else {
-        //don't filter features
         this.queryExecute(
           json.fields, json.features.length, false, json, normalizedExtent
         );
       }
     },
 
-    /*
-    pk: objectIdField
-     */
     _queryToServer: function(normalizedExtent, pk, queryByStoreObjectIds) {
       this._getFeatureCount(normalizedExtent, queryByStoreObjectIds)
         .then(lang.hitch(this, function(recordCounts) {
           if (!this.domNode) {
             return;
           }
-          if (queryByStoreObjectIds) {// RELATIONSHIPTABLE doesn't care pagination
+          if (queryByStoreObjectIds) {
             this._queryFeatureLayer(
               normalizedExtent, pk, recordCounts, false, queryByStoreObjectIds
             );
@@ -1551,7 +1317,6 @@ define([
             // some table isn't GIS based, so it have no objectIdField
             // issue#7122
             if (recordCounts <= maxCount || !this.layer.objectIdField) {
-              //one request can cover all features, don't need to pages
               this._queryFeatureLayer(
                 normalizedExtent, pk, recordCounts, false
               );
@@ -1590,7 +1355,6 @@ define([
 
     _getFeatureCount: function(normalizedExtent, queryByStoreObjectIds) {
       var def = new Deferred();
-      var qt = new QueryTask(this.configedInfo.layer.url);
       var query = new Query();
       query.returnGeometry = false;
       query.where = this._getLayerFilterExpression();
@@ -1603,17 +1367,7 @@ define([
         query.geometry = normalizedExtent;
       }
 
-      // Because _getAttributeFilter of FeatureLayer will merge definitionExpression
-      // to where property of Query,
-      // we change to QueryTask to executeForCount.
-      // var countDef = this._currentDef = this.layer.queryCount(query);
-
-      var countDef = this._currentDef = qt.executeForCount(
-        query,
-        lang.hitch(this, function(results) {
-          return results;
-        })
-      );
+      var countDef = this._currentDef = this.layer.queryCount(query);
       countDef.then(lang.hitch(this, function(count) {
         def.resolve(count);
       }), lang.hitch(this, function(err) {
@@ -1628,7 +1382,6 @@ define([
       return def;
     },
 
-    // get all records from server by only one request without pagination
     _queryFeatureLayer: function(normalizedExtent, pk,
       recordCounts, exceededLimit, queryByStoreObjectIds) {
       // function body
@@ -1639,11 +1392,9 @@ define([
         query.where += ' AND ' + pk + ' IN (' + queryByStoreObjectIds.join() + ')';
       }
       var oFields = this._getOutFieldsFromLayerInfos(pk);
-      var hasArcadeExpressionFields = this._hasArcadeExpressionFields();
-      if (oFields.length > 0 && !hasArcadeExpressionFields) {
-        var oNames = [];
-        array.forEach(oFields, function(field) {
-          oNames.push(field.name);
+      if (oFields.length > 0) {
+        var oNames = array.map(oFields, function(field) {
+          return field.name;
         });
         query.outFields = oNames;
       } else {
@@ -1680,7 +1431,6 @@ define([
 
     _getFeatureIds: function(pk, normalizedExtent) {
       var def = new Deferred();
-      var qt = new QueryTask(this.configedInfo.layer.url);
       var query = new Query();
       query.returnGeometry = false;
       query.returnIdsOnly = true;
@@ -1693,14 +1443,7 @@ define([
         query.geometry = normalizedExtent;
       }
 
-      // Because _getAttributeFilter of FeatureLayer will merge definitionExpression
-      // to where property of Query,
-      // we change to QueryTask to executeForCount.
-      // var idsDef = this._currentDef = this.layer.queryIds(query);
-
-      var idsDef = this._currentDef = qt.executeForIds(query, lang.hitch(this, function(results) {
-        return results;
-      }));
+      var idsDef = this._currentDef = this.layer.queryIds(query);
       idsDef.then(lang.hitch(this, function(objectIds) {
         def.resolve(objectIds);
       }), lang.hitch(this, function(err) {
@@ -1714,13 +1457,6 @@ define([
       return def;
     },
 
-    /*
-    oFields: out fields
-    recordCounts: all records count
-    exceededLimit: if true means pagination
-    results: FeatureSet like structure
-    nExtent: normalize map extent
-     */
     queryExecute: function(oFields, recordCounts, exceededLimit, results, nExtent) {
       var data = [];
       var store = null;
@@ -1731,8 +1467,6 @@ define([
       // mixin porperty of field to result.fields
       results.fields = this._processExecuteFields(this.layer.fields, oFields);
       if (exceededLimit) {
-        //if exceededLimit, means need pagination. In this case, we create cache store.
-        //With cache store, dgrid get data dynamically.
         store = tableUtils.generateCacheStore(
           this.layer,
           recordCounts,
@@ -1741,7 +1475,6 @@ define([
           nExtent
         );
       } else {
-        //If don't need pagination, we create memory store.
         data = array.map(results.features, lang.hitch(this, function(feature) {
           // return lang.clone(feature.attributes);
           var c = lang.clone(feature.attributes);
@@ -1761,38 +1494,15 @@ define([
         false, this.layer);
       var supportStatistics = lang.getObject('advancedQueryCapabilities.supportsStatistics',
         false, this.layer);
-      var layerDefinition = jimuUtils.getFeatureLayerDefinition(this.layer);
 
       // AttributeTable does not work
       //when column name contains special character such as "." and "()"
       columns = tableUtils.generateColumnsFromFields(
-        this.grid && this.grid.columns,
-        this.layerInfo,
+        this.layerInfo.getPopupInfo(),
         results.fields, _typeIdFild, _types, (supportOrder && supportPage) || !exceededLimit,
-        supportStatistics, layerDefinition
+        supportStatistics
       );
-
-      // remove attachments temporary
-      if (this.layer.hasAttachments && this.layer.objectIdField && this.configedInfo.showAttachments) {
-        // columns.selectionHandle = {
-        //   label: "",
-        //   className: "selection-handle-column",
-        //   hidden: false,
-        //   unhidable: true,
-        //   filed: "selection-handle-column",
-        //   sortable: false,
-        //   _cache: {
-        //     sortable: false,
-        //     statistics: false
-        //   }
-        // };
-        columns.attachmentsColumn = this.formatAttachmentsColumn(); // add attachments column
-      }
-      //if autoWidth is ture, means no horizontal bar
-      //if autoWidth is false, means we have too many fields and maybe need horizontal bar
-      var autoWidth = (20 * 1 + 100 * results.fields.length) < html.getMarginBox(this.domNode).w;
-      //create dgrid, only one time
-      this.createTable(columns, store, recordCounts, autoWidth);
+      this.createTable(columns, store, recordCounts);
       this._currentExtent = nExtent;
 
       var selectedFeatures = this.layer.getSelectedFeatures();
@@ -1810,93 +1520,7 @@ define([
       this.emit('data-loaded');
     },
 
-    formatAttachmentsColumn: function() {
-      var column = {
-        label: this.nls.attachments,
-        className: 'attachments-column',
-        hidden: false,
-        unhidable: true,
-        field: 'at-show-attachments',
-        sortable: false,
-        _cache: {
-          sortable: false,
-          statistics: false
-        }
-      };
-      // jshint unused: true
-      column.renderCell = lang.hitch(this, function(obj, v, node) {
-        /*jshint unused: false*/
-        var oid = obj[this.layer.objectIdField];
-        this.layer.queryAttachmentInfos(oid, lang.hitch(this, function(infos) {
-          var liTemplates = array.map(infos, lang.hitch(this, function(ainfo) {
-            var isImage = ainfo.name && (/\.(png|jpg|jpeg|gif)$/gi).test(ainfo.name);
-            var fileType = isImage ? 'image-type' : 'file-type';
-            var credential = esriId.findCredential(this.layer.url);
-            var attachmentUrl = this.layer.url + '/' + oid + '/attachments/' + ainfo.id +
-            (credential ? '?token=' + credential.token : "");
-            return '<li class="' + fileType + '">' +
-            '<a class="jimu-ellipsis" target="_blank" href="' + attachmentUrl + '">' + ainfo.name + '</a>' +
-            '</li>';
-          }));
-          var filesNls = '';
-          if(infos.length > 0){
-            filesNls = ' ' + this.nls.files;
-          }
-          var template = '<div class="attachment-infos">' +
-              '<div class="show-attachments-div">' +
-                '<span class="show-attachments">' + infos.length + filesNls + '</span>' +
-              '</div>' +
-              '<div class="attachment-popup">' +
-                '<div class="attachment-popup-header">' +
-                  '<span>' + liTemplates.length + '&nbsp;' + this.nls.files + '</span>' +
-                  '<span class="close jimu-float-trailing"></span>' +
-                '</div>' +
-                '<ul class="attachment-popup-content">' +
-                  liTemplates.join('') +
-                '</ul>' +
-              '</div>' +
-            '</div>';
-
-          var templateDom = html.toDom(template);
-
-          if(infos.length > 0){
-            var showAttachmentsDiv = query('.show-attachments-div', templateDom)[0];
-            html.addClass(showAttachmentsDiv, 'has-attachments');
-          }
-
-          node.appendChild(templateDom);
-          this.own(on(node, 'click', lang.hitch(this, function(evt) {
-            var target = evt && evt.target;
-            var valid = html.hasClass(target, 'show-attachments-div') ||
-                        html.hasClass(target, 'show-attachments') ||
-                        html.hasClass(target, 'close');
-            if (!valid) {
-              return;
-            }
-            var oldVisibleAttachmentPopup = this._visibleAttachmentPopup;
-            var attachmentPopup = query('.attachment-popup', node)[0];
-            if (attachmentPopup && liTemplates.length > 0) {
-              html.toggleClass(attachmentPopup, 'show');
-            }
-            if (html.hasClass(attachmentPopup, 'show')) {
-              this._visibleAttachmentPopup = attachmentPopup;
-            } else {
-              this._visibleAttachmentPopup = null;
-            }
-            if(oldVisibleAttachmentPopup && oldVisibleAttachmentPopup !== attachmentPopup){
-              html.toggleClass(oldVisibleAttachmentPopup, 'show');
-            }
-          })));
-        }), lang.hitch(this, function(err) {
-          console.error(err);
-
-        }));
-      });
-
-      return column;
-    },
-
-    createTable: function(columns, store, recordCounts, autoWidthMode) {
+    createTable: function(columns, store, recordCounts) {
       if (this.grid) {
         this.grid.set("store", store);
         this.grid.set('columns', columns);
@@ -1906,8 +1530,8 @@ define([
         json.columns = columns;
         json.store = store;
         json.keepScrollPosition = true;
-        json.pagingDelay = 1000;//like search delay
-        json.allowTextSelection = this.allowTextSelection;
+        json.pagingDelay = 1000;
+        json.allowTextSelection = true;
         json.deselectOnRefresh = false;
 
         if (!this.layer.objectIdField) {
@@ -1920,10 +1544,6 @@ define([
         this.grid = new(declare(demands))(json, html.create("div"));
         html.place(this.grid.domNode, this.domNode);
         this.grid.startup();
-
-        if (this.tipNode) {
-          html.destroy(this.tipNode);
-        }
         // // private preperty in grid
         // // _clickShowSelectedRecords
         // // when these value is true selected rows after refresh complete.
@@ -1931,48 +1551,35 @@ define([
 
         // prevent select when press shift key to do multiple selection.
         this.own(on(this.ownerDocument, 'keydown', lang.hitch(this, function(evt) {
-          if (this.allowTextSelection && this.grid && this.grid.allowTextSelection && evt.shiftKey) {
+          if (this.grid && this.grid.allowTextSelection && evt.shiftKey) {
             this.grid._setAllowTextSelection(false);
           }
         })));
         this.own(on(this.ownerDocument, 'keyup', lang.hitch(this, function() {
-          if (this.allowTextSelection && this.grid && !this.grid.allowTextSelection) {
+          if (this.grid && !this.grid.allowTextSelection) {
             this.grid._setAllowTextSelection(true);
           }
         })));
 
         if(this.layer.objectIdField) {
           // bind grid evnt
-
-          //show header menu: ASC,DSC,Statistics
           this.own(on(
             this.grid,
             ".dgrid-header .dgrid-cell:click",
             lang.hitch(this, this._onHeaderClick)
           ));
 
-          // toogle visibility of field in columns menu
-          this.own(on(
-            this.grid,
-            'dgrid-columnstatechange',
-            lang.hitch(this, this._onColumnStateChange)
-          ));
-
-          //select rows
           this.own(on(
             this.grid,
             ".selection-handle-column:click",
             lang.hitch(this, this._onSelectionHandleClick)
           ));
 
-          //dblclick to select one row and show popup on the feature, but not put into selection
           this.own(on(
             this.grid,
             ".dgrid-row:dblclick",
             lang.hitch(this, this._onDblclickRow)
           ));
-
-          //dgrid sort
           this.own(on(this.grid, 'dgrid-sort', lang.hitch(this, function(evt) {
             this.emit('sort', evt);
           })));
@@ -1984,13 +1591,8 @@ define([
         }
       }
 
-      // apply sort option if no one has been applied
-      if(!this.grid.get('sort')[0]) {
-        if(this.configedInfo && this.configedInfo.sortField) {
-          this.grid.set('sort', this.configedInfo.sortField, this.configedInfo.isDescending);
-        } else if (this.layer.objectIdField) {
-          this.grid.set('sort', this.layer.objectIdField, false);
-        }
+      if (this.layer.objectIdField) {
+        this.grid.set('sort', this.layer.objectIdField, false);
       }
 
       // fix dgrid bug
@@ -2004,12 +1606,6 @@ define([
         if (isFinite(smt) && headerBox && smt < headerBox.h) {
           html.setStyle(scroller, 'marginTop', headerBox.h + 'px');
         }
-      }
-
-      if (autoWidthMode) {
-        html.addClass(this.domNode, 'auto-width');
-      } else {
-        html.removeClass(this.domNode, 'auto-width');
       }
 
       if (this.footer) {
@@ -2043,95 +1639,25 @@ define([
     },
 
     getSelectedRowsData: function() {
-      var def = new Deferred();
-      var selectedIds = this._getTableSelectedIds() || [];
-      if (!this.grid || !selectedIds.length) {
-        def.resolve(null);
-        return def;
+      if (!this.grid) {
+        return null;
       }
 
-      if(this.grid.store instanceof Memory){
-        var results = lang.clone(this.grid.store.data);
-        def.resolve(results);
-      }else{
-        this.grid.store
-        .query(selectedIds, {_export_count: selectedIds.length})// count specific counts to fetch.
-        .then(lang.hitch(this, function(data) {
-          var results = data && lang.clone(this.grid.store._entityData || this.grid.store.data);
-          def.resolve(results);
-        }));
-      }
-      return def;
-    },
+      var oid = this.layer.objectIdField;
+      var store = this.grid.store;
+      var data = store._entityData || store.data;
+      var selectedIds = this.getSelectedRows();
 
-    _appendXY: function(datas){
-      //export geometry if shape type of layer is point
-      if (datas && this.layer.geometryType === "esriGeometryPoint") {
-        array.forEach(datas, function(d) {
-          var geometry = d.geometry;
-          if (geometry && geometry.type === "point") {
-            if ("x" in d) {
-              d._x = geometry.x;
-            } else {
-              d.x = geometry.x;
-            }
-
-            if ("y" in d) {
-              d._y = geometry.y;
-            } else {
-              d.y = geometry.y;
-            }
+      var rows = array.map(selectedIds, lang.hitch(this, function(id) {
+        for (var i = 0, len = data.length; i < len; i++) {
+          if (data[i] && data[i][oid] === id) {
+            return data[i];
           }
-
-          delete d.geometry;
-        });
-      }
-    },
-
-    // get out fields for export.
-    // isSelectedData equals true means export selected data,
-    // we should append x,y fields to _outFields.
-    getOutFields: function(isSelectedData){
-      var _outFields = null;
-      var pk = this.layer.objectIdField;
-      _outFields = this._getOutFieldsFromLayerInfos(pk);
-      _outFields = this._processExecuteFields(this.layer.fields, _outFields);
-
-      _outFields = lang.clone(_outFields);
-      if(isSelectedData){
-        var name = "";
-        if (_outFields.indexOf('x') !== -1) {
-          name = '_x';
-        } else {
-          name = 'x';
         }
-        _outFields.push({
-          'name': name,
-          alias: name,
-          format: {
-            'digitSeparator': false,
-            'places': 6
-          },
-          show: true,
-          type: "esriFieldTypeDouble"
-        });
-        if (_outFields.indexOf('y') !== -1) {
-          name = '_y';
-        } else {
-          name = 'y';
-        }
-        _outFields.push({
-          'name': name,
-          alias: name,
-          format: {
-            'digitSeparator': false,
-            'places': 6
-          },
-          show: true,
-          type: "esriFieldTypeDouble"
-        });
-      }
-      return _outFields;
+        return {};
+      }));
+
+      return rows || [];
     },
 
     setSelectedNumber: function() {
@@ -2167,31 +1693,11 @@ define([
         if (gExtent && this.domNode) {
           var def = null;
           if (gExtent.type === "point") {
-            // var levelOrFactor = 15;
-            // levelOrFactor = this.map.getMaxZoom() > -1 ? this.map.getMaxZoom() : 0.1;
-            // // def = this.map.centerAndZoom(gExtent, levelOrFactor);
-
-            var numLevels = this.map.getNumLevels(),
-              currentLevel = this.map.getLevel(),
-              last = this.map.getMaxZoom(),
-              factor = 4;
-
-            if (numLevels > 0) { // tiled base layer
-              var targetLevel;
-              if (currentLevel === last) {// if currentLevel is maxZoomLevel
-                targetLevel = currentLevel;
-              }else{
-                targetLevel = currentLevel + factor;
-                if (targetLevel > last) {
-                  targetLevel = last;
-                }
-              }
-              def = this.map.centerAndZoom(gExtent, targetLevel);
-            } else { // dynamic base layer
-              def = this.map.centerAndZoom(gExtent, (1 / Math.pow(2, factor)) * 2);
-            }
+            var levelOrFactor = 15;
+            levelOrFactor = this.map.getMaxZoom() > -1 ? this.map.getMaxZoom() : 0.1;
+            def = this.map.centerAndZoom(gExtent, levelOrFactor);
           } else {
-            def = this.map.setExtent(gExtent.expand(2));
+            def = this.map.setExtent(gExtent.expand(1.1));
           }
 
           return def.then((function() {
@@ -2206,12 +1712,9 @@ define([
         return;
       }
       var popup = this.map.infoWindow;
-      var layerInfoTemplate = this.layerInfo.isPopupEnabled() &&
-        this.layerInfo.getInfoTemplate();
+      var layerInfoTemplate = this.layerInfo.getInfoTemplate();
       if (popup && popup.setFeatures && result.length === 1 && layerInfoTemplate) {
         array.forEach(result, lang.hitch(this, function(item) {
-          // sometimes result come from querytask not local feature
-          // so we need to bind the _layer and infoTemplate to the result
           item._layer = this.layerInfo.layerObject;
           item.setInfoTemplate(layerInfoTemplate);
         }));
@@ -2232,32 +1735,21 @@ define([
       }
     },
 
-    // differect with layer.selectFeatures
     selectFeatures: function(method, result) {
       if (result && result.length > 0) {
-        if (method === "rowclick" || method === "selectall") {// ignore selectall
-          this._setSelection(result); // call selectionManager
+        if (method === "rowclick" || method === "selectall") {
+          this._setSelection(result);
         } else if (method === "zoom" || method === "row-dblclick") {
-          var gExtent = jimuUtils.graphicsExtent(result);
-          var featureSet = jimuUtils.toFeatureSet(result);
-          // use "zoom-end" and "pan-end" to catch zooming animation complete callback 
-          // more precisely than the callback from "jimuUtils.zoomToFeatureSet"
-          var onMapZoomOrPan = on(this.map, 'zoom-end, pan-end', lang.hitch(this, function() {
-            onMapZoomOrPan.remove();
+          this._zoomToExtentByFeatures(result).then(lang.hitch(this, function(gExtent) {
             if (method !== "row-dblclick" || !this.domNode) {
               return;
             }
             this._showMapInfoWindowByFeatures(gExtent, result);
-          }));
-          // use "zoomToFeatureSet" method in jimu/utils to zoom to feature(s)
-          jimuUtils.zoomToFeatureSet(this.map, featureSet).then(null, function(err) {
-            if (err) {
-              console.error(err.message);
-              if(onMapZoomOrPan) {
-                onMapZoomOrPan.remove();
-              }
+          }), lang.hitch(this, function(err) {
+            if (err && err.message !== 'Request canceled') {
+              console.error(err);
             }
-          });
+          }));
         }
         this.setSelectedNumber();
       } else {
@@ -2265,7 +1757,6 @@ define([
       }
     },
 
-    // monitor: feature or [feature]
     syncWithMapInfowindow: function(monitor) {
       var popup = this.map.infoWindow;
       var result = lang.isArray(monitor) ? monitor : [monitor];
@@ -2279,10 +1770,7 @@ define([
       var h = aspect.after(popup, 'show', lang.hitch(this, function() {
         var sg = popup.getSelectedFeature();
         var selectedSg = sg && result[0] === sg;
-        var index = -1;
-        if(popup.features){
-          index = popup.features.indexOf(result[0]);
-        }
+        var index = popup.features.indexOf(result[0]);
         if (!selectedSg && index > -1) {
           popup.select(index);
         } else if (this.domNode && !selectedSg) {
@@ -2314,45 +1802,45 @@ define([
       return gs;
     },
 
-    // addGraphics: function(result) {
-    //   var symbol, graphic;
-    //   var len = result.length;
-    //   var outlineSymbol = new SimpleLineSymbol(
-    //     SimpleLineSymbol.STYLE_SOLID,
-    //     new Color([0, 255, 255]),
-    //     2
-    //   );
-    //   // this.graphicsLayer.clear();
+    addGraphics: function(result) {
+      var symbol, graphic;
+      var len = result.length;
+      var outlineSymbol = new SimpleLineSymbol(
+        SimpleLineSymbol.STYLE_SOLID,
+        new Color([0, 255, 255]),
+        2
+      );
+      // this.graphicsLayer.clear();
 
-    //   for (var i = 0; i < len; i++) {
-    //     var geometry = null;
-    //     if (!result[i].geometry) {
-    //       console.error('unable to get geometry of the reocord: ', result[i]);
-    //       continue;
-    //     } else if (!result[i].geometry.spatialReference.equals(this.map.spatialReference)) {
-    //       console.warn('unable to draw graphic result in different wkid from map');
-    //     }
-    //     if (result[i].geometry.type === "point") {
-    //       geometry = new Point(result[i].geometry.toJson());
-    //       symbol = lang.clone(this.map.infoWindow.markerSymbol);
-    //     } else if (result[i].geometry.type === "multipoint") {
-    //       geometry = new Multipoint(result[i].geometry.toJson());
-    //       symbol = lang.clone(this.map.infoWindow.markerSymbol);
-    //     } else if (result[i].geometry.type === "polyline") {
-    //       geometry = new Polyline(result[i].geometry.toJson());
-    //       symbol = outlineSymbol;
-    //     } else if (result[i].geometry.type === "polygon") {
-    //       geometry = new Polygon(result[i].geometry.toJson());
-    //       symbol = new SimpleFillSymbol(
-    //         SimpleFillSymbol.STYLE_SOLID,
-    //         outlineSymbol,
-    //         new Color([255, 255, 255, 0.25])
-    //       );
-    //     }
-    //     graphic = new Graphic(geometry, symbol, result[i].attributes, result[i].infoTemplate);
-    //     // this.graphicsLayer.add(graphic);
-    //   }
-    // },
+      for (var i = 0; i < len; i++) {
+        var geometry = null;
+        if (!result[i].geometry) {
+          console.error('unable to get geometry of the reocord: ', result[i]);
+          continue;
+        } else if (!result[i].geometry.spatialReference.equals(this.map.spatialReference)) {
+          console.warn('unable to draw graphic result in different wkid from map');
+        }
+        if (result[i].geometry.type === "point") {
+          geometry = new Point(result[i].geometry.toJson());
+          symbol = lang.clone(this.map.infoWindow.markerSymbol);
+        } else if (result[i].geometry.type === "multipoint") {
+          geometry = new Multipoint(result[i].geometry.toJson());
+          symbol = lang.clone(this.map.infoWindow.markerSymbol);
+        } else if (result[i].geometry.type === "polyline") {
+          geometry = new Polyline(result[i].geometry.toJson());
+          symbol = outlineSymbol;
+        } else if (result[i].geometry.type === "polygon") {
+          geometry = new Polygon(result[i].geometry.toJson());
+          symbol = new SimpleFillSymbol(
+            SimpleFillSymbol.STYLE_SOLID,
+            outlineSymbol,
+            new Color([255, 255, 255, 0.25])
+          );
+        }
+        graphic = new Graphic(geometry, symbol, result[i].attributes, result[i].infoTemplate);
+        // this.graphicsLayer.add(graphic);
+      }
+    },
 
     getExtent: function(result) {
       var def = new Deferred();
@@ -2426,10 +1914,6 @@ define([
       return def;
     },
 
-    // scroll records to view when click feature in map if possible
-    // 1. get selected feature objectId
-    // 2. calculate row position based on objectId if sorted by objectId ASC:_getIndexOfIdInGrid
-    // 3. scroll to the position
     _onFeaturelayerClick: function(evt, fromPopup) {
       if (!this.actived) {
         return;
@@ -2495,9 +1979,7 @@ define([
       if (this.grid.store instanceof Memory) {
         var obj = this.grid.store.get(id);
         var data = this.grid.store.data;
-        if (!obj) {
-          dataIndex = -1;
-        }else if (sort && sort.attribute && esriLang.isDefined(sort.descending)) {
+        if (sort && sort.attribute && esriLang.isDefined(sort.descending)) {
           data = lang.clone(data);
           compare = (function(attr, des) {
             return function(a, b) {
@@ -2640,7 +2122,7 @@ define([
 
     _showColumnMenu: function(column, cell, target, coords) {
       var info = lang.getObject("_cache", false, column);
-      if (!info || !info.sortable && !info.statistics) {
+      if (!info) {
         return;
       }
       var cm = new Menu({});
@@ -2734,26 +2216,6 @@ define([
       }
     },
 
-    _onColumnStateChange: function(evt) {
-      if (evt && evt.grid && evt.grid.columns){
-        // var visibleFields = array.filter(evt.grid.columns, lang.hitch(this, function(c) {
-        //   return !c.hidden;
-        // }));
-        // var len = visibleFields.length;
-        var len = 0;
-        for (var p in evt.grid.columns) {
-          if (!evt.grid.columns[p].hidden) {
-            len++;
-          }
-        }
-
-        if ((20 * 1 + 100 * len - 1) < html.getMarginBox(this.domNode).w) {
-          html.addClass(this.domNode, 'auto-width');
-        } else {
-          html.removeClass(this.domNode, 'auto-width');
-        }
-      }
-    },
 
     _onSelectionHandleClick: function() {
       var ids = this._getSelectedIds();
@@ -2817,22 +2279,11 @@ define([
 
     _getOutFieldsFromLayerInfos: function(pk) {
       var fields = this.configedInfo.layer.fields;
-      var pInfos = this.layerInfo.getPopupInfo();
-      var lFields = pInfos && pInfos.fieldInfos;
       var oFields = [];
       if (fields) {
         array.forEach(fields, lang.hitch(this, function(field) {
-          if (!esriLang.isDefined(field.show)) {
+          if (!esriLang.isDefined(field.show)) { // first open
             field.show = true;
-            // check if the field is defined via configuration of map popup
-            if(lFields) {
-              for (var i = 0, len = lFields.length; i < len; i++) {
-                var f = lFields[i];
-                if (f.fieldName === field.name) {
-                  field.show = f.visible;
-                }
-              }
-            }
           }
           if (field.name === pk &&
             // Fields come from layer.fields
@@ -2891,41 +2342,6 @@ define([
       return ids;
     },
 
-    // different from fun:_getSelectedIds,table selected counts may differ
-    // from layer selected if filtered by extent.
-    _getTableSelectedIds: function(){
-      var ids = [];
-      var _ids = this.getSelectedRows();
-      if (this.grid) {
-        // selected number should change with current records in table.
-        if (this.grid.store instanceof Memory) {
-          var oids = array.map(this.grid.store.data, function(d) {
-            return d[this.layer.objectIdField];
-          }, this);
-          array.forEach(_ids, function(id) {
-            if (oids.indexOf(id) > -1) {
-              ids.push(parseInt(id, 10));
-            }
-          });
-        }else{
-          ids = _ids;// as default.
-        }
-      }
-      return ids;
-    },
-
-    // check table mode is selection mode.
-    isSelectionMode: function(){
-      //now dgid is created
-      var selectionRows = this.getSelectedRows();
-      if (this.tableCreated && selectionRows && selectionRows.length > 0 &&
-        this.layer && this.layer.objectIdField) {
-        return true;
-      } else {
-        return false;
-      }
-    },
-
     _errorSelectFeatures: function(params) {
       console.error(params);
     },
@@ -2942,14 +2358,6 @@ define([
       });
 
       this.loading.hide();
-    },
-
-    _hasArcadeExpressionFields: function() {
-      return this.layerInfo.getPopupInfo() && 
-        this.layerInfo.getPopupInfo().expressionInfos && 
-        array.some(this.configedInfo.layer.fields, function(field) {
-          return tableUtils.arcade.isArcadeExpressionField(field);
-        });
     }
   });
 });

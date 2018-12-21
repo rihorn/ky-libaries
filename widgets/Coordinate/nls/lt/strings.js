@@ -12,7 +12,6 @@ define({
   "Default": "Numatytasis",
   "Inches": "Coliai",
   "Foot": "Pėdos",
-  "Foot_US": "Pėdos_JAV",
   "Yards": "Jardai",
   "Miles": "Mylios",
   "Nautical_Miles": "Jūrmylės",
@@ -22,7 +21,7 @@ define({
   "Kilometers": "Kilometrai",
   "Decimeters": "Decimetrai",
   "Decimal_Degrees": "Laipsniai",
-  "Degree_Minutes_Seconds": "Laipsniai minutės sekundės",
+  "Degree_Minutes_Seconds": "Laipsniai Minutės Sekundės",
   "MGRS": "MGRS",
   "USNG": "USNG"
 });

@@ -5,21 +5,13 @@ define({
   "actions": "Configurar campos de capa",
   "field": "Campo",
   "alias": "Alias",
-  "url": "Dirección URL",
-  "sortField": "El campo de ordenación",
-  "sortOrderTooltips": {
-    "toDescending": "Cambiar a orden descendente",
-    "toAscending": "Cambiar a orden ascendente"
-  },
   "visible": "Visible",
   "linkField": "Campo de vínculo",
   "noLayers": "No hay capas de entidades disponibles",
   "back": "Atrás",
   "exportCSV": "Permitir exportación a CSV",
   "expand": "Expandir inicialmente el widget",
-  "filterByExtent": "Habilitar Filtrar por extensión de mapa de forma predeterminada",
-  "allowTextSelection": "Permitir selección de texto",
-  "highlightColor": "Resaltar color",
+  "filterByExtent": "Habilita Filtrar por extensión de mapa de forma predeterminada",
   "restore": "Restaurar al valor predeterminado",
   "ok": "Aceptar",
   "cancel": "Cancelar",
@@ -33,8 +25,5 @@ define({
   "fieldName": "Nombre",
   "fieldAlias": "Alias",
   "fieldVisibility": "Visibilidad",
-  "fieldActions": "Acciones",
-  "showAttachments": "Mostrar archivos adjuntos",
-  "syncWithLayers": "Sincronizar con visibilidades de capa",
-  "syncWithLayersHint": "Las capas que se muestran en la tabla de atributos están sincronizadas de forma dinámica con las visibilidades de capa."
+  "fieldActions": "Acciones"
 });

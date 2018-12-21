@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 - 2018 Esri. All Rights Reserved.
+// Copyright © 2014 Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,20 +25,17 @@ define([
     'dojo/query',
     'dijit/registry',
     './LayerListView',
-    './LayerFilter',
     './NlsStrings',
     'jimu/LayerInfos/LayerInfos'
   ],
   function(BaseWidget, declare, lang, array, html, dom, on,
-  query, registry, LayerListView, LayerFilter, NlsStrings, LayerInfos) {
+  query, registry, LayerListView, NlsStrings, LayerInfos) {
 
     var clazz = declare([BaseWidget], {
       //these two properties is defined in the BaseWiget
       baseClass: 'jimu-widget-layerList',
       name: 'layerList',
-      layerFilter: null,
       _denyLayerInfosReorderResponseOneTime: null,
-      _denyLayerInfosIsVisibleChangedResponseOneTime: null,
       //layerListView: Object{}
       //  A module is responsible for show layers list
       layerListView: null,
@@ -47,22 +44,10 @@ define([
       //  operational layer infos
       operLayerInfos: null,
 
-      postCreate: function() {
-        // compitible with old verion, undefined means 'show title'
-        if(this.config.showTitle === false) {
-          this.layerListTitle.innerHTML = "";
-          html.addClass(this.layerListTitle, 'disable');
-        }
-      },
-
       startup: function() {
         this.inherited(arguments);
-
-        this._createLayerFilter();
-
         NlsStrings.value = this.nls;
         this._denyLayerInfosReorderResponseOneTime = false;
-        this._denyLayerInfosIsVisibleChangedResponseOneTime = false;
         // summary:
         //    this function will be called when widget is started.
         // description:
@@ -77,8 +62,7 @@ define([
               this.operLayerInfos = operLayerInfos;
               this.showLayers();
               this.bindEvents();
-              dom.setSelectable(this.layerListBody, false);
-              dom.setSelectable(this.layerListTitle, false);
+              dom.setSelectable(this.layersSection, false);
             }));
         } else {
           var itemInfo = this._obtainMapLayers();
@@ -87,14 +71,9 @@ define([
               this.operLayerInfos = operLayerInfos;
               this.showLayers();
               this.bindEvents();
-              dom.setSelectable(this.layerListBody, false);
-              dom.setSelectable(this.layerListTitle, false);
+              dom.setSelectable(this.layersSection, false);
             }));
         }
-      },
-
-      _createLayerFilter: function() {
-        this.layerFilter = new LayerFilter({layerListWidget: this}).placeAt(this.layerFilterNode);
       },
 
       destroy: function() {
@@ -153,13 +132,8 @@ define([
         this.layerListView = new LayerListView({
           operLayerInfos: this.operLayerInfos,
           layerListWidget: this,
-          layerFilter: this.layerFilter,
           config: this.config
         }).placeAt(this.layerListBody);
-
-        if(this.config.expandAllLayersByDefault) {
-          this.layerListView.foldOrUnfoldAllLayers(false);
-        }
       },
 
       _clearLayers: function() {
@@ -186,18 +160,16 @@ define([
           'layerInfosChanged',
           lang.hitch(this, this._onLayerInfosChanged)));
 
-        if(this.config.showBasemap) {
-          this.own(on(this.operLayerInfos,
-            'basemapLayerInfosChanged',
-            lang.hitch(this, this._onLayerInfosChanged)));
-        }
-
         this.own(on(this.operLayerInfos,
           'tableInfosChanged',
-          lang.hitch(this, this._onTableInfosChanged)));
+          lang.hitch(this, this._onLayerInfosChanged)));
 
         this.own(this.operLayerInfos.on('layerInfosIsVisibleChanged',
           lang.hitch(this, this._onLayerInfosIsVisibleChanged)));
+
+        this.own(on(this.operLayerInfos,
+          'updated',
+          lang.hitch(this, this._onLayerInfosObjUpdated)));
 
         this.own(on(this.operLayerInfos,
           'layerInfosReorder',
@@ -210,52 +182,33 @@ define([
         this.own(on(this.operLayerInfos,
           'layerInfosRendererChanged',
           lang.hitch(this, this._onLayerInfosRendererChanged)));
-
-        this.own(on(this.operLayerInfos,
-          'layerInfosOpacityChanged',
-          lang.hitch(this, this._onLayerInfosOpacityChanged)));
       },
 
       _onLayerInfosChanged: function(/*layerInfo, changedType*/) {
-        //udpates layerFilter.isValid to false first
-        this.layerFilter.cancelFilter();
-        this.layerListView.refresh();
-      },
-
-      _onTableInfosChanged: function(/*tableInfoArray, changedType*/) {
-        //udpates layerFilter.isValid to false first
-        this.layerFilter.cancelFilter();
-        this.layerListView.refresh();
+        this._refresh();
       },
 
       _onLayerInfosIsVisibleChanged: function(changedLayerInfos) {
-        if(this._denyLayerInfosIsVisibleChangedResponseOneTime) {
-          this._denyLayerInfosIsVisibleChangedResponseOneTime = false;
-        } else {
-          array.forEach(changedLayerInfos, function(layerInfo) {
-            query("[class~='visible-checkbox-" + layerInfo.id + "']", this.domNode)
-            .forEach(function(visibleCheckBoxDomNode) {
-              var visibleCheckBox = registry.byNode(visibleCheckBoxDomNode);
-              if(layerInfo.isVisible()) {
-                visibleCheckBox.check();
-              } else {
-                visibleCheckBox.uncheck();
-              }
-            }, this);
-
+        array.forEach(changedLayerInfos, function(layerInfo) {
+          query("[class~='visible-checkbox-" + layerInfo.id + "']", this.domNode)
+          .forEach(function(visibleCheckBoxDomNode) {
+            var visibleCheckBox = registry.byNode(visibleCheckBoxDomNode);
+            if(layerInfo.isVisible()) {
+              visibleCheckBox.check();
+            } else {
+              visibleCheckBox.uncheck();
+            }
           }, this);
-        }
+
+        }, this);
+      },
+
+      _onLayerInfosObjUpdated: function() {
+        this._refresh();
       },
 
       _onZoomEnd: function() {
-        var layerInfoArray = [];
         this.operLayerInfos.traversal(lang.hitch(this, function(layerInfo) {
-          layerInfoArray.push(layerInfo);
-        }));
-
-        var that = this;
-        setTimeout(function() {
-          var layerInfo = layerInfoArray.shift();
           query("[class~='layer-title-div-" + layerInfo.id + "']", this.domNode)
           .forEach(function(layerTitleDivIdDomNode) {
             try {
@@ -267,14 +220,8 @@ define([
             } catch (err) {
               console.warn(err.message);
             }
-          }, that);
-
-          if(layerInfoArray.length > 0) {
-            setTimeout(arguments.callee, 30); // jshint ignore:line
-          }
-        }, 30);
-
-
+          }, this);
+        }));
       },
 
       _onLayerInfosReorder: function() {
@@ -294,14 +241,6 @@ define([
         } catch (err) {
           this._refresh();
         }
-      },
-
-      _onLayerInfosOpacityChanged: function(changedLayerInfos) {
-        array.forEach(changedLayerInfos, function(layerInfo) {
-          var opacity = layerInfo.layerObject.opacity === undefined ? 1 : layerInfo.layerObject.opacity;
-          var contentDomNode = query("[layercontenttrnodeid='" + layerInfo.id + "']", this.domNode)[0];
-          query(".legends-div.jimu-legends-div-flag img", contentDomNode).style("opacity", opacity);
-        }, this);
       },
 
       onAppConfigChanged: function(appConfig, reason, changedData){

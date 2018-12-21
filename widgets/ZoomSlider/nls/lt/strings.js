@@ -1,3 +1,3 @@
 define({
-  "_widgetLabel": "Mastelio keitimas"
+  "_widgetLabel": "Padidinti arba sumažinti slankiklį"
 });

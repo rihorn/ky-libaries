@@ -11,8 +11,8 @@ define({
   "itemMoveDown": "Flyt ned",
   "itemDesc": "Beskrivelse",
   "itemDownload": "Hent",
-  "itemToAttributeTable": "Vis i attributtabel",
-  "itemShowItemDetails": "Vis elementoplysninger",
+  "itemToAttributeTable": "Åbn attributtabel",
+  "itemShowItemDetails": "Vil elementoplysninger",
   "empty": "tom",
   "removePopup": "Deaktivér pop-up",
   "enablePopup": "Aktivér pop-up",
@@ -23,9 +23,5 @@ define({
   "turnAllLabelsOff": "Deaktivér alle etiketter",
   "turnAllLabelsOn": "Aktivér alle etiketter",
   "showLabels": "Vis etiketter",
-  "hideLables": "Skjul etiketter",
-  "keyword": "Nøgleord",
-  "basemapLayers": "Baggrundskortlag",
-  "typeAKeywork": "Skriv et nøgleord",
-  "layers": "Lag"
+  "hideLables": "Skjul etiketter"
 });

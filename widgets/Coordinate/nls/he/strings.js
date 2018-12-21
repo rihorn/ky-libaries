@@ -12,7 +12,6 @@ define({
   "Default": "ברירת מחדל",
   "Inches": "אינצ׳ים",
   "Foot": "רגל",
-  "Foot_US": "Feet_US",
   "Yards": "יארד",
   "Miles": "מיילים",
   "Nautical_Miles": "מיילים ימיים",

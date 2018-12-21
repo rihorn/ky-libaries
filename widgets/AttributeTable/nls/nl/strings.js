@@ -12,19 +12,17 @@ define({
   "options": "Opties",
   "zoomto": "Zoomen naar",
   "highlight": "Grafische elementen markeren",
-  "selectAll": "Records op alle pagina´s selecteren",
-  "selectPage": "Records op huidige pagina selecteren",
-  "clearSelection": "Selectie opheffen",
+  "selectAll": "Gegevens op alle pagina´s selecteren",
+  "selectPage": "Gegevens op huidige pagina selecteren",
+  "clearSelection": "Selectie wissen",
   "filter": "Filter",
-  "setFilterTip": "Stel filters correct in.",
+  "setFilterTip": "Stel het filter correct in.",
   "noFilterTip": "Zonder filterexpressie zal deze querytaak alle functies in de opgegeven gegevensbron weergeven.",
   "filterByExtent": "Filteren op kaartextent",
   "showSelectedRecords": "Geselecteerde records weergeven",
   "showAllRecords": "Alle records weergeven",
   "showRelatedRecords": "Gerelateerde records weergeven",
   "noRelatedRecords": "Geen verwante records gevonden",
-  "highlightAllRecords": "Markeer alle records op de kaart",
-  "attachmentColumn": "Foto's en bestanden",
   "refresh": "Vernieuwen",
   "features": "objecten",
   "records": "records",
@@ -39,26 +37,5 @@ define({
   "closeTableTip": "Attributentabel verbergen",
   "sortAsc": "Oplopend sorteren",
   "sortDes": "Aflopend sorteren",
-  "statistics": "Statistieken",
-  "attachments": "Bijlagen",
-  "files": "bestanden",
-  "keepRichTextLabel": "Rich text-formaat behouden",
-  "whatsThis": "Wat is dit?",
-  "richTextMessage": {
-    "explanatoryText": {
-      "line1": "${layerName} bevat de volgende rich text-veld(en): ",
-      "line2": " dat kan tekstopmaakstijlen omvatten, zoals lettertypen, kleuren of tekstformaten.",
-      "line3": "Bij export naar CSV worden de opmaakstijlen bewaard in de vorm van HTML-tags. U kunt ervoor kiezen om de rich-text-formaten niet te behouden door het vakje \"Rich text-formaat behouden\" uit te schakelen."
-    },
-    "example": {
-      "label": "Bijvoorbeeld:",
-      "scenarios": {
-        "first": "wordt standaard als de volgende tekst geëxporteerd:",
-        "second": "en de volgende tekst zonder rich text-formaat:"
-      }
-    }
-  },
-  "noTablesAvailable": "Geen tabellen beschikbaar om weer te geven.",
-  "checkConfigutationToSelectLayers": "Ga naar de widgetinstellingenpagina voor het selecteren van lagen.",
-  "checkLayerListToSelectLayers": "Attribuuttabel is gesynchroniseerd met de zichtbare lagen in de tabel. U kunt widgets gebruiken als Lagenlijst om te schakelen tussen het aan- en uitzetten van lagen."
+  "statistics": "Statistieken"
 });

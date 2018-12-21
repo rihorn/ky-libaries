@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 - 2018 Esri. All Rights Reserved.
+// Copyright © 2015 Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -44,7 +44,6 @@ define([
     return declare([BaseWidgetSetting, _WidgetsInTemplateMixin], {
       baseClass: 'jimu-widget-search-setting',
       _currentSourceSetting: null,
-      _defaultZoomScale: null,
 
       postCreate: function() {
         this.inherited(arguments);
@@ -73,7 +72,7 @@ define([
 
         this.showInfoWindowOnSelect = new CheckBox({
           checked: true,
-          label: this.nls.showInfoWindowOnSelect2
+          label: this.nls.showInfoWindowOnSelect
         }, this.showInfoWindowOnSelect);
       },
 
@@ -211,8 +210,7 @@ define([
           singleLineFieldName: setting.singleLineFieldName || "",
           placeholder: setting.placeholder || "",
           countryCode: setting.countryCode || "",
-          panToScale: setting.panToScale || false,
-          zoomScale: setting.zoomScale || this._defaultZoomScale,
+          zoomScale: setting.zoomScale || 50000,
           maxSuggestions: setting.maxSuggestions || 6,
           maxResults: setting.maxResults || 6,
           searchInCurrentMapExtent: !!setting.searchInCurrentMapExtent,
@@ -271,19 +269,14 @@ define([
           singleLineFieldName: setting.singleLineFieldName || "",
           placeholder: setting.placeholder || "",
           countryCode: setting.countryCode || "",
-          panToScale: setting.panToScale || false,
-          zoomScale: setting.zoomScale || this._defaultZoomScale,
+          zoomScale: setting.zoomScale || 50000,
           maxSuggestions: setting.maxSuggestions || 6,
           maxResults: setting.maxResults || 6,
           searchInCurrentMapExtent: !!setting.searchInCurrentMapExtent,
-          enableLocalSearch: !!setting.enableLocalSearch,
-          localSearchMinScale: setting.localSearchMinScale,
-          localSearchDistance: setting.localSearchDistance,
           type: "locator"
         });
         this._currentSourceSetting.setRelatedTr(relatedTr);
         this._currentSourceSetting.placeAt(this.sourceSettingNode);
-        this._currentSourceSetting._processlocalSearchTable(!!setting.enableLocalSearch);
 
         this._currentSourceSetting.own(
           on(this._currentSourceSetting,
@@ -323,8 +316,7 @@ define([
           searchFields: setting.searchFields || [],
           displayField: setting.displayField || definition.displayField || "",
           exactMatch: !!setting.exactMatch,
-          panToScale: setting.panToScale || false,
-          zoomScale: setting.zoomScale || this._defaultZoomScale,
+          zoomScale: setting.zoomScale || 50000,
           maxSuggestions: setting.maxSuggestions || 6,
           maxResults: setting.maxResults || 6,
           searchInCurrentMapExtent: !!setting.searchInCurrentMapExtent,
@@ -387,8 +379,7 @@ define([
           searchFields: setting.searchFields || [],
           displayField: setting.displayField || definition.displayField || "",
           exactMatch: !!setting.exactMatch,
-          panToScale: setting.panToScale || false,
-          zoomScale: setting.zoomScale || this._defaultZoomScale,
+          zoomScale: setting.zoomScale || 50000,
           maxSuggestions: setting.maxSuggestions || 6,
           maxResults: setting.maxResults || 6,
           searchInCurrentMapExtent: !!setting.searchInCurrentMapExtent,

@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 - 2018 Esri. All Rights Reserved.
+// Copyright © 2014 Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,12 +20,13 @@ define([
   'dojo/_base/lang',
   'dojo/Deferred',
   'dojo/promise/all',
-  'jimu/WidgetManager',
   'jimu/portalUrlUtils',
+  'jimu/WidgetManager',
   'esri/lang',
+  'esri/graphicsUtils',
   './NlsStrings'
-], function(declare, array, lang, Deferred, all, WidgetManager, portalUrlUtils, esriLang,
-  NlsStrings) {
+], function(declare, array, lang, Deferred, all, portalUrlUtils, WidgetManager, esriLang,
+  graphicsUtils, NlsStrings) {
   var clazz = declare([], {
 
     _candidateMenuItems: null,
@@ -47,10 +48,13 @@ define([
     _getATagLabel: function() {
       var url;
       var label;
+      var itemLayerId = this._layerInfo._isItemLayer && this._layerInfo._isItemLayer();
       var layerUrl = this._layerInfo.getUrl();
-      var basicItemInfo = this._layerInfo.isItemLayer();
-      if (basicItemInfo) {
-        url = this._getItemDetailsPageUrl(basicItemInfo) || layerUrl;
+
+      if (itemLayerId) {
+        url = portalUrlUtils.getItemDetailsPageUrl(
+                portalUrlUtils.getStandardPortalUrl(this.layerListWidget.appConfig.portalUrl),
+                itemLayerId);
         label = this.nls.itemShowItemDetails;
       } else if (layerUrl &&
         (this._layerType === "CSVLayer" || this._layerType === "KMLLayer")) {
@@ -69,16 +73,11 @@ define([
         url = '';
         label = this.nls.itemDesc;
       }
-      this._ATagLabelUrl = url;
+
       return '<a class="menu-item-description" target="_blank" href="' +
         url + '">' + label + '</a>';
     },
 
-    _getItemDetailsPageUrl: function(basicItemInfo) {
-      var itemUrl = "";
-      itemUrl = portalUrlUtils.getItemDetailsPageUrl(basicItemInfo.portalUrl, basicItemInfo.itemId);
-      return itemUrl;
-    },
 
     _initCandidateMenuItems: function() {
       //descriptionTitle: NlsStrings.value.itemDesc,
@@ -110,9 +109,6 @@ define([
         key: 'controlPopup',
         label: this.nls.removePopup
       }, {
-        key: 'controlLabels',
-        label: this.nls.showLabels
-      }, {
         key: 'url',
         label: this._getATagLabel()
       }];
@@ -131,35 +127,6 @@ define([
           }
         }, this);
       }, this);
-    },
-
-    _isSupportedByAT: function() {
-      return true;
-    },
-
-    _isSupportedByAT_bk: function(attributeTableWidget, supportTableInfo) {
-      var isSupportedByAT;
-      var isLayerHasBeenConfigedInAT;
-      var ATConfig = attributeTableWidget.config;
-
-      if(ATConfig.layerInfos.length === 0) {
-        isLayerHasBeenConfigedInAT = true;
-      } else {
-        isLayerHasBeenConfigedInAT = array.some(ATConfig.layerInfos, function(layerInfo) {
-          if(layerInfo.id === this._layerInfo.id && layerInfo.show) {
-            return true;
-          }
-        }, this);
-      }
-      if (!supportTableInfo.isSupportedLayer ||
-          !supportTableInfo.isSupportQuery ||
-          supportTableInfo.otherReasonCanNotSupport ||
-          !isLayerHasBeenConfigedInAT) {
-        isSupportedByAT = false;
-      } else {
-        isSupportedByAT = true;
-      }
-      return isSupportedByAT;
     },
 
     getDeniedItems: function() {
@@ -186,18 +153,10 @@ define([
         });
       }
 
-      if (!this._ATagLabelUrl) {
+      if (!this._layerInfo.getUrl()) {
         dynamicDeniedItems.push({
           'key': 'url',
           'denyType': 'disable'
-        });
-      }
-
-      // deny controlLabels
-      if (!this._layerInfo.canShowLabel()) {
-        dynamicDeniedItems.push({
-          'key': 'controlLabels',
-          'denyType': 'hidden'
         });
       }
 
@@ -227,7 +186,9 @@ define([
             'key': 'table',
             'denyType': 'hidden'
           });
-        } else if (!this._isSupportedByAT(attributeTableWidget, supportTableInfo)) {
+        } else if (!supportTableInfo.isSupportedLayer ||
+                   !supportTableInfo.isSupportQuery ||
+                   supportTableInfo.otherReasonCanNotSupport) {
           if(this._layerInfo.parentLayerInfo &&
              this._layerInfo.parentLayerInfo.isMapNotesLayerInfo()) {
             dynamicDeniedItems.push({
@@ -248,7 +209,6 @@ define([
       });
 
       return defRet;
-
     },
 
     getDisplayItems: function() {
@@ -279,9 +239,6 @@ define([
         case 'controlPopup':
           this._onControlPopup();
           break;
-        case 'controlLabels':
-          this._onControlLabels();
-          break;
 
       }
       return result;
@@ -300,7 +257,32 @@ define([
      **********************************/
     _onItemZoomToClick: function(evt) {
       /*jshint unused: false*/
-      this._layerInfo.zoomTo();
+      //this.map.setExtent(this.getExtent());
+      this._layerInfo.getExtent().then(lang.hitch(this, function(geometries) {
+        var ext = null;
+        var a = geometries && geometries.length > 0 && geometries[0];
+        if(this._isValidExtent(a)){
+          ext = a;
+        }
+        if(ext){
+          this._layerInfo.map.setExtent(ext);
+        }else if(this._layerInfo.map.graphicsLayerIds.indexOf(this._layerInfo.id) >= 0){
+          //if fullExtent doesn't exist and the layer is (or sub class of) GraphicsLayer,
+          //we can calculate the full extent
+          this._layerInfo.getLayerObject().then(lang.hitch(this, function(layerObject){
+            if(layerObject.graphics && layerObject.graphics.length > 0){
+              try{
+                ext = graphicsUtils.graphicsExtent(layerObject.graphics);
+              }catch(e){
+                console.error(e);
+              }
+              if(ext){
+                this._layerInfo.map.setExtent(ext);
+              }
+            }
+          }));
+        }
+      }));
     },
 
     _isValidExtent: function(extent){
@@ -331,10 +313,12 @@ define([
     _onTableItemClick: function(evt) {
       this._layerInfo.getSupportTableInfo().then(lang.hitch(this, function(supportTableInfo) {
         var widgetManager;
-        var attributeTableWidgetEle =
-                    this.layerListWidget.appConfig.getConfigElementsByName("AttributeTable")[0];
-        if(this._isSupportedByAT(attributeTableWidgetEle, supportTableInfo)) {
+        if(supportTableInfo.isSupportedLayer &&
+           supportTableInfo.isSupportQuery) {
           widgetManager = WidgetManager.getInstance();
+
+          var attributeTableWidgetEle =
+                    this.layerListWidget.appConfig.getConfigElementsByName("AttributeTable")[0];
           widgetManager.triggerWidgetOpen(attributeTableWidgetEle.id)
           .then(lang.hitch(this, function() {
             evt.layerListWidget.publishData({
@@ -358,17 +342,6 @@ define([
         this._layerInfo.enablePopup();
       }
       this._layerInfo.map.infoWindow.hide();
-    },
-
-    _onControlLabels: function(evt) {
-      /*jshint unused: false*/
-      if(this._layerInfo.canShowLabel()) {
-        if(this._layerInfo.isShowLabels()) {
-          this._layerInfo.hideLabels();
-        } else {
-          this._layerInfo.showLabels();
-        }
-      }
     }
   });
 
@@ -407,10 +380,6 @@ define([
       }, {
         key: 'separator'
       }, {
-        key: 'controlLabels'
-      }, {
-        key: 'separator'
-      }, {
         key: 'moveup'
       }, {
         key: 'movedown'
@@ -444,25 +413,12 @@ define([
       }, {
         key: 'url'
       }],
-      'BasemapLayer': [{
-        key: 'zoomto'
-      }, {
-        key: 'transparency'
-      }, {
-        key: 'separator'
-      }, {
-        key: 'url'
-      }],
       'default': defaultItemInfos
     };
 
     layerInfo.getLayerType().then(lang.hitch(this, function(layerType) {
       var itemInfoCategory = "";
-      if (layerInfo.isBasemap() && layerInfo.isRootLayer()) {
-        itemInfoCategory = "BasemapLayer";
-      } else if(layerInfo.isBasemap()) {
-        itemInfoCategory = "default";
-      } else if (isRootLayer &&
+      if (isRootLayer &&
           (layerType === "FeatureLayer" ||
             layerType === "CSVLayer" ||
             layerType === "ArcGISImageServiceLayer" ||

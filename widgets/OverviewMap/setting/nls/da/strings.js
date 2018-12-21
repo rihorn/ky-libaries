@@ -1,6 +1,6 @@
 define({
   "visible": "Vis oversigtskort som standard",
-  "minWidth": "Minimumbredde",
+  "minWidth": "Minmumbredde",
   "minHeight": "Minimumhøjde",
   "maxWidth": "Maksimumbredde",
   "maxHeight": "Maksimumhøjde",

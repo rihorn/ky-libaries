@@ -14,51 +14,28 @@ define({
   "highlight": "Zvýraznit grafiku",
   "selectAll": "Vybrat záznamy na všech stránkách",
   "selectPage": "Vybrat záznamy na aktuální stránce",
-  "clearSelection": "Vymazat výběr",
+  "clearSelection": "Zrušit výběr",
   "filter": "Filtr",
   "setFilterTip": "Nastavte filtr správně.",
-  "noFilterTip": "Pokud nedefinujete výrazy filtru, tato dotazovací úloha zobrazí všechny prvky v zadaném zdroji dat.",
+  "noFilterTip": "Pokud nedefinujete výraz filtru, tato dotazovací úloha zobrazí všechny prvky v zadaném zdroji dat.",
   "filterByExtent": "Filtrovat podle rozsahu mapy",
   "showSelectedRecords": "Zobrazit vybrané záznamy",
   "showAllRecords": "Zobrazit všechny záznamy",
   "showRelatedRecords": "Zobrazit související záznamy",
   "noRelatedRecords": "Nebyly nalezeny žádné související záznamy.",
-  "highlightAllRecords": "Zvýraznit všechny záznamy na mapě",
-  "attachmentColumn": "Fotografie a soubory",
   "refresh": "Obnovit",
   "features": "prvků",
   "records": "záznamy",
   "selected": "vybrané",
   "transparent": "Režim průhlednosti",
   "indicate": "Najít výběr",
-  "columns": "Zobrazit/skrýt sloupce",
+  "columns": "Zobrazit/Skrýt sloupce",
   "selectionSymbol": "Symbol výběru",
   "closeMessage": "Skrýt tabulku (znovu ji rozbalit zespodu)",
   "dataNotAvailable": "Data nejsou k dispozici!<br>Zkuste to znovu kliknutím na tlačítko [Obnovit].",
   "openTableTip": "Otevřít atributovou tabulku",
   "closeTableTip": "Skrýt atributovou tabulku",
-  "sortAsc": "Seřadit vzestupně",
+  "sortAsc": "Setřídit vzestupně",
   "sortDes": "Seřadit sestupně",
-  "statistics": "Statistika",
-  "attachments": "Přílohy",
-  "files": "soubory",
-  "keepRichTextLabel": "Ponechat formát Rich Text",
-  "whatsThis": "Co je to?",
-  "richTextMessage": {
-    "explanatoryText": {
-      "line1": "${layerName} obsahuje následující pole ve formátu rich text: ",
-      "line2": " které mohou obsahovat styly formátování jako typy písma, barvu a velikost.",
-      "line3": "Při exportu do CSV bude formátování zachováno pomocí HTML tagů. Pokud si nepřejete zachovat formátování, nechte políčko “Ponechat formát Rich Text“ nezaškrtnuté."
-    },
-    "example": {
-      "label": "Například:",
-      "scenarios": {
-        "first": "bude ve výchozím nastavení exportován jako následující text:",
-        "second": "a následující text bez formátu rich text:"
-      }
-    }
-  },
-  "noTablesAvailable": "Žádné tabulky nejsou dostupné k zobrazení.",
-  "checkConfigutationToSelectLayers": "Přejděte na stránku nastavení widgetu a vyberte vrstvy.",
-  "checkLayerListToSelectLayers": "Atributová tabulka je synchronizována pomocí viditelných vrstev v mapě, můžete využít widget jako Seznam vrstev a zapnout/vypnout vrstvy."
+  "statistics": "Statistika"
 });

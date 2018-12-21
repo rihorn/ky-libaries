@@ -1,8 +1,8 @@
 {
   "name": "Coordinate",
   "platform": "HTML",
-  "version": "2.10",
-  "wabVersion": "2.10",
+  "version": "2.1",
+  "wabVersion": "2.1",
   "author": "Esri R&D Center Beijing",
   "description": "",
   "copyright": "",
@@ -10,7 +10,6 @@
   "properties": {
     "inPanel": false,
     "keepConfigAfterMapSwitched": false,
-    "supportMultiInstance": false,
-    "hasVersionManager": true
+    "supportMultiInstance": false
   }
 }

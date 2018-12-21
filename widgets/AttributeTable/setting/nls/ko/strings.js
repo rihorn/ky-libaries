@@ -5,21 +5,13 @@ define({
   "actions": "레이어 필드 구성",
   "field": "필드",
   "alias": "별칭",
-  "url": "URL",
-  "sortField": "정렬 필드",
-  "sortOrderTooltips": {
-    "toDescending": "내림차순으로 변경",
-    "toAscending": "오름차순으로 변경"
-  },
   "visible": "표시",
   "linkField": "링크 필드",
   "noLayers": "피처 레이어를 사용할 수 없음",
   "back": "뒤로",
   "exportCSV": "CSV로 내보내기 허용",
   "expand": "초기에 위젯 확장",
-  "filterByExtent": "기본 설정에 따라 맵 범위별 필터링 활성화",
-  "allowTextSelection": "텍스트 선택 허용",
-  "highlightColor": "강조 색상",
+  "filterByExtent": "기본 설정에 따라 맵 범위별 필터링 사용",
   "restore": "기본 값으로 복원",
   "ok": "확인",
   "cancel": "취소",
@@ -33,8 +25,5 @@ define({
   "fieldName": "이름",
   "fieldAlias": "별칭",
   "fieldVisibility": "가시성",
-  "fieldActions": "작업",
-  "showAttachments": "첨부 파일 표시",
-  "syncWithLayers": "레이어 가시성과 동기화",
-  "syncWithLayersHint": "속성 테이블에 표시된 레이어는 레이어 가시성이 동적으로 동기화됩니다."
+  "fieldActions": "작업"
 });

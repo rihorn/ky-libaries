@@ -1,5 +1,5 @@
 define({
-  "_widgetLabel": "Lancement",
+  "_widgetLabel": "Accueil",
   "welcomeMessage": "Bienvenue dans ArcGIS Web Application !",
   "licenceAgree": "J’accepte",
   "licenceTerm": "Conditions d’ArcGIS Web Application",

@@ -1,0 +1,13 @@
+{
+  "name": "Nexrad",
+  "platform": "HTML",
+  "version": "",
+  "author": "Jeff Bradshaw, DGI",
+  "description": "",
+  "copyright": "",
+  "license": "", 
+  "properties": {
+    "inPanel": false,
+    "keepConfigAfterMapSwithched": false
+  }
+}

@@ -1,3 +1,3 @@
 define({
-  "_widgetLabel": "Skalas josla"
+  "_widgetLabel": "Skalas_josla"
 });

@@ -11,7 +11,7 @@ define({
   "itemMoveDown": "Pomeri se na dole",
   "itemDesc": "Opis",
   "itemDownload": "Preuzmi",
-  "itemToAttributeTable": "Prikaži u tabeli atributa",
+  "itemToAttributeTable": "Otvori atributnu tabelu",
   "itemShowItemDetails": "Prikaži detalje stavke",
   "empty": "prazno",
   "removePopup": "Onemogući iskačuće prozore",
@@ -22,10 +22,6 @@ define({
   "collapseAlllayers": "Skupi sve slojeve",
   "turnAllLabelsOff": "Isključi sve oznake",
   "turnAllLabelsOn": "Uključi sve oznake",
-  "showLabels": "Prikaži oznake",
-  "hideLables": "Sakrij oznake",
-  "keyword": "Ključna reč",
-  "basemapLayers": "Slojevi pozadinske mape",
-  "typeAKeywork": "Unesite ključnu reč",
-  "layers": "Slojevi"
+  "showLabels": "Pokaži oznake",
+  "hideLables": "Sakrij oznake"
 });

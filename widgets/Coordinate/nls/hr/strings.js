@@ -12,7 +12,6 @@ define({
   "Default": "Zadano",
   "Inches": "Inči",
   "Foot": "Stope",
-  "Foot_US": "Stopa_SAD",
   "Yards": "Jardi",
   "Miles": "Milje",
   "Nautical_Miles": "Nautičke milje",
@@ -22,7 +21,7 @@ define({
   "Kilometers": "Kilometri",
   "Decimeters": "Decimetri",
   "Decimal_Degrees": "Stupnjevi",
-  "Degree_Minutes_Seconds": "Stupnjevi minute sekunde",
+  "Degree_Minutes_Seconds": "Stupnjevi Minute Sekunde",
   "MGRS": "MGRS",
   "USNG": "USNG"
 });

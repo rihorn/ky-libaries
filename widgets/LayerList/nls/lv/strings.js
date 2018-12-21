@@ -11,10 +11,10 @@ define({
   "itemMoveDown": "Pārvietot uz leju",
   "itemDesc": "Apraksts",
   "itemDownload": "Lejupielāde",
-  "itemToAttributeTable": "Skatīt atribūtu tabulā",
+  "itemToAttributeTable": "Atvērt atribūtu tabulu",
   "itemShowItemDetails": "Parādīt vienību detaļas",
   "empty": "tukšs",
-  "removePopup": "Deaktivizēt uznirstošo logu",
+  "removePopup": "Atspējojiet uznirstošo logu",
   "enablePopup": "Aktivizēt uznirstošo logu",
   "turnAllLayersOff": "Izslēgt visus slāņus",
   "turnAllLayersOn": "Ieslēgt visus slāņus",
@@ -23,9 +23,5 @@ define({
   "turnAllLabelsOff": "Izslēgt visus kartes tekstus",
   "turnAllLabelsOn": "Ieslēgt visus kartes tekstus",
   "showLabels": "Rādīt kartes tekstus",
-  "hideLables": "Paslēpt kartes tekstus",
-  "keyword": "Atslēgvārdi",
-  "basemapLayers": "Pamatkartes slāņi",
-  "typeAKeywork": "Rakstīt atslēgvārdu",
-  "layers": "Slāņi"
+  "hideLables": "Paslēpt kartes tekstus"
 });

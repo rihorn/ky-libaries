@@ -1,15 +1,11 @@
 define({
   "showLegend": "Rodyti legendą",
-  "controlPopupMenuTitle": "Pasirinkti, kurie veiksmai bus rodomi sluoksnių kontekstiniame meniu",
+  "controlPopupMenuTitle": "Pasirinkti, kurie veiksmai bus rodomi sluoksnių kontekstiniame meniu.",
   "zoomto": "Pritraukti iki",
   "transparency": "Permatomumas",
   "controlPopup": "Įjungti / išjungti iškylančius langus",
   "moveUpAndDown": "Į viršų / į apačią",
-  "attributeTable": "Peržiūrėti atributų lentelėje",
+  "attributeTable": "Atidaryti atributų lentelę",
   "url": "Aprašymas / Rodyti elemento informaciją / Atsisiųsti",
-  "expandAllLayers": "Išskleisti visus sluoksnius",
-  "expandAllLayersByDefault": "Išskleisti visus sluoksnius pagal numatytuosius nustatymus",
-  "layerSelectorTitle": "Pasirinkite, kurie sluoksniai bus rodomi sąraše",
-  "showTitle": "Rodyti pavadinimą",
-  "showBasemap": "Rodyti pagrindo žemėlapį"
+  "layerSelectorTitle": "Pasirinkti, kurie sluoksniai bus rodomi sąraše."
 });

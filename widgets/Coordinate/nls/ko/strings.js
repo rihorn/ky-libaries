@@ -12,7 +12,6 @@ define({
   "Default": "기본값",
   "Inches": "인치",
   "Foot": "피트",
-  "Foot_US": "Feet_US",
   "Yards": "야드",
   "Miles": "마일",
   "Nautical_Miles": "해리",

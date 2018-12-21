@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 - 2018 Esri. All Rights Reserved.
+// Copyright © 2014 Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -92,17 +92,16 @@ define([
         utils.loadStyleLink("dgrid", apiUrl + "dgrid/css/dgrid.css");
         this._loadInfoDef = null;
         this.AttributeTableDiv = null;
-        this.NoTableMessageDiv = null;
 
         this._delayedLayerInfos = [];
-        this.layerTabPages = [];//[ContentPane]
+        this.layerTabPages = [];
         // one layer may be have multiple relationships, so we use key-value to store relationships
         // this.relationTabPagesSet = {};
 
-        this.tabContainer = null;//TabContainer
+        this.tabContainer = null;
 
         this.moveMode = false;
-        this.moveY = 0; //currentHeight - previousDomHeight
+        this.moveY = 0;
         this.previousDomHeight = 0;
         this.noGridHeight = 0;
         this.bottomPosition = 0;
@@ -117,7 +116,7 @@ define([
         // event handlers on draging
         this._dragingHandlers = [];
 
-        this._activeTable = null;// _FeatureTable
+        this._activeTable = null;
         this._activeTableHandles = [];
 
         this.filterManager = FilterManager.getInstance();
@@ -130,7 +129,6 @@ define([
         });
         this._resourceManager.setConfig(this.config);
 
-        //eg: TabTheme maxmize or minimize
         this.own(topic.subscribe('changeMapPosition', lang.hitch(this, this._onMapPositionChange)));
         attrUtils.readLayerInfosObj(this.map).then(lang.hitch(this, function(layerInfosObj) {
           if (!this.domNode || !layerInfosObj) {
@@ -155,12 +153,12 @@ define([
       },
 
       _createUtilitiesUI: function() {
-        this._createSwitchUI();//eg: LaunchPad Theme
+        this._createArrowUI();
 
         this._createBarUI();
       },
 
-      _createBarUI: function() {
+      _createArrowUI: function() {
         this.arrowDiv = html.create("div");
         html.addClass(this.arrowDiv, "jimu-widget-attributetable-move");
         html.create('div', {
@@ -181,7 +179,7 @@ define([
         return this.closeable || !this.isOnScreen;
       },
 
-      _createSwitchUI: function() {
+      _createBarUI: function() {
         if (!this._isOnlyTable()) {
           this.switchBtn = html.create("div", {
             className: "jimu-widget-attributetable-switch"
@@ -221,8 +219,6 @@ define([
       },
 
       _openTable: function() {
-        html.removeClass(this.domNode, 'closed');
-
         if (!this._loadInfoDef) {
           this._loadInfoDef = new Deferred();
           this.own(this._loadInfoDef);
@@ -276,8 +272,6 @@ define([
       },
 
       _closeTable: function() {
-        html.addClass(this.domNode, 'closed');
-
         this._changeHeight(0);
         this.showRefreshing(false);
         this._processCloseBarUI();
@@ -324,57 +318,10 @@ define([
         }
       },
 
-      onLayerInfosIsShowInMapChanged: function(changedLayerInfos) {
+      onLayerInfosIsShowInMapChanged: function() {
         if (this._activeTable) {
           this._activeTable.changeToolbarStatus();
         }
-
-        // check if the tabs are configured to synchronize with
-        // layer visibilities: 
-        if(this.config.syncWithLayers) {
-          array.forEach(changedLayerInfos, lang.hitch(this, function(changedLayerInfo) {
-            // check if is leaf layer
-            if(!changedLayerInfo.getSubLayers().length) {
-              var isVisible = changedLayerInfo.isShowInMap();
-              var configInfo = attrUtils.getConfigInfoFromLayerInfo(changedLayerInfo);
-              var page = this.getExistLayerTabPage(configInfo.id);
-
-              if(isVisible) {
-                if (page) {
-                  if(page.closable) {
-                    // remove the "X" button if the layer is turned on
-                    page.set('closable', false);
-                  }
-                } else {
-                  var layerInfoIndex = this._resourceManager.getVisivleLayerInfoIndexById(changedLayerInfo.id);
-                  var isInResources = this._resourceManager.getLayerInfoById(changedLayerInfo.id);
-                  var params = {
-                    layer: changedLayerInfo,
-                    closeable: false,
-                    isActive: false,
-                    index: layerInfoIndex
-                  };
-
-                  if (!isInResources) {
-                    this._resourceManager.updateLayerInfoResources(false)
-                    .then(lang.hitch(this, function() {
-                      layerInfoIndex = this._resourceManager.getVisivleLayerInfoIndexById(changedLayerInfo.id);
-                      params.index = layerInfoIndex;
-                      this._addLayerToTable(params);
-                    }));
-                  } else {
-                    this._addLayerToTable(params);
-                  }
-                }
-              } else {
-                if(page) {
-                  this.layerTabPageClose(configInfo.id, true);
-                }
-              }
-            }
-          }));
-        }
-
       },
 
       onLayerInfosChanged: function(layerInfo, changeType, layerInfoSelf) {
@@ -392,13 +339,6 @@ define([
           var selfId = layerInfoSelf.id;
           if (this.getExistLayerTabPage(selfId)) {
             this.layerTabPageClose(selfId, true);
-          }
-
-          if (this._resourceManager.getLayerInfoById(selfId)) {
-            this._resourceManager.removeLayerInfo(selfId);
-          }
-          if (this._resourceManager.getConfigInfoById(selfId)) {
-            this._resourceManager.removeConfigInfo(selfId);
           }
         }
       },
@@ -451,7 +391,6 @@ define([
 
         this.AttributeTableDiv = null;
         this._loadInfoDef = null;
-        this._activeLayerInfoId = null;
         if (this._resourceManager) {
           this._resourceManager.empty();
         }
@@ -485,15 +424,8 @@ define([
           this._activeTable.changeHeight(h - this.noGridHeight);
         }
 
-        // publish changeMapPosition to MapManager
         topic.publish('changeMapPosition', {
           bottom: h + this.bottomPosition
-        });
-        // publish changeMapPosition to other widgets
-        this.publishData({
-          'changeMapPosition': {
-            bottom: h + this.bottomPosition
-          }
         });
 
         if (h !== 0) {
@@ -565,8 +497,7 @@ define([
           this._resourceManager.getQueryTable(
           tabId,
           this.config.filterByMapExtent,
-          this.config.hideExportButton,
-          this.config.allowTextSelection).then(lang.hitch(this, function(result) {
+          this.config.hideExportButton).then(lang.hitch(this, function(result) {
             //prevent overwrite by another asynchronous callback
             if (this._activeLayerInfoId !== tabId || !result) {
               return;
@@ -610,7 +541,7 @@ define([
         }
 
         this._resourceManager.getRelationTable(originalInfoId, relationShipKey,
-          false, this.config.hideExportButton, this.config.allowTextSelection)
+          false, this.config.hideExportButton)
         .then(lang.hitch(this, function(result) {
           //prevent overwrite by another asynchronous callback
           if (this._activeLayerInfoId !== infoId || !result) {
@@ -648,7 +579,7 @@ define([
           if (this.noGridHeight <= 0) {
             this.noGridHeight = this._getGridTopSectionHeight() + 5;
           }
-          var params = this.tabContainer.selectedChildWidget.params; // ContentPage.params
+          var params = this.tabContainer.selectedChildWidget.params;
 
           var layerType = params.layerType;
           var infoId = params.paneId;
@@ -747,9 +678,7 @@ define([
         if (that._activeTable) {
           that._activeTableHandles.push(on(that._activeTable,
             'show-related-records', function(evt) {
-              var layerInfoId = evt.layerInfoId;
-              var selectedIds = evt.objectIds;
-              that._showRelatedRecords(layerInfoId, selectedIds);
+              that._showRelatedRecords(evt);
             })
           );
           that._activeTableHandles.push(on(that._activeTable,
@@ -798,7 +727,6 @@ define([
           this._activeTable.cancelThread();
           this._activeTable.deactive();
           this._unbindActiveTableEvents();
-          this._activeTable = null;
         }
         if (table) {
           this._activeTable = table;
@@ -809,7 +737,6 @@ define([
             (this._activeTable.tableCreated &&
               !this._activeTable.matchingMap && options.featureSet) ||
             (options.layer && options.selectedIds)) {// queryRecordsByRelationship
-
             var validFeatureSet = lang.getObject('featureSet.features.length', false, options);
             if (options.layer && options.selectedIds) {
               this._activeTable.queryRecordsByRelationship(options);
@@ -839,13 +766,6 @@ define([
           style: "width: 100%;"
         }, tabDiv);
         html.setStyle(this.tabContainer.domNode, 'height', (this.normalHeight) + 'px');
-
-        //if(has("mozilla")){
-        //  this.tabContainer.tablist.containerNode.style.width = "50000px";
-        //}
-        //We need to startup tabContainer before call addChild method, or it will result in issue #8678
-        this.tabContainer.startup();
-
         var configInfos = this._resourceManager.getConfigInfos();
         var len = configInfos.length;
         for (var j = 0; j < len; j++) {
@@ -864,13 +784,11 @@ define([
             this.tabContainer.addChild(cp);
           }
         }
-
+        this.tabContainer.startup();
 
         if (len > 0) {
           // tabListWrapperHeight + tolerance
           this.noGridHeight = this._getGridTopSectionHeight() + 5;
-        } else {
-          this._toggleNoTableMessage(true);
         }
         // vertical center
         utils.setVerticalCenter(this.tabContainer.domNode);
@@ -906,23 +824,23 @@ define([
       },
 
 
-      _showRelatedRecords: function(infoId, objIds) {
+      _showRelatedRecords: function() {
         var activeTable = this._activeTable;
         if (activeTable) {
           var layerInfo = activeTable.layerInfo;
-          if (layerInfo && layerInfo.id === infoId && layerInfo.layerObject) {
+          if (layerInfo && layerInfo.layerObject) {
             var _layer = layerInfo.layerObject;
             var ships = _layer.relationships;
-            // var objIds = activeTable.getSelectedRows();
+            var objIds = activeTable.getSelectedRows();
 
             for (var i = 0, len = ships.length; i < len; i++) {
-              this.addNewRelationTab(objIds, ships[i], layerInfo.id, true, true);
+              this.addNewRelationTab(objIds, ships[i], layerInfo.id);
             }
           }
         }
       },
 
-      addNewLayerTab: function(infoId, featureSet, closeable, isActive, index) {
+      addNewLayerTab: function(infoId, featureSet) {
         var layerInfo = this._resourceManager.getLayerInfoById(infoId);
         if (!layerInfo) {
           return;
@@ -932,7 +850,7 @@ define([
         json.title = this.getLayerInfoLabel(layerInfo);
         json.name = json.title;
         json.paneId = this.getLayerInfoId(layerInfo);
-        json.closable = closeable;
+        json.closable = true;
         json.layerType = this._layerTypes.FEATURELAYER;
         json.featureSet = featureSet;
         if (page) {
@@ -953,26 +871,18 @@ define([
           this.layerTabPages.push(page);
 
           page.set("title", json.name);
-          // tabContainer will remove the page and destroy the page by itself.
           this.own(on(page, "close", lang.hitch(this, this.layerTabPageClose, json.paneId, true)));
-          this.tabContainer.addChild(page, index);
+          this.tabContainer.addChild(page);
         }
-        if(isActive) {
-          this.tabContainer.selectChild(page); // goto tabChanged
-        }
-        if(this.layerTabPages.length === 1) {
-          this._toggleNoTableMessage(false);
-        }
+        this.tabContainer.selectChild(page);
       },
 
-      addNewRelationTab: function(oids, relationShip, originalInfoId, closeable, isActive) {
-        var relationshipInfo = this._resourceManager.getRelationShipInfo(relationShip);
-        var lInfo = relationShip && relationshipInfo;
+      addNewRelationTab: function(oids, relationShip, originalInfoId) {
+        var lInfo = relationShip && relationShip.shipInfo;
         if (!lInfo) {
           return;
         }
-        var pageId = relationshipInfo.id;
-        var page = this.getExistLayerTabPage(pageId);
+        var page = this.getExistLayerTabPage(relationShip.shipInfo.id);
 
         var json = {};
         json.oids = oids;
@@ -982,7 +892,7 @@ define([
         json.paneId = lInfo.id;
         json.relKey = relationShip._relKey;
         json.originalInfoId = originalInfoId;
-        json.closable = closeable;
+        json.closable = true;
         json.layerType = this._layerTypes.RELATIONSHIPTABLE;
 
         if (page) {
@@ -998,14 +908,11 @@ define([
           page = new ContentPane(json);
           this.layerTabPages.push(page);
           page.set("title", json.name);
-          // tabContainer will remove the page and destroy the page by itself.
           this.own(on(page, "close", lang.hitch(this, this.layerTabPageClose, json.paneId, true)));
 
           this.tabContainer.addChild(page);
         }
-        if(isActive) {
-          this.tabContainer.selectChild(page); // goto tabChanged
-        }
+        this.tabContainer.selectChild(page);
       },
 
       onReceiveData: function(name, source, params) {
@@ -1018,8 +925,6 @@ define([
             }
           }
           params.layer = params.layer || params.layerInfo;
-          params.closeable = true;
-          params.isActive = true;
 
           if (!this.showing) {
             this._openTable().then(lang.hitch(this, function() {
@@ -1057,33 +962,16 @@ define([
           if (layerObject) {
             layerObject.id = params.layer.id;
             if (layerObject.loaded) {
-              this.addNewLayerTab(
-                layerInfo.id, 
-                params.featureSet, 
-                !!params.closeable,
-                !!params.isActive,
-                params.index);
+              this.addNewLayerTab(layerInfo.id, params.featureSet);
             } else {
               this.own(on(layerObject, "load",
-                lang.hitch(this, 
-                  this.addNewLayerTab, 
-                  layerInfo.id, 
-                  params.featureSet, 
-                  !!params.closeable,
-                  !!params.isActive,
-                  params.index)));
+                lang.hitch(this, this.addNewLayerTab, layerInfo.id, params.featureSet)));
             }
           } else if (params.url) {
             layer = new FeatureLayer(params.url);
             this.own(
               on(layer, "load",
-                lang.hitch(this, 
-                  this.addNewLayerTab, 
-                  layerInfo.id, 
-                  params.featureSet, 
-                  !!params.closeable,
-                  !!params.isActive,
-                  params.index))
+                lang.hitch(this, this.addNewLayerTab, layerInfo.id, params.featureSet))
             );
           }
         }), lang.hitch(this, function(err) {
@@ -1123,22 +1011,20 @@ define([
             }
             if (isRemoveChild === true) {
               this.tabContainer.removeChild(this.layerTabPages[i]);
-              this.layerTabPages[i].destroyRecursive();
             }
             if (this.layerTabPages && this.layerTabPages[i]) {
-              this.layerTabPages.splice(i, 1); // removed contentpane from memory
+              this.layerTabPages[i].destroyRecursive();
+              this.layerTabPages.splice(i, 1);
             }
 
-            this._resourceManager.removeConfigInfo(paneId); // destroy featureTable
+            this._resourceManager.removeConfigInfo(paneId);
             this._resourceManager.removeLayerInfo(paneId);
 
             if (len === 1) {
-              this._activeLayerInfoId = null;
               this.onClose();
-              this._toggleNoTableMessage(true);
               return;
-            } else if(paneId === this._activeLayerInfoId) {
-              var layerIndex = len - 2; // show last contentpane
+            }  else if(paneId === this._activeLayerInfoId) {
+              var layerIndex = len - 2;
               this.tabContainer.selectChild(this.layerTabPages[layerIndex]);
             }
             break;
@@ -1158,7 +1044,7 @@ define([
               this._resourceManager.collectRelationShips(layerInfo, relatedTableInfos);
               var ships = layerObject.relationships;
               for (var i = 0, len = ships.length; i < len; i++) {
-                this.addNewRelationTab(featureIds, ships[i], layerInfo.id, true, true);
+                this.addNewRelationTab(featureIds, ships[i], layerInfo.id);
               }
             }
           }));
@@ -1184,22 +1070,6 @@ define([
             this._processRelatedRecordsFromPopup(layerInfo, featureIds);
           }));
         }
-      },
-
-      _toggleNoTableMessage: function(show) {
-        if(!this.NoTableMessageDiv) {
-          var srcRef = this.AttributeTableDiv || this.domNode;
-          var messageText = this.nls.noTablesAvailable + '<br/><br/>' +
-          (this.config.syncWithLayers ? 
-          this.nls.checkLayerListToSelectLayers : this.nls.checkConfigutationToSelectLayers);
-          
-          this.NoTableMessageDiv = html.create('div', {
-            innerHTML: messageText,
-            className: 'jimu-widget-attributetable-notable hidden'
-          });
-          html.place(this.NoTableMessageDiv, srcRef);
-        }
-        html[show ? 'removeClass':'addClass'](this.NoTableMessageDiv, 'hidden');
       }
     });
 

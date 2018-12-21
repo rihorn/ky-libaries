@@ -11,7 +11,7 @@ define({
   "itemMoveDown": "下移",
   "itemDesc": "描述",
   "itemDownload": "下载",
-  "itemToAttributeTable": "在属性表中查看",
+  "itemToAttributeTable": "打开属性表",
   "itemShowItemDetails": "显示项目详细信息",
   "empty": "空",
   "removePopup": "禁用弹出窗口",
@@ -23,9 +23,5 @@ define({
   "turnAllLabelsOff": "关闭所有标注",
   "turnAllLabelsOn": "打开所有标注",
   "showLabels": "显示标注",
-  "hideLables": "隐藏标注",
-  "keyword": "关键字",
-  "basemapLayers": "底图图层",
-  "typeAKeywork": "键入关键字",
-  "layers": "图层"
+  "hideLables": "隐藏标注"
 });

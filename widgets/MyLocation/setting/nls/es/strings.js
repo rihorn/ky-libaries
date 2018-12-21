@@ -3,5 +3,5 @@ define({
   "highlightLocation": "Resaltar ubicación",
   "useTracking": "Observar los cambios de ubicación",
   "warning": "Entrada incorrecta",
-  "zoomScale": "Escala de zoom"
+  "zoomScale": "Aplicar zoom a escala"
 });

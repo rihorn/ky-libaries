@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 - 2018 Esri. All Rights Reserved.
+// Copyright © 2014 Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -61,24 +61,20 @@ define([
         html.place(this.domNode, this.map.id);
         this._processAttachTo(this.config, position);
         if (this.started) {
-          this._updateDomPosition(this.config.overviewMap.attachTo);
+          this._updateDomPosition(this.config.attachTo);
         }
       },
 
       _processAttachTo: function(config, position) {
-        if (typeof config.overviewMap === "undefined") {
-          config.overviewMap = {};
-        }
-        //set a default "attachTo" by position
-        if (typeof config.overviewMap.attachTo === "undefined" && position) {
+        if (!config.attachTo && position) {
           if (position.top !== undefined && position.left !== undefined) {
-            config.overviewMap.attachTo = !window.isRTL ? "top-left" : "top-right";
+            config.attachTo = !window.isRTL ? "top-left" : "top-right";
           } else if (position.top !== undefined && position.right !== undefined) {
-            config.overviewMap.attachTo = !window.isRTL ? "top-right" : "top-left";
+            config.attachTo = !window.isRTL ? "top-right" : "top-left";
           } else if (position.bottom !== undefined && position.left !== undefined) {
-            config.overviewMap.attachTo = !window.isRTL ? "bottom-left" : "bottom-right";
+            config.attachTo = !window.isRTL ? "bottom-left" : "bottom-right";
           } else if (position.bottom !== undefined && position.right !== undefined) {
-            config.overviewMap.attachTo = !window.isRTL ? "bottom-right" : "bottom-left";
+            config.attachTo = !window.isRTL ? "bottom-right" : "bottom-left";
           }
         }
       },
@@ -99,31 +95,6 @@ define([
           style.position = 'absolute';
           domStyle.set(this.domNode, style);
           domStyle.set(this.overviewMapDijit.domNode, style);
-
-          //change arrow style
-          if (this.overviewMapDijit.domNode) {
-            html.removeClass(this.overviewMapDijit.domNode, ["ovwTL", "ovwTR", "ovwBL", "ovwBR"]);
-            var arrowStyle = "";
-            switch (attachTo) {
-              case "top-left": {
-                arrowStyle = "ovwTL";
-                break;
-              } case "top-right": {
-                arrowStyle = "ovwTR";
-                break;
-              } case "bottom-left": {
-                arrowStyle = "ovwBL";
-                break;
-              } case "bottom-right": {
-                arrowStyle = "ovwBR";
-                break;
-              } default: {
-                arrowStyle = "ovwTL";
-                break;
-              }
-            }
-            html.addClass(this.overviewMapDijit.domNode, arrowStyle);
-          }
         }
       },
 
@@ -133,7 +104,8 @@ define([
         if (visible !== undefined) {
           json.visible = visible;
         }
-        //this._processAttachTo(json, this.position);
+        this._processAttachTo(json, this.position);
+
         // overviewMap dijit has bug in IE8
         var _isShow = json.visible;
         json.visible = false;
@@ -143,7 +115,6 @@ define([
         json.width = 200;
         json.height = 200;
         json.expandFactor = 2;
-        json.attachTo = this.config.overviewMap.attachTo;
 
         this.overviewMapDijit = new OverviewMap(json);
         this._handles.push(aspect.after(

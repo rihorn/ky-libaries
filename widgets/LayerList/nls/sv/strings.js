@@ -11,11 +11,11 @@ define({
   "itemMoveDown": "Flytta nedåt",
   "itemDesc": "Beskrivning",
   "itemDownload": "Hämta",
-  "itemToAttributeTable": "Visa i attributtabell",
+  "itemToAttributeTable": "Öppna attributtabell",
   "itemShowItemDetails": "Visa objektinformation",
   "empty": "tom",
   "removePopup": "Inaktivera popupfönster",
-  "enablePopup": "Aktivera popupfönster",
+  "enablePopup": "Aktivera popup-ruta",
   "turnAllLayersOff": "Inaktivera alla lager",
   "turnAllLayersOn": "Aktivera alla lager",
   "expandAllLayers": "Expandera alla lager",
@@ -23,9 +23,5 @@ define({
   "turnAllLabelsOff": "Inaktivera alla etiketter",
   "turnAllLabelsOn": "Aktivera alla etiketter",
   "showLabels": "Visa etiketter",
-  "hideLables": "Dölj etiketter",
-  "keyword": "Nyckelord",
-  "basemapLayers": "Baskartlager",
-  "typeAKeywork": "Ange ett nyckelord",
-  "layers": "Lager"
+  "hideLables": "Dölj etiketter"
 });

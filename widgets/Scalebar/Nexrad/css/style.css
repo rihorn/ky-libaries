@@ -1,0 +1,125 @@
+.jimu-widget-nexrad{
+  z-index: 9;
+}
+.jimu-widget-nexrad .nexrad-container{
+  background-color: rgba(244,246,247,1.0);
+  font-size:11px;
+  padding: 4px 2px 4px 10px;
+  line-height: 20px;
+  border: 1px solid #666;
+  border-radius:5px;
+  color:rgba(85,85,85,1.0);
+  overflow: hidden;
+}
+.jimu-widget-nexrad .nexrad-container:hover{
+  color:rgba(0,0,0,1.0);
+  background-color: rgba(244,246,247,1.0);
+}
+.jimu-widget-nexrad .nexrad-scale{
+  width: 139px;
+  height: 7px;
+  background: url(images/nexrad_scale.png) center no-repeat;
+  opacity: 0.6;
+}
+.jimu-widget-nexrad .nexrad-scale-container{
+  width: 142px;
+  height: 12px;
+  padding: 7px 2px 0px 2px;
+}
+.jimu-widget-nexrad .nexrad-scale-container:hover{
+  /*
+  background: url(images/options-hover.png) center no-repeat;
+    cursor: pointer;*/
+  
+}
+.jimu-widget-nexrad .nexrad-scale-container-active{
+  /*
+      background: url(images/locate-active.png) center no-repeat !important;
+  */
+}
+.jimu-widget-nexrad .nexrad-options-pause{
+  margin-top:4px;
+  width: 10px;
+  height: 10px;
+  background: url(images/pause.png) center no-repeat;
+}
+.jimu-widget-nexrad .nexrad-options-play{
+  margin-top:4px;
+  width: 10px;
+  height: 10px;
+  background: url(images/play.png) center no-repeat;
+}
+.jimu-widget-nexrad .nexrad-options-opacity{
+  margin-top:1px;
+  margin-right:0px;
+  width: 56px !important;
+  height: 14px;
+}
+.jimu-widget-nexrad .nexrad-options-interval{
+  margin-top:1px;
+  margin-right:0px;
+  width: 56px !important;
+  height: 14px;
+}
+.jimu-widget-nexrad .nexrad-options-container{
+  width: 300px;
+  height: 16px;
+  padding: 2px;
+}
+.jimu-widget-nexrad .nexrad-options-container:hover{
+  /*background: url(images/options-hover.png) center no-repeat;*/
+  cursor: pointer;
+}
+.jimu-widget-nexrad .nexrad-options-container-active{
+  background: url(images/locate-active.png) center no-repeat !important;
+}
+.jimu-widget-nexrad .nexrad-info{
+  margin: 0 10px;
+  text-align: center;
+}
+.jimu-widget-nexrad .nexrad-info-menu{
+  overflow: hidden;
+  z-index: 999;
+  text-align: center;
+}
+.jimu-widget-nexrad .nexrad-foldable{
+  background: url(images/unfold01.png) center no-repeat;
+  width: 10px;
+  height: 20px;
+}
+.jimu-widget-nexrad:hover .nexrad-foldable{
+  background-image: url(images/unfold02.png);
+}
+.optionsDijit {
+    width: 100%;
+}
+
+.optionsDijit .buttonActionBar {
+    padding: 3px 0px 2px 0px;
+    width: 100%;
+}
+
+.optionsDijit .formContainer {
+    /*border: 1px solid #bbb;*/
+    margin-bottom: -1px;
+    width: 100%;
+}
+
+.optionsDijit .playIcon {
+    background-image: url(../images/play.png);
+    width: 16px;
+    height: 16px;
+}
+
+.optionsDijit .pauseIcon {
+    background-image: url(../images/pause.png);
+    width: 16px;
+    height: 16px;
+}
+
+.optionsDijit .optionsIcon {
+    background-image: url(../images/options.png);
+    width: 16px;
+    height: 16px;
+}
+};

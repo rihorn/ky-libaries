@@ -1,9 +1,9 @@
 define({
   "visible": "Mostrar mapa de vista general de manera predeterminada",
   "minWidth": "Ancho mín.",
-  "minHeight": "Altura mín.",
+  "minHeight": "Alto mín.",
   "maxWidth": "Ancho máx.",
-  "maxHeight": "Altura máx.",
+  "maxHeight": "Alto máx.",
   "minText": "Mínimo",
   "maxText": "máximo",
   "attachText": "Especifica la esquina del mapa en la que vas a adjuntar este widget.",

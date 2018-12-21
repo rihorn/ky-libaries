@@ -1,0 +1,8 @@
+{
+  "serviceURL": "http://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task",
+  "defaultTitle": "Kentucky Cities Web Map",
+  "defaultAuthor": "Web AppBuilder for ArcGIS",
+  "defaultCopyright": "The contributors to this map product and the supporting data have no reason to believe that there are any inaccuracies or defects in information incorporated in this work and make no representations of any kind, including, but not limited to, the warranties of merchantability or fitness for a particular use, nor any such warranties to be implied, with respect to the information or data furnished herein.",
+  "defaultFormat": "PDF",
+  "defaultLayout": "MAP_ONLY"
+}

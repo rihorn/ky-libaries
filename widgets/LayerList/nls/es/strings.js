@@ -1,7 +1,7 @@
 define({
   "_widgetLabel": "Lista de capas",
   "titleBasemap": "Mapas base",
-  "titleLayers": "Capas operacionales",
+  "titleLayers": "Capas operativas",
   "labelLayer": "Nombre de capa",
   "itemZoomTo": "Acercar a",
   "itemTransparency": "Transparencia",
@@ -11,10 +11,10 @@ define({
   "itemMoveDown": "Mover hacia abajo",
   "itemDesc": "Descripción",
   "itemDownload": "Descargar",
-  "itemToAttributeTable": "Ver en la tabla de atributos",
+  "itemToAttributeTable": "Abrir tabla de atributos",
   "itemShowItemDetails": "Mostrar detalles del elemento",
   "empty": "vacío",
-  "removePopup": "Deshabilitar elemento emergente",
+  "removePopup": "Deshabilitar ventana emergente",
   "enablePopup": "Habilitar elemento emergente",
   "turnAllLayersOff": "Desactivar todas las capas",
   "turnAllLayersOn": "Activar todas las capas",
@@ -23,9 +23,5 @@ define({
   "turnAllLabelsOff": "Desactivar todas las etiquetas",
   "turnAllLabelsOn": "Activar todas las etiquetas",
   "showLabels": "Mostrar etiquetas",
-  "hideLables": "Ocultar etiquetas",
-  "keyword": "Palabra clave",
-  "basemapLayers": "Capas de mapa base",
-  "typeAKeywork": "Escriba una palabra clave",
-  "layers": "Capas"
+  "hideLables": "Ocultar etiquetas"
 });

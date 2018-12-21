@@ -11,8 +11,8 @@ define({
   "itemMoveDown": "下に移動",
   "itemDesc": "説明",
   "itemDownload": "ダウンロード",
-  "itemToAttributeTable": "属性テーブルの表示",
-  "itemShowItemDetails": "アイテムの詳細の表示",
+  "itemToAttributeTable": "属性テーブルを開く",
+  "itemShowItemDetails": "アイテムの詳細を表示",
   "empty": "空",
   "removePopup": "ポップアップの無効化",
   "enablePopup": "ポップアップの有効化",
@@ -23,9 +23,5 @@ define({
   "turnAllLabelsOff": "すべてのラベルを非表示",
   "turnAllLabelsOn": "すべてのラベルを表示",
   "showLabels": "ラベルを表示",
-  "hideLables": "ラベルを非表示",
-  "keyword": "キーワード",
-  "basemapLayers": "ベースマップ レイヤー",
-  "typeAKeywork": "キーワードの入力",
-  "layers": "レイヤー"
+  "hideLables": "ラベルを非表示"
 });

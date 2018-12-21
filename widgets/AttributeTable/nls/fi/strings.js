@@ -14,24 +14,22 @@ define({
   "highlight": "Korosta grafiikkaa",
   "selectAll": "Valitse tietueita kaikilta sivuilta",
   "selectPage": "Valitse tietueita nykyiseltä sivulta",
-  "clearSelection": "Tyhjennä valinnat",
+  "clearSelection": "Tyhjennä valinta",
   "filter": "Suodata",
-  "setFilterTip": "Määritä suodattimet oikein.",
-  "noFilterTip": "Jos suodatinlausekkeita ei määritetä, kyselytehtävä luetteloi kaikki määritetyn tietolähteen kohteet.",
+  "setFilterTip": "Määritä suodatin oikein.",
+  "noFilterTip": "Jos suodatinlauseketta ei määritetä, kyselytehtävä luetteloi kaikki määritetyn tietolähteen kohteet.",
   "filterByExtent": "Suodata kartan laajuuden mukaan",
   "showSelectedRecords": "Näytä valitut tietueet",
   "showAllRecords": "Näytä kaikki tietueet",
   "showRelatedRecords": "Näytä liittyvät tietueet",
   "noRelatedRecords": "Liittyviä tietueita ei löytynyt",
-  "highlightAllRecords": "Korosta kaikki kartan tietueet",
-  "attachmentColumn": "Valokuvat ja tiedostot",
   "refresh": "Päivitä",
   "features": "kohteet",
   "records": "tietueet",
   "selected": "valitut",
   "transparent": "Läpinäkyvä tila",
   "indicate": "Paikanna valinta",
-  "columns": "Näytä/piilota sarakkeet",
+  "columns": "Näytä/Piilota sarakkeet",
   "selectionSymbol": "Valintasymboli",
   "closeMessage": "Piilota taulukko (laajenna se uudelleen alareunasta)",
   "dataNotAvailable": "Data ei ole käytettävissä!<br>Yritä uudelleen napsauttamalla [Päivitä]-painiketta.",
@@ -39,26 +37,5 @@ define({
   "closeTableTip": "Piilota ominaisuustietotaulukko",
   "sortAsc": "Lajittele nousevasti",
   "sortDes": "Lajittele laskevasti",
-  "statistics": "Tilastotiedot",
-  "attachments": "Liitteet",
-  "files": "tiedostot",
-  "keepRichTextLabel": "Säilytä RTF-muoto",
-  "whatsThis": "Mikä tämä on?",
-  "richTextMessage": {
-    "explanatoryText": {
-      "line1": "${layerName} sisältää seuraavat RTF-kentät: ",
-      "line2": " jotka voivat sisältää tekstinmuotoilutyylejä, kuten fontteja, värejä tai tekstin kokoja.",
-      "line3": "Kun tiedosto viedään CSV-muotoon, muotoilutyylit säilytetään HTML-tunnisteina. Voit määrittää, ettei RTF-muotoja säilytetä, poistamalla Säilytä RTF-muoto -valintaruudun valinnan."
-    },
-    "example": {
-      "label": "Esimerkki:",
-      "scenarios": {
-        "first": "viedään oletusarvoisesti seuraavana tekstinä:",
-        "second": "ja seuraavana tekstinä ilman RTF-muotoa:"
-      }
-    }
-  },
-  "noTablesAvailable": "Näytettäviä taulukoita ei ole.",
-  "checkConfigutationToSelectLayers": "Valitse karttatasot siirtymällä pienoisohjelman asetussivulle.",
-  "checkLayerListToSelectLayers": "Ominaisuustietotaulu on synkronoitu kartan näkyvien karttatasojen kanssa. Voit vaihtaa karttatasojen näkyvyyttä pienoisohjelman, kuten karttatasojen luettelon, avulla."
+  "statistics": "Tilastotiedot"
 });

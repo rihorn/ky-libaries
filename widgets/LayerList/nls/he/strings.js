@@ -11,11 +11,11 @@ define({
   "itemMoveDown": "הזז למטה",
   "itemDesc": "תיאור",
   "itemDownload": "הורדה",
-  "itemToAttributeTable": "הצג בטבלת מאפיינים",
+  "itemToAttributeTable": "פתח טבלת מאפיינים",
   "itemShowItemDetails": "הצג פרטי פריט",
   "empty": "ריק",
   "removePopup": "השבת חלון קופץ",
-  "enablePopup": "הפוך חלונית קופצת לפעילה",
+  "enablePopup": "הפעל חלון קופץ",
   "turnAllLayersOff": "כבה את כל השכבות",
   "turnAllLayersOn": "הדלק את כל השכבות",
   "expandAllLayers": "הרחב את כל השכבות",
@@ -23,9 +23,5 @@ define({
   "turnAllLabelsOff": "כבה את כל התוויות",
   "turnAllLabelsOn": "הדלק את כל התוויות",
   "showLabels": "הצג תוויות",
-  "hideLables": "הסתר תוויות",
-  "keyword": "מילת מפתח",
-  "basemapLayers": "שכבות מפת בסיס",
-  "typeAKeywork": "הקלד מילת מפתח",
-  "layers": "שכבות"
+  "hideLables": "הסתר תוויות"
 });

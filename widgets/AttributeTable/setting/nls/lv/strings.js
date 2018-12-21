@@ -5,21 +5,13 @@ define({
   "actions": "Konfigurēt slāņa laukus",
   "field": "Lauks",
   "alias": "Aizstājvārds",
-  "url": "URL",
-  "sortField": "Kārtot lauku",
-  "sortOrderTooltips": {
-    "toDescending": "Nomainīt uz dilstošu secību",
-    "toAscending": "Nomainīt uz pieaugošu secību"
-  },
   "visible": "Redzams",
-  "linkField": "Saistīt lauku",
+  "linkField": "Saites lauks",
   "noLayers": "Nav pieejams neviens elementu slānis",
   "back": "Atpakaļ",
   "exportCSV": "Atļaut eksportēt uz CSV",
   "expand": "Sākotnēji izvērst logrīku",
-  "filterByExtent": "Aktivizēt filtrēšanu atbilstoši kartes pārklājumam pēc noklusējuma",
-  "allowTextSelection": "Atļaut izvēlēties tekstu",
-  "highlightColor": "Izcēluma krāsa",
+  "filterByExtent": "Aktivizēt filtrēšanu pēc kartes pārklājuma pēc noklusējuma",
   "restore": "Atjaunot uz noklusējuma vērtību",
   "ok": "Labi",
   "cancel": "Atcelt",
@@ -33,8 +25,5 @@ define({
   "fieldName": "Nosaukums",
   "fieldAlias": "Aizstājvārds",
   "fieldVisibility": "Redzamība",
-  "fieldActions": "Darbības",
-  "showAttachments": "Rādīt pielikumus",
-  "syncWithLayers": "Sinhronizēt ar slāņu redzamību",
-  "syncWithLayersHint": "Atribūtu tabulā norādītie slāņi tiek sinhronizēti ar slāņu redzamību dinamiski."
+  "fieldActions": "Darbības"
 });

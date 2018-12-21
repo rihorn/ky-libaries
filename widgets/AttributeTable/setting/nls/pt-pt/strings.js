@@ -2,24 +2,16 @@ define({
   "instruction": "Seleccione e configure camadas que irão ser mostrados inicialmente na Tabela de Atributo.",
   "label": "Camada",
   "show": "Exibir",
-  "actions": "Configurar campos de camadas",
+  "actions": "Configurar Campos de Camadas",
   "field": "Campo",
   "alias": "Nome Alternativo",
-  "url": "URL",
-  "sortField": "Ordenar campo",
-  "sortOrderTooltips": {
-    "toDescending": "Alterar para ordem descendente",
-    "toAscending": "Alterar para ordem ascendente"
-  },
   "visible": "Visível",
-  "linkField": "Campo de ligação",
+  "linkField": "Campo da ligação",
   "noLayers": "Não há camadas de elementos disponíveis",
   "back": "Regressar",
   "exportCSV": "Permitir exportar para CSV",
   "expand": "Expandir o widget inicialmente",
-  "filterByExtent": "Ativar Filtrar por extensão de mapa por defeito",
-  "allowTextSelection": "Permitir a seleção de texto",
-  "highlightColor": "Destacar cor",
+  "filterByExtent": "Permitir Filtrar por Extensão de Mapa por omissão",
   "restore": "Restaurar para valor padrão",
   "ok": "OK",
   "cancel": "Cancelar",
@@ -33,8 +25,5 @@ define({
   "fieldName": "Nome",
   "fieldAlias": "Nome Alternativo",
   "fieldVisibility": "Visibilidade",
-  "fieldActions": "Ações",
-  "showAttachments": "Exibir anexos",
-  "syncWithLayers": "Sincronizar com visibilidades de camadas",
-  "syncWithLayersHint": "As camadas exibidas na Tabela de Atributos são sincronizadas com visibilidades de camadas de forma dinâmica."
+  "fieldActions": "Ações"
 });

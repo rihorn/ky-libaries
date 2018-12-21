@@ -23,9 +23,9 @@
   "authorizedCrossOriginDomains": [
     "kygeonet.ky.gov"
   ],
-  "title": "Kentucky-Libraries",
-  "subtitle": "with Web AppBuilder for ArcGIS",
-  "keepAppState": true,
+  "title": "Kentucky Libraries",
+  "subtitle": "",
+  "keepAppState": false,
   "logo": "images/app-logo.png",
   "geometryService": "https://utility.arcgisonline.com/arcgis/rest/services/Geometry/GeometryServer",
   "links": [],
@@ -37,7 +37,7 @@
           "left": 0,
           "top": 0,
           "right": 0,
-          "height": 40,
+          "height": 60,
           "relativeTo": "browser"
         },
         "version": "2.10",

@@ -11,11 +11,11 @@ define({
   "itemMoveDown": "下移",
   "itemDesc": "描述",
   "itemDownload": "下載",
-  "itemToAttributeTable": "屬性表中的視圖",
+  "itemToAttributeTable": "打開屬性表",
   "itemShowItemDetails": "顯示項目詳細資訊",
   "empty": "空",
   "removePopup": "停用快顯視窗",
-  "enablePopup": "啟用快顯視窗",
+  "enablePopup": "啟用彈出訊息",
   "turnAllLayersOff": "關閉所有圖層",
   "turnAllLayersOn": "開啟所有圖層",
   "expandAllLayers": "展開所有圖層",
@@ -23,9 +23,5 @@ define({
   "turnAllLabelsOff": "關閉所有標籤",
   "turnAllLabelsOn": "開啟所有標籤",
   "showLabels": "顯示標籤",
-  "hideLables": "隱藏標籤",
-  "keyword": "關鍵字",
-  "basemapLayers": "底圖圖層",
-  "typeAKeywork": "輸入關鍵字",
-  "layers": "圖層"
+  "hideLables": "隱藏標籤"
 });

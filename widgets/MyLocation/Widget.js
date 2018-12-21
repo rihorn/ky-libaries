@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 - 2018 Esri. All Rights Reserved.
+// Copyright © 2014 Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,13 +25,12 @@ define([
     'jimu/dijit/Message',
     'dojo/touch'
   ],
-  function(declare, BaseWidget, LocateButton, html, on, lang, jimuUtils) {
+  function(
+    declare, BaseWidget, LocateButton, html, on, lang, jimuUtils) {
     var clazz = declare([BaseWidget], {
 
       name: 'MyLocation',
       baseClass: 'jimu-widget-mylocation',
-
-      moveTopOnActive: false,
 
       startup: function() {
         this.inherited(arguments);
@@ -48,7 +47,6 @@ define([
           html.setAttr(this.placehoder, 'title', this.nls.httpNotSupportError);
         } else if (window.navigator.geolocation) {
           this.own(on(this.placehoder, 'click', lang.hitch(this, this.onLocationClick)));
-          this.own(on(this.map, 'zoom-end', lang.hitch(this, this._scaleChangeHandler)));
         } else {
           html.setAttr(this.placehoder, 'title', this.nls.browserError);
         }
@@ -66,22 +64,6 @@ define([
           html.addClass(this.placehoder, "locating");
         }
       },
-      //use current scale in Tracking
-      _scaleChangeHandler: function() {
-        var scale = this.map.getScale();
-        if (scale && this.geoLocate && this.geoLocate.useTracking) {
-          this.geoLocate.scale = scale;
-        }
-      },
-
-      //there is no "locate-error" event in 2d-api
-      onLocateOrError: function (evt) {
-        if (evt.error) {
-          this.onLocateError(evt);
-        } else {
-          this.onLocate(evt);
-        }
-      },
 
       onLocate: function(parameters) {
         html.removeClass(this.placehoder, "locating");
@@ -90,18 +72,14 @@ define([
         }
 
         if (parameters.error) {
-          this.onLocateError(parameters);
+          console.error(parameters.error);
+          // new Message({
+          //   message: this.nls.failureFinding
+          // });
         } else {
           html.addClass(this.domNode, "onCenter");
           this.neverLocate = false;
         }
-      },
-
-      onLocateError: function(evt) {
-        console.error(evt.error);
-        html.removeClass(this.placehoder, "locating");
-        html.removeClass(this.domNode, "onCenter");
-        html.removeClass(this.placehoder, "tracking");
       },
 
       _createGeoLocate: function() {
@@ -111,27 +89,10 @@ define([
           json.useTracking = true;
         }
         json.centerAt = true;
-        json.setScale = true;
-
-        var geoOptions = {
-          maximumAge: 0,
-          timeout: 15000,
-          enableHighAccuracy: true
-        };
-        if (json.geolocationOptions) {
-          json.geolocationOptions = lang.mixin(geoOptions, json.geolocationOptions);
-        }
-
-        //hack for issue,#11199
-        if (jimuUtils.has('ie') === 11) {
-          json.geolocationOptions.maximumAge = 300;
-          json.geolocationOptions.enableHighAccuracy = false;
-        }
-
         this.geoLocate = new LocateButton(json);
         this.geoLocate.startup();
-        //only 3d-api have error event
-        this.geoLocate.own(on(this.geoLocate, "locate", lang.hitch(this, this.onLocateOrError)));
+
+        this.geoLocate.own(on(this.geoLocate, "locate", lang.hitch(this, this.onLocate)));
       },
 
       _destroyGeoLocate: function() {

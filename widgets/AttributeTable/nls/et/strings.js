@@ -1,7 +1,7 @@
 define({
-  "_widgetLabel": "Atribuuttabel",
+  "_widgetLabel": "Atribuuditabel",
   "_featureAction_ShowRelatedRecords": "Kuva seotud kirjed",
-  "_featureAction_ViewInTable": "Vaata atribuuttabelis",
+  "_featureAction_ViewInTable": "Vaata atribuuditabelis",
   "ok": "OK",
   "cancel": "Tühista",
   "unsupportQueryWarning": "Kiht peab toetama päringut, et seda kuvataks atribuuditabeli vidinas. Veenduge, et päringufunktsioon oleks teenuses sisse lülitatud.",
@@ -14,51 +14,28 @@ define({
   "highlight": "Tõsta graafika esile",
   "selectAll": "Vali kõigi lehtede kirjed",
   "selectPage": "Vali praeguse lehe kirjed",
-  "clearSelection": "Puhasta valik",
+  "clearSelection": "Tühista valik",
   "filter": "Filter",
-  "setFilterTip": "Määrake filtrid õigesti.",
+  "setFilterTip": "Määrake filter õigesti.",
   "noFilterTip": "Määratlemata filtriavaldiseta loendab see päringuülesanne kõik määratud andmeallika funktsioonid.",
   "filterByExtent": "Filtreeri kaardi ulatuse järgi",
-  "showSelectedRecords": "Näita valitud kirjeid",
+  "showSelectedRecords": "Kuva valitud kirjed",
   "showAllRecords": "Näita kõiki kirjeid",
   "showRelatedRecords": "Kuva seotud kirjed",
   "noRelatedRecords": "Seotud kirjeid ei leitud",
-  "highlightAllRecords": "Tõsta kõik kirjed kaardil esile",
-  "attachmentColumn": "Fotod ja failid",
   "refresh": "Värskenda",
   "features": "objektid",
   "records": "kirjed",
   "selected": "valitud",
   "transparent": "Läbipaistvuse režiim",
   "indicate": "Paiguta valitu",
-  "columns": "Kuva/peida veerud",
+  "columns": "Näita/Peida veerud",
   "selectionSymbol": "Valiku sümbol",
   "closeMessage": "Peida tabel (laienda seda uuesti altpoolt)",
   "dataNotAvailable": "Andmed ei ole saadaval!<br>Uuesti proovimiseks klikkige nuppu [Värskenda]",
-  "openTableTip": "Ava atribuuttabel",
-  "closeTableTip": "Peida atribuuttabel",
+  "openTableTip": "Ava atribuutide tabel",
+  "closeTableTip": "Peida atribuutide tabel",
   "sortAsc": "Sorteeri kasvavalt",
   "sortDes": "Sorteeri kahanevalt",
-  "statistics": "Statistika",
-  "attachments": "Manused",
-  "files": "failid",
-  "keepRichTextLabel": "Säilita rikasteksti formaat",
-  "whatsThis": "Mis see on?",
-  "richTextMessage": {
-    "explanatoryText": {
-      "line1": "${layerName} sisaldab järgmisi rikastekstivälju: ",
-      "line2": " ja need võivad sisaldada teksti vormindamise laade (nt font, värv, tekstisuurus).",
-      "line3": "CSV-faili eksportimisel säilitatakse vorminduslaadid HTML-märgendite abil. Kui Te ei soovi rikasteksti formaate säilitada, tühjendage ruut „Säilita rikasteksti formaat“."
-    },
-    "example": {
-      "label": "Näited.",
-      "scenarios": {
-        "first": "eksporditakse vaikimisi järgmise tekstina:",
-        "second": "ja järgmine tekst rikasteksti formaadita:"
-      }
-    }
-  },
-  "noTablesAvailable": "Puuduvad tabelid, mida kuvada.",
-  "checkConfigutationToSelectLayers": "Kihtide valimiseks minge vidina seadete lehele.",
-  "checkLayerListToSelectLayers": "Atribuuditabel sünkroniseeritakse kaardil nähtavate kihtidega. Kihtide sisse- või väljalülitamiseks saate kasutada näiteks kihiloendi vidinat."
+  "statistics": "Statistika"
 });

@@ -1,0 +1,63 @@
+{
+  "layers": [
+    {
+      "name": "Blue Water Trails",
+      "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Recreational_Trails_WGS84WM/MapServer/5",
+      "filter": {
+        "logicalOperator": "AND",
+        "parts": [],
+        "expr": "1=1"
+      },
+      "popup": {
+        "title": "${Trail_Name}",
+        "order": "Trail_Name",
+        "fields": [
+          {
+            "name": "Trail_Name",
+            "alias": "Trail Name",
+            "type": "esriFieldTypeString",
+            "specialType": "none",
+            "showInInfoWindow": true
+          },
+          {
+            "name": "Miles",
+            "alias": "Miles",
+            "type": "esriFieldTypeString",
+            "specialType": "none",
+            "showInInfoWindow": true
+          },
+		  {
+            "name": "Detail",
+            "alias": "Detail",
+            "type": "esriFieldTypeString",
+            "specialType": "link",
+            "showInInfoWindow": true
+          }
+      ]
+      },
+    "resultsSymbol": {
+        "color": [
+          178,
+          34,
+          34,
+          64
+        ],
+        "outline": {
+          "color": [
+            178,
+            34,
+            34,
+            255
+          ],
+          "width": 1.5,
+          "type": "esriSLS",
+          "style": "esriSLSSolid"
+        },
+        "type": "esriSFS",
+        "style": "esriSFSSolid"
+      },
+      "objectIdField": "OBJECTID"
+    }
+ 
+  ]
+}

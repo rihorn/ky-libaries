@@ -5,21 +5,13 @@ define({
   "actions": "Konfigurér lagfelter",
   "field": "Felt",
   "alias": "Alias",
-  "url": "URL",
-  "sortField": "Sortér felt",
-  "sortOrderTooltips": {
-    "toDescending": "Skift til faldende rækkefølge",
-    "toAscending": "Skift til stigende rækkefølge"
-  },
   "visible": "Synlig",
-  "linkField": "Link-felt",
+  "linkField": "LinkFelt",
   "noLayers": "Der er ingen tilgængelige vektorlag",
   "back": "Tilbage",
   "exportCSV": "Tillad eksport til CSV",
   "expand": "Udvid først widget'en",
-  "filterByExtent": "Aktivér filter efter kortudstrækning som standard",
-  "allowTextSelection": "Tillad markering af tekst",
-  "highlightColor": "Fremhævningsfarve",
+  "filterByExtent": "Aktivér Filtrér efter kortudstrækning som standard",
   "restore": "Gendan standardværdien",
   "ok": "OK",
   "cancel": "Annuller",
@@ -33,8 +25,5 @@ define({
   "fieldName": "Navn",
   "fieldAlias": "Alias",
   "fieldVisibility": "Synlighed",
-  "fieldActions": "Handlinger",
-  "showAttachments": "Vis vedhæftninger",
-  "syncWithLayers": "Synkroniser med lagenes synlighed",
-  "syncWithLayersHint": "De lag, der vises i Attribut-tabellen, er synkroniseres dynamisk med lagenes synlighed."
+  "fieldActions": "Handlinger"
 });

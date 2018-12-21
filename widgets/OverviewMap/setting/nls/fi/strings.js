@@ -1,9 +1,9 @@
 define({
   "visible": "Näytä oletusarvoisesti yleiskatsauskartta",
-  "minWidth": "Vähimmäisleveys",
-  "minHeight": "Vähimmäiskorkeus",
-  "maxWidth": "Enimmäisleveys",
-  "maxHeight": "Enimmäiskorkeus",
+  "minWidth": "Minimileveys",
+  "minHeight": "Minimikorkeus",
+  "maxWidth": "Maksimileveys",
+  "maxHeight": "Maksimikorkeus",
   "minText": "Minimi",
   "maxText": "Maksimi",
   "attachText": "Määritä kartan kulma, johon tämä pienoisohjelma liitetään.",

@@ -1,7 +1,7 @@
 define({
   "unit": "Einheit",
   "style": "Style",
-  "dual": "Dual",
+  "dual": "dual",
   "english": "Englisch",
   "metric": "Metrisch",
   "ruler": "Lineal",

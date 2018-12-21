@@ -2,24 +2,16 @@ define({
   "instruction": "Velg og konfigurer lag som skal vises i attributttabellen i begynnelsen.",
   "label": "Lag",
   "show": "Vis",
-  "actions": "Konfigurer lagfelt",
+  "actions": "Konfigurer lagfelter",
   "field": "Felt",
   "alias": "Alias",
-  "url": "URL",
-  "sortField": "Sorter felt",
-  "sortOrderTooltips": {
-    "toDescending": "Endre til synkende rekkefølge",
-    "toAscending": "Endre til stigende rekkefølge"
-  },
   "visible": "Synlig",
-  "linkField": "Lenkefelt",
+  "linkField": "LinkField",
   "noLayers": "Ingen tilgjengelige geoobjektlag",
   "back": "Tilbake",
   "exportCSV": "Tillat eksport til CSV",
   "expand": "Utvid widget i begynnelsen",
-  "filterByExtent": "Aktiver filter etter kartutstrekning som standard",
-  "allowTextSelection": "Tillat tekstmerking",
-  "highlightColor": "Uthevingsfarge",
+  "filterByExtent": "Aktiver alternativet Filtrer etter kartutstrekning som standardinnstilling",
   "restore": "Gjenopprett til standardverdi",
   "ok": "OK",
   "cancel": "Avbryt",
@@ -33,8 +25,5 @@ define({
   "fieldName": "Navn",
   "fieldAlias": "Alias",
   "fieldVisibility": "Synlighet",
-  "fieldActions": "Handlinger",
-  "showAttachments": "Vis vedlegg",
-  "syncWithLayers": "Synkroniser med lagsynlighet",
-  "syncWithLayersHint": "Lagene som vises i attributtabellen, synkroniseres dynamisk med lagsynlighet."
+  "fieldActions": "Handlinger"
 });

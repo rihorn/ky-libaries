@@ -1,0 +1,424 @@
+.jimu-widget-locatefeatures{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 222px;
+  min-height: 237px;
+  overflow-x: hidden;
+}
+
+.jimu-widget-locatefeatures .locatefeatures-widget-content{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  height: auto;
+  top: 0;
+  bottom: 60px;
+}
+
+.jimu-widget-locatefeatures .btn-section{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: auto;
+  text-align: center;
+}
+
+.jimu-widget-locatefeatures .btn-section .btn-clear-all{
+  margin-left: auto;
+  margin-right: auto;
+  color: #528cc9;
+  background: transparent;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.jimu-btn-clear {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 15px;
+  font-size: 14px;
+  line-height: 33px;
+  text-align: center;
+  background: #518dca;
+  vertical-align: middle;
+  color: #ffffff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+.jimu-btn-clear .jimu-state-disabled{
+  background-color: #a0acbf;
+}
+
+.jimu-btn-center {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 15px;
+  font-size: 14px;
+  line-height: 33px;
+  text-align: center;
+  background: #518dca;
+  vertical-align: middle;
+  color: #ffffff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+.jimu-btn-center .jimu-state-disabled{
+  background-color: #a0acbf;
+}
+
+.jimu-btn-zoomto {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 15px;
+  font-size: 14px;
+  line-height: 33px;
+  text-align: center;
+  background: #518dca;
+  vertical-align: middle;
+  color: #ffffff;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+.jimu-btn-zoomto .jimu-state-disabled{
+  background-color: #a0acbf;
+}
+
+.jimu-widget-locatefeatures .locatefeatures-step{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+/* css for layer-list */
+.jimu-widget-locatefeatures .layer-list{
+  left: 0;
+}
+
+.jimu-widget-locatefeatures .layer-list .layers{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+}
+
+.jimu-widget-locatefeatures .layer-list .layers .select-tip{
+  line-height: 20px;
+  color: #66696c;
+  font-size: 14px;
+}
+
+.jimu-widget-locatefeatures .layer-list .layers .layers-table-container{
+  width: 100%;
+  margin-top: 15px;
+}
+
+.jimu-widget-locatefeatures .layer-list .layers .layers-table{
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.jimu-widget-locatefeatures .layer-list .layers .layers-table td{
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.jimu-widget-locatefeatures .layer-list .layers .layers-table tr *{
+  cursor: pointer;
+}
+
+.jimu-widget-locatefeatures .layer-list .layers .layers-table .second-td{
+  color: #686868;
+  font-size: 12px;
+}
+
+.jimu-widget-locatefeatures .layer-list .layers .layers-table .layer-name-div{
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 100%;
+}
+
+.jimu-widget-locatefeatures .layer-list .layers .layers-table .third-td .arrow{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(images/arrow_right1.png);
+  width: 100%;
+  height: 100%;
+}
+
+.jimu-rtl .jimu-widget-locatefeatures .layer-list .layers .layers-table .third-td .arrow{
+  background-image: url(images/rtl_arrow_right1.png);
+}
+
+.jimu-widget-locatefeatures .layer-list .layers .layers-table>tbody>tr.selected td{
+  background: #d9dde0;
+}
+
+.jimu-widget-locatefeatures .layer-list .layers .layers-table>tbody>tr:hover td{
+  background: #d9dde0;
+  border-top: 1px solid #ffffff;
+}
+
+.jimu-widget-locatefeatures .layer-list .layers .layers-table>tbody>tr.selected .third-td .arrow{
+  background-image: url(images/arrow_right2.png);
+}
+
+.jimu-rtl .jimu-widget-locatefeatures .layer-list .layers .layers-table>tbody>tr.selected .third-td .arrow{
+  background-image: url(images/rtl_arrow_right2.png);
+}
+
+.jimu-widget-locatefeatures .layer-list .layers .layers-table>tbody>tr:hover .third-td .arrow{
+  background-image: url(images/arrow_right2.png);
+}
+
+.jimu-rtl .jimu-widget-locatefeatures .layer-list .layers .layers-table>tbody>tr:hover .third-td .arrow{
+  background-image: url(images/rtl_arrow_right2.png);
+}
+
+.jimu-widget-locatefeatures .layer-list .invalid-config{
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.jimu-widget-locatefeatures .layer-list .no-layer-tip{
+  display: none;
+  line-height: 20px;
+  color: #66696c;
+  font-size: 14px;
+}
+
+/* css for header */
+.jimu-widget-locatefeatures .step-head{
+  position: relative;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+}
+
+.jimu-widget-locatefeatures .step-title{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  text-align: center;
+  font-size: 14px;
+  color: #86909c;
+}
+
+.jimu-widget-locatefeatures .step-head .operations{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.jimu-widget-locatefeatures .step-head .operations .features-back{
+  color: blue;
+  cursor: pointer;
+  height: 100%;
+}
+
+.jimu-widget-locatefeatures .step-head .operations .features-back .back-icon{
+  width: 8px;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(images/arrow_left.png);
+  margin-right: 5px;
+}
+
+.jimu-rtl .jimu-widget-locatefeatures .step-head .operations .features-back .back-icon{
+  background-image: url(images/rtl_arrow_left.png);
+  margin-right: 0;
+  margin-left: 5px;
+}
+
+.jimu-widget-locatefeatures .step-head .operations .features-back .back-tip{
+  height: 100%;
+  color: #51b1fe;
+}
+
+/* css for layer-features */
+.jimu-widget-locatefeatures .layer-features{
+  left: 200%;
+}
+
+.jimu-widget-locatefeatures .layer-features .layer-features-head .clear{
+  float: right;
+  text-align: right;
+  color: blue;
+  cursor: pointer;
+}
+
+.jimu-widget-locatefeatures .layer-features .features-container{
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 50px;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.jimu-widget-locatefeatures .layer-features .features-table{
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.jimu-widget-locatefeatures .layer-features .feature-attributes{
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+.jimu-widget-locatefeatures .layer-features .features-table>tbody>tr.layer-feature-item>td{
+  height: 20px;
+  padding-left: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  cursor: pointer;
+}
+
+.jimu-rtl .jimu-widget-locatefeatures .layer-features .results-table>tbody>tr.layer-feature-item>td{
+  padding-left: 0;
+  padding-right: 15px;
+}
+
+.jimu-widget-locatefeatures .layer-features .features-table>tbody>tr.layer-feature-item.even>td{
+  background-color: #f0f0f0;
+}
+
+.jimu-widget-locatefeatures .layer-features .features-table>tbody>tr.layer-feature-item.odd>td{
+  background-color: #ffffff;
+}
+
+.jimu-widget-locatefeatures .layer-features .features-table>tbody>tr.layer-feature-item.selected>td{
+  background-color: #D9DDE0;
+  /*font-weight: bold;*/
+}
+
+.jimu-widget-locatefeatures .layer-features .features-table>tbody>tr.layer-feature-item>td:hover{
+  background-color: #D9DDE0;
+  /*font-weight: bold;*/
+}
+
+.jimu-widget-locatefeatures .layer-features .features-table>tbody>tr.layer-feature-item>td .feature-attributes{
+  display: none;
+}
+
+.jimu-widget-locatefeatures .layer-features .features-table>tbody>tr.layer-feature-item>td .feature-attributes.selected{
+  margin-top: 4px;
+  display: block;
+}
+
+.jimu-widget-locatefeatures .layer-features .layer-feature-item td.attr-name{
+  padding: 2px 5px 5px 2px;
+  color: #888888;
+}
+
+.jimu-widget-locatefeatures .layer-features .layer-feature-item td.attr-value{
+  padding: 2px 0 5px 2px;
+}
+
+.jimu-rtl .jimu-widget-locatefeatures .layer-features .layer-feature-item td.attr-value{
+  padding: 2px 2px 5px 0;
+}
+
+/* css for jimu-widget-locatefeatures-single-parameter */
+.jimu-widget-locatefeatures-single-parameter .dijit-form-Select>tbody>tr>td{
+  height: 23px;
+}
+
+.jimu-widget-locatefeatures-single-parameter .dijit-form-Select>tbody>tr>td>.dijitButtonText{
+  height: 20px;
+  height: 20px !important;
+}
+
+.jimu-widget-locatefeatures-single-parameter .dijit-form-FilteringSelect>div.dijitArrowButton.dijitDownArrowButton{
+  width:20px;
+  height: 100%;
+}
+
+.jimu-widget-locatefeatures-single-parameter .dijit-form-FilteringSelect>div.dijitArrowButton.dijitDownArrowButton>input{
+  padding: 0;
+  border: 0;
+  display: inline-block;
+  height: 100%;
+  height: 100% !important;
+}
+
+.jimu-widget-locatefeatures-single-parameter .dijit-form-FilteringSelect>div.dijitInputField>input.dijitInputInner{
+  height: 20px;
+}
+
+.jimu-widget-locatefeatures-single-parameter .dijit-form-ValidationTextBox>div.dijitInputField>input.dijitInputInner{
+  margin: 0;
+  padding:0;
+  height: 100%;
+  height: 100% !important;
+}
+
+.jimu-widget-locatefeatures-single-parameter .dijit-form-NumberTextBox>div.dijitInputField>input.dijitInputInner{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  padding:0 !important;
+  height: 100% !important;
+}
+
+.jimu-widget-locatefeatures-single-parameter .dijit-form-DateTextBox>.dijitRight{
+  width:17px;
+  width:17px !important;
+}
+
+.jimu-widget-locatefeatures-single-parameter .dijit-form-DateTextBox>div.dijitInputField>input.dijitInputInner{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  padding:0 !important;
+  height: 100% !important;
+}
+
+.jimu-widget-locatefeatures-single-parameter .dijitSelectLabel.dijitValidationTextBoxLabel{
+  width:52px;
+  max-width:52px;
+  overflow:hidden;
+  max-width:52px !important;
+  overflow:hidden !important;
+}
+
+.jimu-widget-locatefeatures-single-parameter .prompt{
+  font-size: 12px;
+  color: #686868;
+}
+
+.jimu-widget-locatefeatures-single-parameter .hint{
+  font-style: italic;
+  font-size: 12px;
+  color: #d9dde0;
+  margin-top: 5px;
+}

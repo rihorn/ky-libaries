@@ -8,15 +8,12 @@ define([
 ], function(
   declare, lang, array, Query, QueryTask, FeatureLayerQueryResult
 ) {
-
-  //cache store for dgrid, vs memory store
   var FeatureLayerQueryStore = declare(null, {
 
     queryUrl: "",
-    idProperty: "id",//objectIdField
-    //data is objectId indexed
-    data: null, // [attributes1,...attributes25,undefined.....,attributes51,attributes52,..]
-    _entityData: null, // [attributes1,attributes2,...attributes25,attributes51,attributes52....]
+    idProperty: "id",
+    data: null,
+    _entityData: null,
 
     constructor: function(options) {
       declare.safeMixin(this, options);
@@ -42,41 +39,26 @@ define([
       }
     }, // End constructor
 
-    //get attributes by objectId
     get: function(id) {
       return this.data[id];
     },
-
-    //get objectId value
     getIdentity: function(object) {
       return object[this.idProperty];
     },
 
-    //query is user defiend
-    //query maybe function or {},_FeatureTable.showSelectedRecords()
-    //
-    //options is passed by dgrid,like
-    //{"sort":[{"attribute":"FID","descending":false}],"start":1603,"count":35}
-    //options.start means index of new start row, not objectId
     query: function(query, options) {
       var queryObj = new Query();
       var start = (options && options.start) || 0;
-      // _export_count for export query
-      var count = /*options.count ||*/  options._export_count || this.batchCount;
+      var count = /*options.count ||*/ this.batchCount;
       var filterIds = null;
 
       if (typeof query === 'function') {
-        //if query is function, means we call _FeatureTable.showSelectedRecords(),
-        //so this method is called
         filterIds = query(this._entityData);
       } else if (Object.prototype.toString.call(query) === '[object Array]') {
         filterIds = query;
       }
 
       if (this.objectIds) {
-        //if service support pagination, this.objectIds is null
-        //if service doesn't support objectId, this.objectIds is null
-        //if service support object but not support pagination, this.objectIds is [objectId]
         filterIds = filterIds ? filterIds : this.objectIds;
         if (filterIds.length >= (start + this.batchCount)) {
           queryObj.objectIds = filterIds.slice(start, start + count);
@@ -157,12 +139,10 @@ define([
         for (i = 0; i < result.features.length; i++) {
           if (result.features[i]) {
             var feature = result.features[i];
-
-            //result.features will be attributes array
             result.features[i] = lang.mixin(lang.clone(feature.attributes), {
               geometry: feature.geometry
-            });
-            this.data[result.features[i][objectIdFieldName]] = result.features[i];//attributes
+            });// result.features[i].attributes;
+            this.data[result.features[i][objectIdFieldName]] = result.features[i];
             this._entityData.push(result.features[i]);
           }
         }

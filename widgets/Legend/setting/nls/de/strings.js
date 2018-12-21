@@ -1,13 +1,7 @@
 define({
-  "left": "Linksbündig",
-  "right": "Rechtsbündig",
+  "left": "Links ausrichten",
+  "right": "Rechts ausrichten",
   "arrangement": "Anordnung",
-  "autoUpdate": "Automatisch aktualisieren",
-  "respectCurrentMapScale": "Aktuellen Kartenmaßstab berücksichtigen",
-  "layerSelectorTitle": "Layer auswählen, in denen Legenden angezeigt werden sollen: ",
-  "showLegendsForLayers": "Legenden für Layer anzeigen:",
-  "showBasemapLegends": "Grundkartenlegenden anzeigen",
-  "honorTheWebMapSetting": "Einstellung der Webkarte berücksichtigen",
-  "reset": "Zurücksetzen",
-  "resetTip": "Auf die ursprüngliche Einstellung der Webkarte zurücksetzen"
+  "autoUpdate": "Automatische Aktualisierung",
+  "respectCurrentMapScale": "Aktuellen Kartenmaßstab berücksichtigen"
 });

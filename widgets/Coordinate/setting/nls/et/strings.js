@@ -3,9 +3,7 @@ define({
   "state": "Vaikimisi kuvatakse koordinaadid praeguse kaardi koordinaatsüsteemis. Koordinaatide kuvamiseks muudes koordinaatsüsteemides peate need eraldi lisama ja määrama vastavad transformatsioonid.",
   "outputUnit": "Väljundi ühik",
   "wkid": "Väljundi WKID",
-  "defaultTitle": "Vaikimisi",
   "label": "Väljundi koordinaatsüsteemi nimi",
-  "alias": "Märgis",
   "transformationWkid": "Teisenduse WKID",
   "transformationLabel": "Transformatsiooni märgis",
   "transformForward": "Transformeeri edasi",
@@ -32,7 +30,6 @@ define({
   "Default": "Vaikimisi",
   "Inches": "Tolli",
   "Foot": "Jalga",
-  "Foot_US": "Feet_US",
   "Yards": "Jardi",
   "Miles": "Miili",
   "Nautical_Miles": "Meremiili",
@@ -42,11 +39,7 @@ define({
   "Kilometers": "Kilomeetrit",
   "Decimeters": "Detsimeetrit",
   "Decimal_Degrees": "Kümnendkraadid",
-  "Degrees_Decimal_Minutes": "Kraadid kümnendminutid",
-  "Degree_Minutes_Seconds": "Kraadid minutid sekundid",
+  "Degree_Minutes_Seconds": "Kraadi, minutit, sekundit",
   "MGRS": "MGRS",
-  "USNG": "USNG",
-  "displayOrderLonLatTips": "Koordinaatide kuvamise järjekord:",
-  "lonLatTips": "Pikkuskraad/laiuskraad(X, Y)",
-  "latLonTips": "Laiuskraad/pikkuskraad(Y, X)"
+  "USNG": "USNG"
 });

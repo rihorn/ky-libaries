@@ -1,7 +1,7 @@
 define({
   "_widgetLabel": "قائمة الطبقات",
   "titleBasemap": "خرائط الأساس",
-  "titleLayers": "الطبقات الجاهزة للتشغيل",
+  "titleLayers": "الطبقات التشغيلية",
   "labelLayer": "اسم الطبقة",
   "itemZoomTo": "تكبير إلى",
   "itemTransparency": "معدل الشفافية:",
@@ -11,10 +11,10 @@ define({
   "itemMoveDown": "نقل لأسفل",
   "itemDesc": "الوصف",
   "itemDownload": "تنزيل",
-  "itemToAttributeTable": "عرض في جدول البيانات",
+  "itemToAttributeTable": "فتح جدول البيانات الجدولية",
   "itemShowItemDetails": "إظهار تفاصيل العنصر",
   "empty": "فارغ",
-  "removePopup": "تعطيل العنصر المنبثق",
+  "removePopup": "تعطيل النافذة المنبثقة",
   "enablePopup": "تمكين العنصر المنبثق",
   "turnAllLayersOff": "إيقاف تشغيل كل الطبقات",
   "turnAllLayersOn": "تشغيل كل الطبقات",
@@ -23,9 +23,5 @@ define({
   "turnAllLabelsOff": "إيقاف تشغيل كل التسميات",
   "turnAllLabelsOn": "تشغيل كل التسميات",
   "showLabels": "إظهار لافتات التسمية",
-  "hideLables": "إخفاء التسميات",
-  "keyword": "كلمة أساسية",
-  "basemapLayers": "طبقات خريطة الأساس",
-  "typeAKeywork": "اكتب كلمة أساسية",
-  "layers": "الطبقات"
+  "hideLables": "إخفاء التسميات"
 });

@@ -1,15 +1,11 @@
 define({
   "showLegend": "Näytä selite",
-  "controlPopupMenuTitle": "Valitse, mitkä toiminnot näytetään karttatason kontekstivalikossa",
+  "controlPopupMenuTitle": "Valitse, mitkä toiminnot näytetään karttatason kontekstivalikossa.",
   "zoomto": "Tarkenna kohteeseen",
   "transparency": "Transparency",
-  "controlPopup": "Ota ponnahdusikkunat käyttöön tai poista ne käytöstä",
+  "controlPopup": "Poista popup-ikkuna käytöstä tai ota se käyttöön",
   "moveUpAndDown": "Siirrä ylös / Siirrä alas",
-  "attributeTable": "Näytä ominaisuustaulukossa",
+  "attributeTable": "Avaa ominaisuustietotaulu",
   "url": "Kuvaus / Näytä kohteen tiedot / Lataa",
-  "expandAllLayers": "Laajenna kaikki karttatasot",
-  "expandAllLayersByDefault": "Laajenna kaikki karttatasot oletusarvoisesti",
-  "layerSelectorTitle": "Valitse, mitkä karttatasot näytetään luettelossa",
-  "showTitle": "Näytä otsikko",
-  "showBasemap": "Näytä taustakartta"
+  "layerSelectorTitle": "Valitse, mitkä karttatasot näytetään luettelossa."
 });

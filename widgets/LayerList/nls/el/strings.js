@@ -1,7 +1,7 @@
 define({
   "_widgetLabel": "Λίστα θεματικών επιπέδων",
   "titleBasemap": "Υπόβαθρα",
-  "titleLayers": "Επιχειρησιακά Επίπεδα",
+  "titleLayers": "Επιχειρησιακά επίπεδα",
   "labelLayer": "Όνομα θεματικού επιπέδου",
   "itemZoomTo": "Εστίαση",
   "itemTransparency": "Διαφάνεια",
@@ -11,7 +11,7 @@ define({
   "itemMoveDown": "Μετακίνηση προς τα κάτω",
   "itemDesc": "Περιγραφή",
   "itemDownload": "Λήψη",
-  "itemToAttributeTable": "Προβολή στον πίνακα περιγραφικών γνωρισμάτων",
+  "itemToAttributeTable": "Άνοιγμα Πίνακα Περιγραφικών Γνωρισμάτων",
   "itemShowItemDetails": "Εμφάνιση λεπτομερειών αντικειμένου",
   "empty": "κενό",
   "removePopup": "Απενεργοποίηση αναδυόμενου παραθύρου",
@@ -23,9 +23,5 @@ define({
   "turnAllLabelsOff": "Απενεργοποίηση όλων των ετικετών",
   "turnAllLabelsOn": "Ενεργοποίηση όλων των ετικετών",
   "showLabels": "Εμφάνιση ετικετών",
-  "hideLables": "Απόκρυψη ετικετών",
-  "keyword": "Λέξη-κλειδί",
-  "basemapLayers": "Θεματικά επίπεδα υποβάθρου",
-  "typeAKeywork": "Πληκτρολογήστε μια λέξη-κλειδί.",
-  "layers": "Θεμ. επίπ."
+  "hideLables": "Απόκρυψη ετικετών"
 });

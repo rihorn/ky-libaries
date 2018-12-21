@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 - 2018 Esri. All Rights Reserved.
+// Copyright © 2014 Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -109,16 +109,12 @@ define([
                 name: geocode.name || this._getGeocodeName(geocode.url),
                 url: geocode.url,
                 singleLineFieldName: geocode.singleLineFieldName,
-                placeholder: "Find address or place" || geocode.placeholder ||
+                placeholder: geocode.placeholder ||
                   geocode.name || this._getGeocodeName(geocode.url),
                 maxResults: 6,
                 searchInCurrentMapExtent: false,
                 type: "locator"
               };
-              json.enableLocalSearch = this._isEsriLocator(json.url);
-              json.localSearchMinScale = 300000;
-              json.localSearchDistance = 50000;
-
               validSources.push(json);
             }
           }

@@ -1,0 +1,45 @@
+<div>
+  <div data-dojo-attach-point="nexradContainer">
+    <div data-dojo-attach-point="nexradInfoMenu" class="nexrad-info-menu jimu-float-leading jimu-align-leading" style="font-weight:700; text-align:center;">
+        NEXRAD Base Reflectivity (dBZ)
+        <br />
+	  <div data-dojo-attach-point="nexradScalePrefix" class="nexrad-scale-prefix jimu-float-leading jimu-align-leading" style="font-weight:900; font-size:12px;padding-left:7px;">-</div>
+	  <div data-dojo-attach-point="scaleContainer" class="jimu-float-leading nexrad-scale-container">
+	  	<div data-dojo-attach-point="scaleImage" class="nexrad-scale jimu-float-leading"></div>
+	  </div>
+	  <div data-dojo-attach-point="nexradScaleSuffix" class="nexrad-scale-suffix jimu-float-leading jimu-align-leading" style="font-weight:900;">+</div>
+      <br />
+	  <div data-dojo-attach-point="nexradInfo" class="nexrad-info jimu-float-leading jimu-align-leading" style="font-weight:700; padding-left:7px;">
+		${nls.loading}
+	  </div>
+      <div data-dojo-attach-point="pauseButton" class="jimu-float-leading nexrad-options-pause"></div>
+      <br>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="right" width="50%"><div data-dojo-attach-point="optionLabelInterval" style="font-weight:500;padding-left:4px; padding-right:5px;">
+	    Interval (sec):
+  	  </div></td>
+<td align="left" width="50%" style="padding-bottom:2px;"><select id="intervalSelect" data-dojo-attach-point="intervalSelect" data-dojo-type="dijit/form/Select" class="nexrad-options-interval" style="font-weight:500; padding-right:14px; padding-bottom:1px;">
+  		<option value="10">10</option> 
+  		<option value="5">5</option>
+  		<option value="2">2</option>
+  		<option value="1">1</option>
+  		<option value="0.5">0.5</option>
+  	  </select></td>
+  </tr>
+  <tr>
+    <td align="right" width="50%"><div data-dojo-attach-point="optionLabelOpacity" style="font-weight:500; padding-left:4px;padding-right:5px;">
+		  Opacity (%):
+  	  </div></td>
+  	  <td align="left" width="50%"><select id="opacitySelect" data-dojo-attach-point="opacitySelect" data-dojo-type="dijit/form/Select" class="nexrad-options-opacity" style="font-weight:500; padding-right:14px; padding-bottom:1px;">
+  		<option value="100">100</option>
+  		<option value="80">80</option>
+  		<option value="60">60</option>
+  		<option value="40">40</option>
+  		<option value="20">20</option>
+  	  </select></td>
+  </tr>
+</table>
+	</div>
+  </div>
+</div>

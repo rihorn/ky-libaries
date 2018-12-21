@@ -12,7 +12,6 @@ define({
   "Default": "Padrão",
   "Inches": "Polegadas",
   "Foot": "Pés",
-  "Foot_US": "Feet_US",
   "Yards": "Jardas",
   "Miles": "Milhas",
   "Nautical_Miles": "Milhas Náuticas",
@@ -22,7 +21,7 @@ define({
   "Kilometers": "Quilômetros",
   "Decimeters": "Decímetros",
   "Decimal_Degrees": "Graus",
-  "Degree_Minutes_Seconds": "Graus minutos segundos",
+  "Degree_Minutes_Seconds": "Graus Minutos Segundos",
   "MGRS": "MGRS",
   "USNG": "USNG"
 });

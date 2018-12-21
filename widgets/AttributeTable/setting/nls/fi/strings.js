@@ -5,12 +5,6 @@ define({
   "actions": "Määritä karttatason kentät",
   "field": "Kenttä",
   "alias": "Alias",
-  "url": "URL-osoite",
-  "sortField": "Lajittelukenttä",
-  "sortOrderTooltips": {
-    "toDescending": "Vaihda laskevaan järjestykseen",
-    "toAscending": "Vaihda nousevaan järjestykseen"
-  },
   "visible": "Näkyvä",
   "linkField": "Linkkikenttä",
   "noLayers": "Kohdekarttatasoja ei ole käytettävissä",
@@ -18,8 +12,6 @@ define({
   "exportCSV": "Salli vienti CSV-tiedostoon",
   "expand": "Laajenna pienoisohjelma aluksi",
   "filterByExtent": "Ota käyttöön Suodata kartan laajuuden mukaan oletusarvoisesti",
-  "allowTextSelection": "Salli tekstin valinta",
-  "highlightColor": "Korostusväri",
   "restore": "Palauta oletusarvo",
   "ok": "OK",
   "cancel": "Peruuta",
@@ -33,8 +25,5 @@ define({
   "fieldName": "Nimi",
   "fieldAlias": "Alias",
   "fieldVisibility": "Näkyvyys",
-  "fieldActions": "Toimet",
-  "showAttachments": "Näytä liitteet",
-  "syncWithLayers": "Synkronoi karttatasojen näkyvyysasetusten kanssa",
-  "syncWithLayersHint": "Ominaisuustietotaulussa näkyvät karttatasot synkronoidaan dynaamisesti karttatasojen näkyvyysasetusten kanssa."
+  "fieldActions": "Toimet"
 });

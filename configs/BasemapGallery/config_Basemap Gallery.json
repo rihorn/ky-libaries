@@ -1,0 +1,242 @@
+{
+  "basemapGallery": {
+    "basemaps": [
+      {
+        "layers": [
+          {
+            "id": "World_Topo_Map_54",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
+          },
+          {
+            "id": "Ky_TCM_Base_WGS84WM_9660",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_TCM_Base_WGS84WM/MapServer"
+          }
+        ],
+        "title": "Commonwealth Map/Esri Topographic Hybrid",
+        "thumbnailUrl": "//kygeonet.maps.arcgis.com/sharing/rest/content/items/75da2b1ff911481f97443b2a50dd1ef2/info/thumbnail/TCM_Hybrid_Base_thumb.png",
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        }
+      },
+      {
+        "layers": [
+          {
+            "id": "baseLayer_001",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
+          },
+          {
+            "isReference": false,
+            "id": "overlayLayer_001",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_TCM_Street_Base_WGS84WM/MapServer"
+          }
+        ],
+        "title": "Commonwealth Street Map/Esri Topographic Hybrid",
+        "thumbnailUrl": "//kygeonet.maps.arcgis.com/sharing/rest/content/items/e87cb72b17504ea0bd227dc1a08ec858/info/thumbnail/StreetBase.png",
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        }
+      },
+      {
+        "layers": [
+          {
+            "id": "World_Imagery_9045",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
+          }
+        ],
+        "title": "Esri Imagery",
+        "thumbnailUrl": "//kygeonet.maps.arcgis.com/sharing/rest/content/items/9f73647e5e2541a1be282b9c5d844f5a/info/thumbnail/Esri_Imagery_Base_thumb.png",
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        }
+      },
+      {
+        "layers": [
+          {
+            "id": "World_Light_Gray_Base_2892",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer"
+          },
+          {
+            "id": "World_Light_Gray_Reference_1957",
+            "isReference": true,
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer"
+          }
+        ],
+        "title": "Esri Light Gray Canvas",
+        "thumbnailUrl": "//kygeonet.maps.arcgis.com/sharing/rest/content/items/deb100475ef2442190b884aca7e9bfe0/info/thumbnail/Esri_LightGray_Base_thumb.png",
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        }
+      },
+      {
+        "layers": [
+          {
+            "id": "NatGeo_World_Map_3237",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer"
+          }
+        ],
+        "title": "Esri National Geographic",
+        "thumbnailUrl": "//kygeonet.maps.arcgis.com/sharing/rest/content/items/e69d0ff21e3e420d875699a4930fa59c/info/thumbnail/Esri_NatGeo_Base_thumb.png",
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        }
+      },
+      {
+        "layers": [
+          {
+            "id": "World_Street_Map_7369",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
+          }
+        ],
+        "title": "Esri Street",
+        "thumbnailUrl": "//kygeonet.maps.arcgis.com/sharing/rest/content/items/e64dec1ab186435d9c666bb174937052/info/thumbnail/Esri_Street_Base_thumb.png",
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        }
+      },
+      {
+        "layers": [
+          {
+            "id": "defaultBasemap",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
+          }
+        ],
+        "title": "Esri Topographic",
+        "thumbnailUrl": "//kygeonet.maps.arcgis.com/sharing/rest/content/items/9f63ba44da09476e9e3301328b7e5704/info/thumbnail/Esri_Topographic_Base_thumb.png",
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        }
+      },
+      {
+        "layers": [
+          {
+            "id": "Ky_Topography_KRG_WGS84WM_3085",
+            "layerType": "ArcGISTiledMapServiceLayer",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Topography_KRG_WGS84WM/MapServer"
+          }
+        ],
+        "title": "Kentucky Topography",
+        "thumbnailUrl": "//kygeonet.maps.arcgis.com/sharing/rest/content/items/5555e4dbec544980b355f0d9470fdcc0/info/thumbnail/KRG_Standard_thumb.png",
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        }
+      },
+      {
+        "layers": [
+          {
+            "id": "baseLayer_001",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
+          },
+          {
+            "isReference": false,
+            "id": "overlayLayer_001",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Imagery_2006_2FT_WGS84WM/MapServer"
+          }
+        ],
+        "title": "Ky Imagery 2006",
+        "thumbnailUrl": "//kygeonet.maps.arcgis.com/sharing/rest/content/items/43211d6a0a13488ea68a1d39b9a2a198/info/thumbnail/KyImagery2006Thumb.png",
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        }
+      },
+      {
+        "layers": [
+          {
+            "id": "baseLayer_001",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
+          },
+          {
+            "isReference": false,
+            "id": "overlayLayer_001",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Imagery_2010_1M_WGS84WM/MapServer"
+          }
+        ],
+        "title": "Ky Imagery 2010",
+        "thumbnailUrl": "//kygeonet.maps.arcgis.com/sharing/rest/content/items/475028f974174610a04b8885572c4803/info/thumbnail/KyImagery2010Thumb.png",
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        }
+      },
+      {
+        "layers": [
+          {
+            "id": "baseLayer_001",
+            "layerType": "ArcGISTiledMapServiceLayer",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
+          },
+          {
+            "id": "overlayLayer_001",
+            "layerType": "ArcGISTiledMapServiceLayer",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Imagery_2014_1M_WGS84WM/MapServer"
+          }
+        ],
+        "title": "Ky Imagery 2014",
+        "thumbnailUrl": "//kygeonet.maps.arcgis.com/sharing/rest/content/items/33c7a67b87c943078ed40cbd2533f5c9/info/thumbnail/NAIP_2014_thumb.png",
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        }
+      },
+      {
+        "layers": [
+          {
+            "id": "layer0",
+            "layerType": "ArcGISTiledMapServiceLayer",
+            "opacity": 1,
+            "visibility": true,
+            "url": "http://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer"
+          }
+        ],
+        "title": "USGS National Map",
+        "thumbnailUrl": "//kygeonet.maps.arcgis.com/sharing/rest/content/items/ffdb014c71c348cbb893675d99ea1244/info/thumbnail/NationalMapThumb.png",
+        "spatialReference": {
+          "wkid": 102100,
+          "latestWkid": 3857
+        }
+      }
+    ]
+  }
+}

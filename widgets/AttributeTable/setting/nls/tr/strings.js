@@ -2,24 +2,16 @@ define({
   "instruction": "Başlangıçta Öznitelik Tablosunda gösterilecek katmanları seçin ve yapılandırın.",
   "label": "Katman",
   "show": "Göster",
-  "actions": "Katman alanlarını yapılandır",
+  "actions": "Katman Alanlarını Yapılandır",
   "field": "Alan",
   "alias": "Takma Ad",
-  "url": "URL",
-  "sortField": "Alanları ayır",
-  "sortOrderTooltips": {
-    "toDescending": "Azalan düzene çevir",
-    "toAscending": "Artan düzene çevir"
-  },
   "visible": "Görünür",
-  "linkField": "Alan bağlantısı yap",
+  "linkField": "Bağlantı Alanı",
   "noLayers": "Detay katmanı mevcut değil",
   "back": "Geri",
   "exportCSV": "CSV'ye Aktarmaya İzin Ver",
   "expand": "İlk olarak gereci genişlet",
-  "filterByExtent": "Harita yayılımına göre filtrele özelliğini varsayılan olarak etkinleştir",
-  "allowTextSelection": "Metin seçimine izin ver",
-  "highlightColor": "Rengi vurgula",
+  "filterByExtent": "Harita Yayılımına Göre Filtrele özelliğini varsayılan olarak etkinleştir",
   "restore": "Varsayılan değere geri yükle",
   "ok": "Tamam",
   "cancel": "İptal",
@@ -33,8 +25,5 @@ define({
   "fieldName": "Ad",
   "fieldAlias": "Takma Ad",
   "fieldVisibility": "Görünürlük",
-  "fieldActions": "İşlemler",
-  "showAttachments": "Ekleri göster",
-  "syncWithLayers": "Katman görünürlüğü ile senkronize et",
-  "syncWithLayersHint": "Öznitelik Tablosunda gösterilen katmanlar dinamik olarak katman görünürlükleriyle senkronize edilir."
+  "fieldActions": "İşlemler"
 });

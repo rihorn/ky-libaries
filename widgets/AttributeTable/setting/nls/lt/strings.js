@@ -5,12 +5,6 @@ define({
   "actions": "Konfigūruoti sluoksnio laukus",
   "field": "Laukas",
   "alias": "Pseudonimas",
-  "url": "URL",
-  "sortField": "Rūšiuoti lauką",
-  "sortOrderTooltips": {
-    "toDescending": "Pakeisti į mažėjimo tvarką",
-    "toAscending": "Pakeisti į didėjimo tvarką"
-  },
   "visible": "Matoma",
   "linkField": "Nuorodos laukas",
   "noLayers": "Elementų sluoksnių nėra",
@@ -18,13 +12,11 @@ define({
   "exportCSV": "Leisti eksportuoti į CSV",
   "expand": "Atverti valdiklį iš pradžių",
   "filterByExtent": "Įgalinti numatytąjį filtravimą pagal žemėlapio aprėptį",
-  "allowTextSelection": "Leisti teksto žymėjimą",
-  "highlightColor": "Išryškinimo spalva",
   "restore": "Atkurti numatytąją reikšmę",
   "ok": "Gerai",
   "cancel": "Atšaukti",
   "includePoint": "Įtraukti taško koordinates į eksportuotą failą",
-  "configureLayerFields": "Konfigūruoti laukus",
+  "configureLayerFields": "Konfigūruoti sluoksnio laukus",
   "result": "Išsaugota sėkmingai",
   "warning": "Pirmiausia pasirinkite parinktį Rodyti.",
   "fieldCheckWarning": "Būtina pasirinkti bent vieną lauką.",
@@ -33,8 +25,5 @@ define({
   "fieldName": "Pavadinimas",
   "fieldAlias": "Pseudonimas",
   "fieldVisibility": "Matomumas",
-  "fieldActions": "Veiksmai",
-  "showAttachments": "Rodyti priedus",
-  "syncWithLayers": "Sinchronizuoti su sluoksnių matomumais",
-  "syncWithLayersHint": "Atributų lentelėje rodomi sluoksniai dinamiškai sinchronizuojami su sluoksnių matomumais."
+  "fieldActions": "Veiksmai"
 });

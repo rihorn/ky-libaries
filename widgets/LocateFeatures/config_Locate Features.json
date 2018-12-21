@@ -1,0 +1,134 @@
+{
+  "layers": [
+    {
+      "name": "Cities",
+      "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_CityBnd_Polygon_WGS84WM/MapServer/0",
+      "filter": {
+        "logicalOperator": "AND",
+        "parts": [],
+        "expr": "1=1"
+      },
+      "popup": {
+        "title": "${NAME2}",
+        "order": "NAME2",
+        "fields": [
+          {
+            "name": "COUNTY",
+            "alias": "County",
+            "type": "esriFieldTypeString",
+            "specialType": "none",
+            "showInInfoWindow": true
+          },
+          {
+            "name": "CLASS",
+            "alias": "Class",
+            "type": "esriFieldTypeString",
+            "specialType": "none",
+            "showInInfoWindow": true
+          },
+          {
+            "name": "NAME2",
+            "alias": "NAME2",
+            "type": "esriFieldTypeString",
+            "specialType": "none",
+            "showInInfoWindow": false
+          },
+          {
+            "name": "Full_SOS_Link",
+            "alias": "Info",
+            "type": "esriFieldTypeString",
+            "specialType": "link",
+            "showInInfoWindow": true
+          }
+        ]
+      },
+      "resultsSymbol": {
+        "color": [
+          178,
+          34,
+          34,
+          64
+        ],
+        "outline": {
+          "color": [
+            178,
+            34,
+            34,
+            255
+          ],
+          "width": 1.5,
+          "type": "esriSLS",
+          "style": "esriSLSSolid"
+        },
+        "type": "esriSFS",
+        "style": "esriSFSSolid"
+      },
+      "objectIdField": "OBJECTID"
+    },
+    {
+      "name": "Counties",
+      "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_County_Shading_WGS84WM/MapServer/0",
+      "filter": {
+        "logicalOperator": "AND",
+        "parts": [],
+        "expr": "1=1"
+      },
+      "popup": {
+        "title": "${NAME2}",
+        "order": "NAME2",
+        "fields": [
+          {
+            "name": "NAME2",
+            "alias": "NAME2",
+            "type": "esriFieldTypeString",
+            "specialType": "none",
+            "showInInfoWindow": false
+          },
+          {
+            "name": "ADDNAME",
+            "alias": "ADD",
+            "type": "esriFieldTypeString",
+            "specialType": "none",
+            "showInInfoWindow": true
+          },
+          {
+            "name": "SEAT",
+            "alias": "Seat",
+            "type": "esriFieldTypeString",
+            "specialType": "none",
+            "showInInfoWindow": true
+          },
+          {
+            "name": "MILES_SQ",
+            "alias": "Area",
+            "type": "esriFieldTypeDouble",
+            "specialType": "area",
+            "showInInfoWindow": true
+          }
+        ]
+      },
+      "resultsSymbol": {
+        "color": [
+          255,
+          140,
+          0,
+          64
+        ],
+        "outline": {
+          "color": [
+            255,
+            140,
+            0,
+            255
+          ],
+          "width": 1.5,
+          "type": "esriSLS",
+          "style": "esriSLSSolid"
+        },
+        "type": "esriSFS",
+        "style": "esriSFSSolid"
+      },
+      "objectIdField": "OBJECTID"
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "layers": [
+    {
+      "name": "Cities",
+      "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_CityBnd_Polygon_WGS84WM/MapServer/0",
+      "definitionexpression": "",
+      "spatialsearchlayer": true,
+      "zoomScale": 10000,
+      "shareResult": true,
+      "addToAttrib": true,
+      "expressions": {
+        "expression": [
+          {
+            "alias": "Cities",
+            "textsearchlabel": "Search by City Name",
+            "values": {
+              "value": [
+                {
+                  "fieldObj": {
+                    "name": "NAME2",
+                    "label": "NAME2",
+                    "shortType": "string",
+                    "type": "esriFieldTypeString"
+                  },
+                  "valueObj": {
+                    "value": ""
+                  },
+                  "prompt": "City Name is",
+                  "textsearchhint": "Example: Adairville",
+                  "sqltext": "Upper(NAME2) = Upper('[value]')",
+                  "operation": "stringOperatorIs"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "titlefield": "NAME2",
+      "fields": {
+        "all": false,
+        "field": [
+          {
+            "name": "NAME2",
+            "alias": "NAME2"
+          },
+          {
+            "name": "COUNTY",
+            "alias": "COUNTY"
+          },
+          {
+            "name": "Full_SOS_Link",
+            "visible": false
+          }
+        ]
+      },
+      "links": {
+        "link": [
+          {
+            "alias": "{Full_SOS_Link}",
+            "disablelinksifnull": true,
+            "disableinpopup": false,
+            "popuptype": "text",
+            "content": "{Full_SOS_Link}",
+            "icon": ""
+          }
+        ]
+      },
+      "showattachments": false,
+      "layersymbolfrom": "config"
+    }
+  ],
+  "initialView": "text",
+  "multipartgraphicsearchchecked": false,
+  "addpointtolerancechecked": false,
+  "keepgraphicalsearchenabled": true,
+  "autozoomtoresults": true,
+  "toleranceforpointgraphicalselection": 6,
+  "bufferDefaults": {
+    "bufferUnits": {
+      "bufferUnit": [
+        {
+          "name": "UNIT_FOOT",
+          "label": "Feet"
+        },
+        {
+          "name": "UNIT_STATUTE_MILE",
+          "label": "Miles"
+        },
+        {
+          "name": "UNIT_METER",
+          "label": "Meter"
+        }
+      ]
+    },
+    "bufferDefaultValue": 5,
+    "bufferWKID": 102003,
+    "simplefillsymbol": {
+      "color": [
+        1,
+        185,
+        253,
+        128
+      ],
+      "outline": {
+        "color": [
+          1,
+          185,
+          253,
+          204
+        ],
+        "width": 1,
+        "type": "esriSLS",
+        "style": "esriSLSSolid"
+      },
+      "type": "esriSFS",
+      "style": "esriSFSSolid"
+    }
+  },
+  "spatialrelationships": {
+    "spatialrelationship": [
+      {
+        "name": "esriSpatialRelContains",
+        "label": "entirely contained in"
+      },
+      {
+        "name": "esriSpatialRelIntersects",
+        "label": "intersected by"
+      },
+      {
+        "name": "esriSpatialRelEnvelopeIntersects",
+        "label": "intersected by envelope of"
+      }
+    ]
+  },
+  "graphicalsearchoptions": {
+    "enablepointselect": true,
+    "enablelineselect": true
+  },
+  "symbols": {
+    "simplemarkersymbol": null,
+    "picturemarkersymbol": {
+      "url": "/widgets/eSearch/images/i_search.png",
+      "height": "20",
+      "width": "20",
+      "type": "esriPMS",
+      "angle": "0"
+    },
+    "simplelinesymbol": {
+      "type": "esriSLS",
+      "style": "esriSLSSolid",
+      "color": [
+        255,
+        0,
+        0,
+        204
+      ],
+      "width": 2
+    },
+    "simplefillsymbol": {
+      "color": [
+        255,
+        0,
+        0,
+        128
+      ],
+      "outline": {
+        "color": [
+          255,
+          0,
+          0,
+          204
+        ],
+        "width": 2,
+        "type": "esriSLS",
+        "style": "esriSLSSolid"
+      },
+      "type": "esriSFS",
+      "style": "esriSFSSolid"
+    }
+  }
+}

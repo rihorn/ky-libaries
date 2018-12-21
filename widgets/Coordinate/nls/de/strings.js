@@ -1,5 +1,5 @@
 define({
-  "_widgetLabel": "Koordinaten",
+  "_widgetLabel": "Koordinate",
   "hintMessage": "Zum Abrufen von Koordinaten auf die Karte klicken",
   "defaultLabel": "Standard",
   "realtimeLabel": "Maus zum Abrufen von Koordinaten auf der Karte bewegen",
@@ -12,8 +12,7 @@ define({
   "Default": "Standard",
   "Inches": "Zoll",
   "Foot": "Fuß",
-  "Foot_US": "Feet_US",
-  "Yards": "Yard",
+  "Yards": "Yards",
   "Miles": "Meilen",
   "Nautical_Miles": "Seemeilen",
   "Millimeters": "Millimeter",
@@ -22,7 +21,7 @@ define({
   "Kilometers": "Kilometer",
   "Decimeters": "Dezimeter",
   "Decimal_Degrees": "Grad",
-  "Degree_Minutes_Seconds": "Grad, Minuten, Sekunden",
+  "Degree_Minutes_Seconds": "Grad Minuten Sekunden",
   "MGRS": "MGRS",
   "USNG": "USNG"
 });

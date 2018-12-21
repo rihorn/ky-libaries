@@ -12,7 +12,6 @@ define({
   "Default": "Výchozí",
   "Inches": "Palce",
   "Foot": "Stopy",
-  "Foot_US": "Stopa_US",
   "Yards": "Yardy",
   "Miles": "Míle",
   "Nautical_Miles": "Námořní míle",
@@ -22,7 +21,7 @@ define({
   "Kilometers": "Kilometry",
   "Decimeters": "Decimetry",
   "Decimal_Degrees": "Stupně",
-  "Degree_Minutes_Seconds": "Stupně minuty vteřiny",
+  "Degree_Minutes_Seconds": "Stupně, minuty, vteřiny",
   "MGRS": "MGRS",
   "USNG": "USNG"
 });

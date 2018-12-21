@@ -5,12 +5,6 @@ define({
   "actions": "Skonfiguruj pola warstwy",
   "field": "Pole",
   "alias": "Alias",
-  "url": "Adres URL",
-  "sortField": "Pole sortowania",
-  "sortOrderTooltips": {
-    "toDescending": "Zmień na porządek malejący",
-    "toAscending": "Zmień na porządek rosnący"
-  },
   "visible": "Widoczne",
   "linkField": "Pole łącza",
   "noLayers": "Brak warstw obiektu",
@@ -18,8 +12,6 @@ define({
   "exportCSV": "Zezwalaj na eksport do pliku CSV",
   "expand": "Wstępnie rozwiń widżet",
   "filterByExtent": "Domyślnie włącz opcję Filtruj wg zasięgu mapy",
-  "allowTextSelection": "Zezwalaj na selekcję tekstu",
-  "highlightColor": "Kolor wyróżnienia",
   "restore": "Przywróć wartość domyślną",
   "ok": "OK",
   "cancel": "Anuluj",
@@ -33,8 +25,5 @@ define({
   "fieldName": "Nazwa",
   "fieldAlias": "Alias",
   "fieldVisibility": "Widoczność",
-  "fieldActions": "Operacje",
-  "showAttachments": "Pokaż załączniki",
-  "syncWithLayers": "Synchronizuj z widocznością warstw",
-  "syncWithLayersHint": "Warstwy wyświetlane w tabeli atrybutów są dynamicznie synchronizowane z widocznością warstw."
+  "fieldActions": "Operacje"
 });

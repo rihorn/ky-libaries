@@ -1,0 +1,39 @@
+{
+  "bookmarks2D": [],
+  "bookmarks3D": [
+    {
+      "name": "China",
+      "camera": [
+        116.38,
+        39.9,
+        100000,
+        0,
+        1
+      ],
+      "thumbnail": "images/thumbnail_beijing.png"
+    },
+    {
+      "name": "SF",
+      "camera": [
+        -122.3956840179302,
+        37.78329055435611,
+        235.5668830918148,
+        327.4062957304337,
+        66.71004825534648
+      ],
+      "thumbnail": "images/thumbnail_sf.png"
+    },
+    {
+      "name": "USA",
+      "camera": [
+        -108.919,
+        34.2259,
+        4126880,
+        340.71,
+        5.91655
+      ],
+      "thumbnail": "images/thumbnail_us.png"
+    }
+  ],
+  "flyTime": 3000
+}

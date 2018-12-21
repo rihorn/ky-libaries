@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// Copyright © 2014 - 2018 Esri. All Rights Reserved.
+// Copyright © 2014 Esri. All Rights Reserved.
 //
 // Licensed under the Apache License Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -49,12 +49,7 @@ define([
 
 
       setConfig: function(config) {
-        // compitible with old verion, undefined means 'show title'
-        var titleValue = config.showTitle === false ? false : true;
-        this.showTitle.setValue(titleValue);
-        this.showBasemap.setValue(config.showBasemap);
         this.showLegend.setValue(config.showLegend);
-        this.expandAllLayersByDefault.setValue(config.expandAllLayersByDefault);
         if(config.contextMenu) {
           this.zoomto.setValue(config.contextMenu.ZoomTo);
           this.transparency.setValue(config.contextMenu.Transparency);
@@ -66,10 +61,7 @@ define([
       },
 
       getConfig: function() {
-        this.config.showTitle = this.showTitle.getValue();
-        this.config.showBasemap = this.showBasemap.getValue();
         this.config.showLegend = this.showLegend.getValue();
-        this.config.expandAllLayersByDefault = this.expandAllLayersByDefault.getValue();
         if(!this.config.contextMenu) {
           this.config.contextMenu = {};
         }

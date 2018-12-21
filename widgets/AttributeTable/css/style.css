@@ -142,7 +142,7 @@
   display: none;
 }
 .jimu-widget-attributetable .dgrid-column-selectionHandle.selection-handle-column{
-  width: 20px !important;
+  width: 20px;
   background-color: #eee;
   padding: 0 !important;
   border-bottom: 1px solid #ccc !important;
@@ -151,12 +151,21 @@
 .dojoDndSource.dojoDndTarget.dojoDndHorizontal.dojoDndContainer .dgrid-column-selectionHandle.selection-handle-column{
   pointer-events: none;
 }
+/*.jimu-widget-attributetable .dgrid-column-selectionHandle.selection-handle-column .selection-handle{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  min-height: 28px;
+  vertical-align:middle;
+}*/
+.jimu-widget-attributetable .dgrid-sortable {
+  /*font-weight: bold;*/
+}
 .jimu-widget-attributetable .dgrid-cell {
   border-right: solid 1px #ccc;
+  /*width: auto;
+  min-width: 100px;*/
   width: 100px;
-}
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table.auto-width .dgrid-cell{
-  width: auto;
 }
 .jimu-widget-attributetable .dgrid-row .dgrid-cell {
   border:medium none;
@@ -167,22 +176,6 @@
     right: 0;
     left: 17px;
 }
-.has-webkit.jimu-rtl .jimu-widget-attributetable .dgrid-rtl-swap .dgrid-header-row {
-  left: 6px;
-}
-.dj_edge.jimu-rtl .jimu-widget-attributetable .dgrid-header-row {
-  left: 16px;
-  right: 0;
-}
-.dj_edge.jimu-rtl .dgrid-header-scroll,
-.dj_edge.jimu-rtl .dgrid-hider-toggle {
-  right: auto;
-  left: 0;
-}
-.dj_edge.jimu-rtl .dgrid-hider-menu {
-  left: 17px;
-  right: auto;
-}
 .jimu-rtl .jimu-widget-attributetable .dgrid-cell {
   text-align: right;
   border-left: solid 1px #ccc;
@@ -190,18 +183,6 @@
 .jimu-widget-attributetable .dgrid-header {
   overflow: hidden;
   background-color: #eee;
-}
-.jimu-widget-attributetable .dgrid-header.dgrid-scrollbar-width {
-  min-width: 16px;
-}
-.jimu-widget-attributetable .dgrid-header .dgrid-cell:last-child {
-  border-right-color: transparent;
-}
-.jimu-widget-attributetable .dgrid-header .dgrid-cell:last-child .dgrid-resize-handle {
-  display: none;
-}
-.jimu-rtl .jimu-widget-attributetable .dgrid-header .dgrid-cell:last-child {
-  border-left-color: transparent;
 }
 .jimu-widget-attributetable .dgrid-cell a{
   color: #21759B;
@@ -319,119 +300,6 @@ background-color:#E1F0FB;
   position: relative;
 }
 
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column{
-  overflow: visible;
-  text-align: center;
-}
-
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos{
-  text-align: center;
-  display: inline-block;
-  position: relative;
-}
-
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .show-attachments-div{
-  display: inline-block;
-  color: #24B5CC;
-  cursor: pointer;
-  padding: 2px 10px;
-  height: 20px;
-  border-radius: 10px;
-  line-height: 16px;
-}
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .show-attachments-div.has-attachments:hover,
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .show-attachments-div.has-attachments.selected{
-  background: #24B5CC;
-  color: white;
-}
-
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup{
-  display: none;
-  position: absolute;
-  background: #FFFFFF;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.50);
-  border-radius: 2px;
-  width: 240px;
-  left: -245px;
-  top: 4px;
-  text-align: left;
-}
-.jimu-rtl .jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup{
-  left: auto;
-  right: -245px;
-  text-align: right;
-}
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup.show{
-  display: block;
-}
-
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup-header{
-  background: none;
-  padding-left: 10px;
-  font-size: 14px;
-  color: #000000;
-  font-weight: bold;
-  line-height: 36px;
-}
-.jimu-rtl .jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup-header{
-  padding-left: 0;
-  padding-right: 10px;
-}
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup-header:hover{
-  background: #fff;
-}
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup-header .close {
-  display: inline-block;
-  width: 36px;
-  height: 36px;
-  background: url('../images/close.png') center no-repeat;
-  cursor: pointer;
-}
-
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup-content{
-  box-sizing: border-box;
-  width: 100%;
-  max-height: 160px;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding-left: 20px;
-}
-.jimu-rtl .jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup-content{
-  padding-left: 0;
-  padding-right: 20px;
-}
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup-content li {
-  vertical-align: middle;
-  background-image: url('./images/file.png');
-  background-repeat: no-repeat;
-  padding-left: 30px;
-  background-size: 20px;
-  background-position: left;
-}
-.jimu-rtl .jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup-content li{
-  padding-left: 0;
-  padding-right: 30px;
-  background-position: right;
-}
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup-content li.image-type{
-  background-image: url('./images/image.png');
-}
-/*.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup-content li:hover{
-  background-color: #eee;
-}*/
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup-content li a{
-  display: inline-block;
-  width: 176px;
-  height: 36px;
-  line-height: 36px;
-}
-.jimu-widget-attributetable .jimu-widget-attributetable-feature-table .attachments-column .attachment-infos .attachment-popup-content li a:hover{
-  cursor: pointer;
-}
-
 /* for column menu*/
 .jimu-widget-attributetable-feature-menu .menuItemClass{
   cursor: pointer;
@@ -443,88 +311,4 @@ background-color:#E1F0FB;
 .jimu-widget-attributetable-feature-menu.dijitMenu .dijitMenuItemSelected{
   background-color: #f1f1f1 !important;
   color: #000!important;
-}
-
-.jimu-widget-attributetable-feature-table-footer {
-  position: absolute;
-  bottom: 4px;
-  background: white;
-  width: 100%;
-}
-.widget-at-filter-popup .content-absolute{
-  left: 0;
-  right: 0;
-}
-
-/* for message dialog */
-.jimu-widget-attributetable-feature-table-popup p {
-  margin-bottom: 10px;
-}
-.jimu-widget-attributetable-feature-table-popup strong {
-  font-family: "Avenir Medium";
-}
-.jimu-widget-attributetable-feature-table-popup mark {
-  display: inline-block;
-  color: #596679;
-  background: #f1f1f1;
-  border-bottom: 1px solid #ddd;
-  margin: 5px;
-  padding: 5px;
-  font-size: 12px;
-}
-.jimu-widget-attributetable-feature-table-popup pre {
-  padding: 5px;
-  white-space: normal;
-  font-size: 13px;
-  color: #595959;
-  background-color: #f8f8f8;
-  border: 1px solid #efefef;
-  margin: 10px 0 15px;
-}
-.jimu-widget-attributetable-feature-table-popup .tags {
-  margin-bottom: 10px;
-}
-.jimu-widget-attributetable-feature-table-popup .example-block {
-  margin-top: 10px;
-}
-.jimu-widget-attributetable-feature-table-popup .input-row {
-  margin: 20px auto;
-  color: #596679;
-}
-.jimu-widget-attributetable-feature-table-popup .input-row > * {
-  vertical-align: top;
-}
-.jimu-widget-attributetable-feature-table-popup .input-row a {
-  color: #485566;
-  cursor: pointer;
-  line-height: 16px;
-  margin-left: 10px;
-}
-.jimu-rtl .jimu-widget-attributetable-feature-table-popup .input-row a {
-  margin-left: auto;
-  margin-right: 10px;
-}
-.jimu-widget-attributetable-feature-table-popup .input-row a.hint-button {
-  font-size: 12px;
-  color: #999;
-}
-.jimu-widget-attributetable-feature-table-popup .input-row a.hint-button:hover {
-  color: #595959;
-}
-.jimu-widget-attributetable-notable {
-  color: #999;
-  line-height: 1.5;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  max-width: 400px;
-  transform: translate(-50%, -50%);
-}
-.jimu-widget-attributetable-notable.hidden {
-  display: none;
-}
-
-.closed .jimu-widget-attributetable-notable {
-  display: none;
 }

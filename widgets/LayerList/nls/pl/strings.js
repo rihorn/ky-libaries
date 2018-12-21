@@ -1,8 +1,8 @@
 define({
   "_widgetLabel": "Lista warstw",
   "titleBasemap": "Mapy bazowe",
-  "titleLayers": "Robocze warstwy tematyczne",
-  "labelLayer": "Nazwa warstwy",
+  "titleLayers": "Warstwy operacyjne",
+  "labelLayer": "Nazwa warstwy tematycznej",
   "itemZoomTo": "Powiększ do",
   "itemTransparency": "Przezroczystość",
   "itemTransparent": "Przezroczysty",
@@ -11,8 +11,8 @@ define({
   "itemMoveDown": "Przesuń w dół",
   "itemDesc": "Opis",
   "itemDownload": "Pobierz",
-  "itemToAttributeTable": "Wyświetl w tabeli atrybutów",
-  "itemShowItemDetails": "Wyświetlaj szczegóły elementu",
+  "itemToAttributeTable": "Otwórz tabelę atrybutów",
+  "itemShowItemDetails": "Pokaż szczegóły elementu",
   "empty": "puste",
   "removePopup": "Wyłącz okno podręczne",
   "enablePopup": "Włącz okna podręczne",
@@ -23,9 +23,5 @@ define({
   "turnAllLabelsOff": "Wyłącz wszystkie etykiety",
   "turnAllLabelsOn": "Włącz wszystkie etykiety",
   "showLabels": "Pokaż etykiety",
-  "hideLables": "Ukryj etykiety",
-  "keyword": "Słowo kluczowe",
-  "basemapLayers": "Warstwy mapy bazowej",
-  "typeAKeywork": "Wpisz słowo kluczowe",
-  "layers": "Warstwy"
+  "hideLables": "Ukryj etykiety"
 });

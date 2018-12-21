@@ -2,24 +2,16 @@ define({
   "instruction": "Chọn và cấu hình các lớp sẽ được hiển thị ban đầu trong Bảng Thuộc tính.",
   "label": "Lớp",
   "show": "Hiển thị",
-  "actions": "Cấu hình trường của lớp dữ liệu",
+  "actions": "Cấu hình Trường Lớp",
   "field": "Trường",
   "alias": "Bí danh",
-  "url": "URL",
-  "sortField": "Sắp xếp theo trường",
-  "sortOrderTooltips": {
-    "toDescending": "Thay đổi thứ tự sắp xếp thành giảm dần",
-    "toAscending": "Thay đổi thứ tự sắp xếp thành tăng dần"
-  },
   "visible": "Hiển thị",
-  "linkField": "Trường liên kết",
+  "linkField": "Trường Liên kết",
   "noLayers": "Không có lớp đối tượng nào",
   "back": "Quay lại",
   "exportCSV": "Cho phép xuất ra CSV",
   "expand": "Mở rộng tiện ích lúc ban đầu",
-  "filterByExtent": "Bật lọc theo phạm vi bản đồ mặc định",
-  "allowTextSelection": "Cho phép chọn văn bản",
-  "highlightColor": "Màu sắc nổi bật",
+  "filterByExtent": "Bật Lọc theo Phạm vi Bản đồ theo mặc định",
   "restore": "Khôi phục về giá trị mặc định",
   "ok": "OK",
   "cancel": "Hủy",
@@ -33,8 +25,5 @@ define({
   "fieldName": "Tên",
   "fieldAlias": "Bí danh",
   "fieldVisibility": "Khả năng hiển thị",
-  "fieldActions": "Các hành động",
-  "showAttachments": "Hiển thị tệp đính kèm",
-  "syncWithLayers": "Đồng bộ hóa với khả năng hiển thị lớp",
-  "syncWithLayersHint": "Lớp hiển thị trong Bảng Thuộc tính được đồng bộ hóa linh động với khả năng hiển thị lớp."
+  "fieldActions": "Các hành động"
 });

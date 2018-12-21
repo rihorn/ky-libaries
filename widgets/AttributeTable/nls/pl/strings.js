@@ -14,17 +14,15 @@ define({
   "highlight": "Wyróżnij grafikę",
   "selectAll": "Zaznacz rekordy na wszystkich stronach",
   "selectPage": "Zaznacz rekordy na bieżącej stronie",
-  "clearSelection": "Clear selection",
+  "clearSelection": "Wyczyść selekcję",
   "filter": "Filtruj",
-  "setFilterTip": "Skonfiguruj poprawnie filtry.",
-  "noFilterTip": "Jeśli wyrażenia filtrów nie zostaną zdefiniowane, zadanie zapytania zwróci wszystkie obiekty w podanym źródle danych.",
-  "filterByExtent": "Filtrowanie według zasięgu mapy",
+  "setFilterTip": "Skonfiguruj poprawnie filtr.",
+  "noFilterTip": "Jeżeli wyrażenie filtru nie zostanie zdefiniowane, zadanie zapytania zwróci wszystkie obiekty w podanym źródle danych.",
+  "filterByExtent": "Filtruj wg zasięgu mapy",
   "showSelectedRecords": "Pokaż wybrane rekordy",
   "showAllRecords": "Pokaż wszystkie rekordy",
   "showRelatedRecords": "Pokaż powiązane rekordy",
   "noRelatedRecords": "Nie znaleziono powiązanych rekordów",
-  "highlightAllRecords": "Wyróżnij wszystkie rekordy na mapie",
-  "attachmentColumn": "Zdjęcia i pliki",
   "refresh": "Odśwież",
   "features": "obiekty",
   "records": "rekordy",
@@ -33,32 +31,11 @@ define({
   "indicate": "Zlokalizuj wybrane",
   "columns": "Pokaż/ukryj kolumny",
   "selectionSymbol": "Symbol selekcji",
-  "closeMessage": "Ukryj tabelę (rozwiń ją ponownie od dołu)",
+  "closeMessage": "Ukryj tabelę [rozwiń ją ponownie od dołu]",
   "dataNotAvailable": "Dane są niedostępne!<br>Kliknij przycisk [Odśwież], aby ponowić próbę.",
   "openTableTip": "Otwórz tabelę atrybutów",
   "closeTableTip": "Ukryj tabelę atrybutów",
   "sortAsc": "Sortuj rosnąco",
   "sortDes": "Sortuj malejąco",
-  "statistics": "Statystyka",
-  "attachments": "Załączniki",
-  "files": "plikami",
-  "keepRichTextLabel": "Zachowaj format RTF",
-  "whatsThis": "Co to jest?",
-  "richTextMessage": {
-    "explanatoryText": {
-      "line1": "Warstwa ${layerName} zawiera następujące pola w formacie RTF: ",
-      "line2": " , które mogą zawierać style formatowania tekstu, jak np. czcionki, kolory i rozmiary tekstu.",
-      "line3": "Po wyeksportowaniu do pliku CSV style formatowania zostaną zachowane w postaci znaczników HTML. Można zdecydować, że format RTF nie zostanie zachowany, usuwając zaznaczenie pola \"Zachowaj format RTF\"."
-    },
-    "example": {
-      "label": "Przykład:",
-      "scenarios": {
-        "first": "zostanie wyeksportowany domyślnie jako poniższy tekst:",
-        "second": "i poniższy tekst bez formatu RTF:"
-      }
-    }
-  },
-  "noTablesAvailable": "Brak tabel dostępnych do wyświetlenia.",
-  "checkConfigutationToSelectLayers": "Przejdź na stronę ustawień widżetu, aby wybrać warstwy.",
-  "checkLayerListToSelectLayers": "Tabela atrybutów jest synchronizowana z warstwami widocznymi na mapie, warstwy można włączać i wyłączać przy użyciu widżetu, takiego jak Lista warstw."
+  "statistics": "Statystyka"
 });

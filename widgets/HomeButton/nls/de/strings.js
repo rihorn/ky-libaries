@@ -1,3 +1,3 @@
 define({
-  "_widgetLabel": "Standardausdehnung"
+  "_widgetLabel": "Startseite"
 });

@@ -2,7 +2,7 @@ define({
   "_widgetLabel": "Seznam vrstev",
   "titleBasemap": "Podkladové mapy",
   "titleLayers": "Operační vrstvy",
-  "labelLayer": "Jméno vrstvy",
+  "labelLayer": "Název vrstvy",
   "itemZoomTo": "Přiblížit na",
   "itemTransparency": "Průhlednost",
   "itemTransparent": "Průhledná",
@@ -11,10 +11,10 @@ define({
   "itemMoveDown": "Přesunout dolů",
   "itemDesc": "Popis",
   "itemDownload": "Stáhnout",
-  "itemToAttributeTable": "Zobrazit v atributové tabulce",
+  "itemToAttributeTable": "Otevřít atributovou tabulku",
   "itemShowItemDetails": "Ukázat podrobnosti položky",
   "empty": "prázdné",
-  "removePopup": "Zakázat vyskakovací okno",
+  "removePopup": "Zakázat vyskakovací okna",
   "enablePopup": "Povolit vyskakovací okno",
   "turnAllLayersOff": "Vypnout všechny vrstvy",
   "turnAllLayersOn": "Zapnout všechny vrstvy",
@@ -23,9 +23,5 @@ define({
   "turnAllLabelsOff": "Vypnout všechny popisky",
   "turnAllLabelsOn": "Zapnout všechny popisky",
   "showLabels": "Zobrazit popisky",
-  "hideLables": "Skrýt popisky",
-  "keyword": "Klíčové slovo",
-  "basemapLayers": "Vrstvy podkladové mapy",
-  "typeAKeywork": "Zadejte klíčové slovo",
-  "layers": "Vrstvy"
+  "hideLables": "Skrýt popisky"
 });

@@ -1,0 +1,5 @@
+{
+	"url": "http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi?",
+	"interval": "1000",
+	"opacity": "0.6"
+}

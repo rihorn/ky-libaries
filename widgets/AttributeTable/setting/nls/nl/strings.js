@@ -5,21 +5,13 @@ define({
   "actions": "Laagvelden configureren",
   "field": "Veld",
   "alias": "Alias",
-  "url": "URL",
-  "sortField": "Veld sorteren",
-  "sortOrderTooltips": {
-    "toDescending": "Verander naar aflopende volgorde",
-    "toAscending": "Verander naar oplopende volgorde"
-  },
   "visible": "Zichtbaar",
-  "linkField": "Linkveld",
+  "linkField": "Koppelingsveld",
   "noLayers": "Er zijn geen objectlagen beschikbaar",
   "back": "Vorige",
   "exportCSV": "Exporteren naar CSV",
   "expand": "Klap de widget eerst uit",
   "filterByExtent": "Schakel Filteren op kaartextent standaard in",
-  "allowTextSelection": "Sta tekstselectie toe",
-  "highlightColor": "Markeringskleur",
   "restore": "Standaardwaarde herstellen",
   "ok": "OK",
   "cancel": "Annuleren",
@@ -33,8 +25,5 @@ define({
   "fieldName": "Naam",
   "fieldAlias": "Alias",
   "fieldVisibility": "Zichtbaarheid",
-  "fieldActions": "Acties",
-  "showAttachments": "Bijlagen weergeven",
-  "syncWithLayers": "Met laagzichtbaarheid synchroniseren",
-  "syncWithLayersHint": "De lagen getoond in de attribuuttabel zijn dynamisch gesynchroniseerd met de laagzichtbaarheid."
+  "fieldActions": "Acties"
 });

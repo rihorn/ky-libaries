@@ -11,7 +11,7 @@ define({
   "itemMoveDown": "Sposta giù",
   "itemDesc": "Descrizione",
   "itemDownload": "Download",
-  "itemToAttributeTable": "Visualizza nella tabella degli attributi",
+  "itemToAttributeTable": "Apri tabella attributi",
   "itemShowItemDetails": "Mostra dettagli elemento",
   "empty": "vuoto",
   "removePopup": "Disabilita popup",
@@ -22,10 +22,6 @@ define({
   "collapseAlllayers": "Comprimi tutti i layer",
   "turnAllLabelsOff": "Disattiva tutte le etichette",
   "turnAllLabelsOn": "Attiva tutte le etichette",
-  "showLabels": "Mostra etichette",
-  "hideLables": "Nascondi etichette",
-  "keyword": "Parola chiave",
-  "basemapLayers": "Layer del basemap",
-  "typeAKeywork": "Digitare una parola chiave",
-  "layers": "Livelli"
+  "showLabels": "Mostra Etichette",
+  "hideLables": "Nascondi Etichette"
 });

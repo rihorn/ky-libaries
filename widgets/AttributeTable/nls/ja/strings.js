@@ -11,7 +11,7 @@ define({
   "exportAll": "すべてを CSV にエクスポート",
   "options": "オプション",
   "zoomto": "ズーム",
-  "highlight": "グラフィックスのハイライト表示",
+  "highlight": "グラフィックのハイライト表示",
   "selectAll": "すべてのページのレコードを選択",
   "selectPage": "現在のページのレコードを選択",
   "clearSelection": "選択の解除",
@@ -19,12 +19,10 @@ define({
   "setFilterTip": "フィルターを正しく設定してください。",
   "noFilterTip": "フィルターの条件式が定義されていない場合、このクエリ タスクは、指定したデータ ソース内のすべてのフィーチャをリストします。",
   "filterByExtent": "マップ範囲によるフィルター",
-  "showSelectedRecords": "選択レコードを表示",
+  "showSelectedRecords": "選択レコードの表示",
   "showAllRecords": "すべてのレコードを表示",
   "showRelatedRecords": "関連レコードの表示",
   "noRelatedRecords": "関連するレコードが見つかりませんでした",
-  "highlightAllRecords": "マップ上のすべてのレコードをハイライト表示",
-  "attachmentColumn": "写真とファイル",
   "refresh": "更新",
   "features": "フィーチャ",
   "records": "レコード",
@@ -39,26 +37,5 @@ define({
   "closeTableTip": "属性テーブルの非表示",
   "sortAsc": "昇順で並べ替え",
   "sortDes": "降順で並べ替え",
-  "statistics": "統計",
-  "attachments": "添付ファイル",
-  "files": "ファイル",
-  "keepRichTextLabel": "リッチ テキスト フォーマットを維持",
-  "whatsThis": "内容",
-  "richTextMessage": {
-    "explanatoryText": {
-      "line1": "${layerName} には次のリッチ テキスト フィールドが含まれます: ",
-      "line2": " フォント、色、テキスト サイズなど、テキスト書式設定スタイルが含まれる場合があります。",
-      "line3": "CSV にエクスポートする場合、書式設定スタイルは HTML タグの形式で維持されます。 [リッチ テキスト フォーマットを維持] ボックスをオフにすることで、リッチ テキスト フォーマットを維持しないことを選択できます。"
-    },
-    "example": {
-      "label": "例:",
-      "scenarios": {
-        "first": "デフォルトでは、次のテキストとしてエクスポートされます:",
-        "second": "リッチ テキスト フォーマットでない場合次のテキストとしてエクスポートされます:"
-      }
-    }
-  },
-  "noTablesAvailable": "表示できるテーブルはありません。",
-  "checkConfigutationToSelectLayers": "ウィジェット設定ページに移動して、レイヤーを選択してください。",
-  "checkLayerListToSelectLayers": "属性テーブルはマップ内の表示レイヤーと同期しています。レイヤー リストなどのウィジェットを使用して、レイヤーのオン/オフを切り替えることができます。"
+  "statistics": "統計"
 });

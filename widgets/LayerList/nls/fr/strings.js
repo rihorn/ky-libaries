@@ -11,8 +11,8 @@ define({
   "itemMoveDown": "Descendre",
   "itemDesc": "Description",
   "itemDownload": "Télécharger",
-  "itemToAttributeTable": "Afficher dans la table attributaire",
-  "itemShowItemDetails": "Afficher les détails des éléments",
+  "itemToAttributeTable": "Ouvrir la table attributaire",
+  "itemShowItemDetails": "Afficher les détails de l'élément",
   "empty": "vide",
   "removePopup": "Désactiver la fenêtre contextuelle",
   "enablePopup": "Activer la fenêtre contextuelle",
@@ -23,9 +23,5 @@ define({
   "turnAllLabelsOff": "Désactiver toutes les étiquettes",
   "turnAllLabelsOn": "Activer toutes les étiquettes",
   "showLabels": "Afficher les étiquettes",
-  "hideLables": "Masquer les étiquettes",
-  "keyword": "Mot-clé",
-  "basemapLayers": "Couches de fond de carte",
-  "typeAKeywork": "Saisir un mot-clé",
-  "layers": "Couches"
+  "hideLables": "Masquer les étiquettes"
 });
