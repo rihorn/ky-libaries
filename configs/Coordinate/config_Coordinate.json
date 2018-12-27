@@ -1,0 +1,79 @@
+{
+  "outputunit": "dms",
+  "spatialReferences": [
+    {
+      "wkid": "4326",
+      "label": "Decimal Degrees - GCS_WGS_1984",
+      "outputUnit": "DECIMAL_DEGREES",
+      "transformationWkid": "",
+      "transformationLabel": "Transformation Name",
+      "transformForward": false,
+      "options": {
+        "sameSRWithMap": false,
+        "isGeographicCS": true,
+        "isGeographicUnit": true,
+        "isProjectedCS": false,
+        "isProjectUnit": false,
+        "spheroidCS": 4326,
+        "defaultUnit": "Degree",
+        "unitRate": 1
+      }
+    },
+    {
+      "wkid": "3089",
+      "label": "Ky Single Zone - NAD_1983_StatePlane_Kentucky_FIPS_1600_Feet",
+      "outputUnit": "Foot_US",
+      "transformationWkid": "",
+      "transformationLabel": "Transformation Name",
+      "transformForward": false,
+      "options": {
+        "sameSRWithMap": false,
+        "isGeographicCS": false,
+        "isGeographicUnit": false,
+        "isProjectedCS": true,
+        "isProjectUnit": true,
+        "spheroidCS": 4269,
+        "defaultUnit": "Foot_US",
+        "unitRate": 1
+      }
+    },
+    {
+      "wkid": "2246",
+      "label": "Ky North Zone - NAD_1983_StatePlane_Kentucky_North_FIPS_1601_Feet",
+      "outputUnit": "Foot_US",
+      "transformationWkid": "",
+      "transformationLabel": "Transformation Name",
+      "transformForward": false,
+      "options": {
+        "sameSRWithMap": false,
+        "isGeographicCS": false,
+        "isGeographicUnit": false,
+        "isProjectedCS": true,
+        "isProjectUnit": true,
+        "spheroidCS": 4269,
+        "defaultUnit": "Foot_US",
+        "unitRate": 1
+      }
+    },
+    {
+      "wkid": "2247",
+      "label": "Ky South Zone - NAD_1983_StatePlane_Kentucky_South_FIPS_1602_Feet",
+      "outputUnit": "Foot_US",
+      "transformationWkid": "",
+      "transformationLabel": "Transformation Name",
+      "transformForward": false,
+      "options": {
+        "sameSRWithMap": false,
+        "isGeographicCS": false,
+        "isGeographicUnit": false,
+        "isProjectedCS": true,
+        "isProjectUnit": true,
+        "spheroidCS": 4269,
+        "defaultUnit": "Foot_US",
+        "unitRate": 1
+      }
+    }
+  ],
+  "decimalPlaces": 6,
+  "addSeparator": true
+}

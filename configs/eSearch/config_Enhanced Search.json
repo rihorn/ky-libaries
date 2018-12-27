@@ -1,0 +1,775 @@
+{
+  "layers": [
+    {
+      "name": "Hunting Area Entrances",
+      "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Fish_Wildlife_WGS84WM/MapServer/5",
+      "definitionexpression": "",
+      "spatialsearchlayer": true,
+      "zoomScale": 36100,
+      "expressions": {
+        "expression": [
+          {
+            "alias": "Hunting Area Entrances",
+            "textsearchlabel": "Search by Hunting Areas",
+            "values": {
+              "value": [
+                {
+                  "fieldObj": {
+                    "name": "AREANAME",
+                    "label": "Hunting Area Name",
+                    "shortType": "string",
+                    "type": "esriFieldTypeString"
+                  },
+                  "valueObj": {
+                    "value": "Asher Hunting Access Area"
+                  },
+                  "prompt": "Hunting Area Name is",
+                  "textsearchhint": "Asher Hunting Access Area",
+                  "sqltext": "AREANAME = '[value]'",
+                  "operation": "stringOperatorIs",
+                  "uniquevalsfromfield": "AREANAME"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "titlefield": "AREANAME",
+      "fields": {
+        "all": false,
+        "field": [
+          {
+            "name": "AREANAME",
+            "alias": "Hunting Area"
+          },
+          {
+            "name": "EntryLat",
+            "alias": "Latitude"
+          },
+          {
+            "name": "EntryLon",
+            "alias": "Longitude"
+          },
+          {
+            "name": "Acres",
+            "alias": "Acres"
+          },
+          {
+            "name": "More_Info",
+            "alias": "Weblink",
+            "visible": false
+          }
+        ]
+      },
+     "links": {
+        "link": [
+          {
+            "alias": "{More_Info}",
+            "disablelinksifnull": true,
+            "disableinpopup": false,
+            "popuptype": "text",
+            "content": "{More_Info}",
+            "icon": "./images/w_link.png"
+          }
+        ]
+      },
+      "showattachments": null,
+      "layersymbolfrom": "config"
+    },
+ {
+      "name": "Boat Access Sites",
+      "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Fish_Wildlife_WGS84WM/MapServer/0",
+      "definitionexpression": "",
+      "spatialsearchlayer": true,
+      "zoomScale": 10000,
+      "expressions": {
+        "expression": [
+          {
+            "alias": "Boat Access Sites",
+            "textsearchlabel": "Search by Boat Access Site Name",
+            "values": {
+              "value": [
+                {
+                  "fieldObj": {
+                    "name": "NAME",
+                    "label": "Boat Access Site Name",
+                    "shortType": "string",
+                    "type": "esriFieldTypeString"
+                  },
+                  "valueObj": {
+                    "value": "Barren River Lake"
+                  },
+                  "prompt": "Boat Access Site Name is",
+                  "textsearchhint": "Lake Barkley",
+                  "sqltext": "NAME = '[value]'",
+                  "operation": "stringOperatorIs",
+                  "uniquevalsfromfield": "NAME"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "titlefield": "NAME",
+      "fields": {
+        "all": false,
+        "field": [
+          {
+            "name": "NAME",
+            "alias": "Boat Access Site Name"
+          },
+          {
+            "name": "AccessType",
+            "alias": "Latitude"
+          },
+          {
+            "name": "Type",
+            "alias": "Type"
+          },
+          {
+            "name": "WaterBody",
+            "alias": "Water Body"
+          },
+          {
+            "name": "SiteName",
+            "alias": "Site Name"
+          },
+          {
+            "name": "Shoreline",
+            "alias": "Shoreline"
+          },
+          {
+            "name": "Boat_Ramp",
+            "alias": "Boat Ramp"
+          },
+          {
+            "name": "Surface",
+            "alias": "Surface"
+          },
+          {
+            "name": "WaterBody",
+            "alias": "Water Body"
+          },
+          {
+            "name": "Parking",
+            "alias": "Parking"
+          },
+          {
+            "name": "Capacity",
+            "alias": "Capacity"
+          },
+          {
+            "name": "Fee",
+            "alias": "Fee"
+          },
+          {
+            "name": "Picnic",
+            "alias": "Picnic"
+          },
+          {
+            "name": "Camp",
+            "alias": "Camping"
+          },
+          {
+            "name": "Restroom",
+            "alias": "Restroom"
+          },
+          {
+            "name": "Marina",
+            "alias": "Marina"
+          },
+          {
+            "name": "Type",
+            "alias": "Type"
+          },
+          {
+            "name": "SiteWeb",
+            "alias": "Weblink",
+            "visible": false
+          }
+        ]
+      },
+     "links": {
+        "link": [
+          {
+            "alias": "{SiteWeb}",
+            "disablelinksifnull": true,
+            "disableinpopup": false,
+            "popuptype": "text",
+            "content": "{SiteWeb}",
+            "icon": "./images/w_link.png"
+          }
+        ]
+      },
+      "showattachments": null,
+      "layersymbolfrom": "config"
+    },
+    {
+      "name": "Small Boat Access Sites",
+      "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Fish_Wildlife_WGS84WM/MapServer/1",
+      "definitionexpression": "",
+      "spatialsearchlayer": true,
+      "zoomScale": 10000,
+      "expressions": {
+        "expression": [
+          {
+            "alias": "Small Boat Access",
+            "textsearchlabel": "Search by Small Boat Access Site Name",
+            "values": {
+              "value": [
+                {
+                  "fieldObj": {
+                    "name": "NAME",
+                    "label": "Small Boat Access Site Name",
+                    "shortType": "string",
+                    "type": "esriFieldTypeString"
+                  },
+                  "valueObj": {
+                    "value": "A.J. Jolly Lake"
+                  },
+                  "prompt": "Small Boat Access Site Name is",
+                  "textsearchhint": "Cedar Creek Lake",
+                  "sqltext": "NAME = '[value]'",
+                  "operation": "stringOperatorIs",
+                  "uniquevalsfromfield": "NAME"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "titlefield": "NAME",
+      "fields": {
+        "all": false,
+        "field": [
+          {
+            "name": "NAME",
+            "alias": "Small Boat Access Site Name"
+          },
+          {
+            "name": "AccessType",
+            "alias": "Access Type"
+          },
+          {
+            "name": "Type",
+            "alias": "Type"
+          },
+          {
+            "name": "WaterBody",
+            "alias": "Water Body"
+          },
+          {
+            "name": "SiteName",
+            "alias": "Site Name"
+          },
+          {
+            "name": "Shoreline",
+            "alias": "Shoreline"
+          },
+          {
+            "name": "Boat_Ramp",
+            "alias": "Boat Ramp"
+          },
+          {
+            "name": "Surface",
+            "alias": "Surface"
+          },
+          {
+            "name": "WaterBody",
+            "alias": "Water Body"
+          },
+          {
+            "name": "Parking",
+            "alias": "Parking"
+          },
+          {
+            "name": "Capacity",
+            "alias": "Capacity"
+          },
+          {
+            "name": "Fee",
+            "alias": "Fee"
+          },
+          {
+            "name": "Picnic",
+            "alias": "Picnic"
+          },
+          {
+            "name": "Camp",
+            "alias": "Camping"
+          },
+          {
+            "name": "Restroom",
+            "alias": "Restroom"
+          },
+          {
+            "name": "Marina",
+            "alias": "Marina"
+          },
+          {
+            "name": "Type",
+            "alias": "Type"
+          },
+          {
+            "name": "SiteWeb",
+            "alias": "Weblink",
+            "visible": false
+          }
+        ]
+      },
+     "links": {
+        "link": [
+          {
+            "alias": "{SiteWeb}",
+            "disablelinksifnull": true,
+            "disableinpopup": false,
+            "popuptype": "text",
+            "content": "{SiteWeb}",
+            "icon": "./images/w_link.png"
+          }
+        ]
+      },
+      "showattachments": null,
+      "layersymbolfrom": "config"
+    },
+    {
+      "name": "Fishing Access Sites",
+      "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Fish_Wildlife_WGS84WM/MapServer/2",
+      "definitionexpression": "",
+      "spatialsearchlayer": true,
+      "zoomScale": 10000,
+      "expressions": {
+        "expression": [
+          {
+            "alias": "Fishing Access Sites",
+            "textsearchlabel": "Search by Fishing Access Site Name",
+            "values": {
+              "value": [
+                {
+                  "fieldObj": {
+                    "name": "NAME",
+                    "label": "Fishing Access Site Name",
+                    "shortType": "string",
+                    "type": "esriFieldTypeString"
+                  },
+                  "valueObj": {
+                    "value": "4-H Club Lakes"
+                  },
+                  "prompt": "Fishing Access Site Name is",
+                  "textsearchhint": "Lake Barkley",
+                  "sqltext": "NAME = '[value]'",
+                  "operation": "stringOperatorIs",
+                  "uniquevalsfromfield": "NAME"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "titlefield": "NAME",
+      "fields": {
+        "all": false,
+        "field": [
+          {
+            "name": "NAME",
+            "alias": "Fishing Access Site Name"
+          },
+          {
+            "name": "AccessType",
+            "alias": "Latitude"
+          },
+          {
+            "name": "Type",
+            "alias": "Type"
+          },
+          {
+            "name": "WaterBody",
+            "alias": "Water Body"
+          },
+          {
+            "name": "SiteName",
+            "alias": "Site Name"
+          },
+          {
+            "name": "Shoreline",
+            "alias": "Shoreline"
+          },
+          {
+            "name": "Boat_Ramp",
+            "alias": "Boat Ramp"
+          },
+          {
+            "name": "Surface",
+            "alias": "Surface"
+          },
+          {
+            "name": "WaterBody",
+            "alias": "Water Body"
+          },
+          {
+            "name": "Parking",
+            "alias": "Parking"
+          },
+          {
+            "name": "Capacity",
+            "alias": "Capacity"
+          },
+          {
+            "name": "Fee",
+            "alias": "Fee"
+          },
+          {
+            "name": "Picnic",
+            "alias": "Picnic"
+          },
+          {
+            "name": "Camp",
+            "alias": "Camping"
+          },
+          {
+            "name": "Restroom",
+            "alias": "Restroom"
+          },
+          {
+            "name": "Marina",
+            "alias": "Marina"
+          },
+          {
+            "name": "Type",
+            "alias": "Type"
+          },
+          {
+            "name": "SiteWeb",
+            "alias": "Weblink",
+            "visible": false
+          }
+        ]
+      },
+     "links": {
+        "link": [
+          {
+            "alias": "{SiteWeb}",
+            "disablelinksifnull": true,
+            "disableinpopup": false,
+            "popuptype": "text",
+            "content": "{SiteWeb}",
+            "icon": "./images/w_link.png"
+          }
+        ]
+      },
+      "showattachments": null,
+      "layersymbolfrom": "config"
+    },
+    {
+      "name": "KDFWR Horse Trailheads",
+      "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Fish_Wildlife_WGS84WM/MapServer/3",
+      "definitionexpression": "",
+      "spatialsearchlayer": true,
+      "zoomScale": 10000,
+      "expressions": {
+        "expression": [
+          {
+            "alias": "KDFWR Horse Trailheads",
+            "textsearchlabel": "Search by KDFWR Horse Trailheads",
+            "values": {
+              "value": [
+                {
+                  "fieldObj": {
+                    "name": "WMANAME",
+                    "label": "KDFWR Horse Trailhead Name",
+                    "shortType": "string",
+                    "type": "esriFieldTypeString"
+                  },
+                  "valueObj": {
+                    "value": "Clay WMA"
+                  },
+                  "prompt": "KDFWR Horse Trailhead Name is",
+                  "textsearchhint": "Clay WMA",
+                  "sqltext": "WMANAME = '[value]'",
+                  "operation": "stringOperatorIs",
+                  "uniquevalsfromfield": "WMANAME"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "titlefield": "WMANAME",
+      "fields": {
+        "all": false,
+        "field": [
+          {
+            "name": "WMANAME",
+            "alias": "WMA Name"
+          },
+          {
+            "name": "OBJECTID",
+            "alias": "ID"
+          },
+          {
+            "name": "DETAIL",
+            "alias": "Weblink",
+            "visible": false
+          }
+        ]
+      },
+     "links": {
+        "link": [
+          {
+            "alias": "{DETAIL}",
+            "disablelinksifnull": true,
+            "disableinpopup": false,
+            "popuptype": "text",
+            "content": "{DETAIL}",
+            "icon": "./images/w_link.png"
+          }
+        ]
+      },
+      "showattachments": null,
+      "layersymbolfrom": "config"
+    },
+   {
+      "name": "Wildlife Viewing",
+      "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Fish_Wildlife_WGS84WM/MapServer/4",
+      "definitionexpression": "",
+      "spatialsearchlayer": true,
+      "zoomScale": 10000,
+      "expressions": {
+        "expression": [
+          {
+            "alias": "Wildlife Viewing",
+            "textsearchlabel": "Search by Wildlife Viewing Area",
+            "values": {
+              "value": [
+                {
+                  "fieldObj": {
+                    "name": "AreaName",
+                    "label": "Area Name",
+                    "shortType": "string",
+                    "type": "esriFieldTypeString"
+                  },
+                  "valueObj": {
+                    "value": ""
+                  },
+                  "prompt": "Wildlife Viewing Area Name is",
+                  "textsearchhint": "Taylorsville Lake WMA",
+                  "sqltext": "AreaName = '[value]'",
+                  "operation": "stringOperatorIs",
+                  "uniquevalsfromfield": "AreaName"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "titlefield": "AreaName",
+      "fields": {
+        "all": false,
+        "field": [
+          {
+            "name": "AreaName",
+            "alias": "Wildlife Viewing Area"
+          },
+          {
+            "name": "Agency",
+            "alias": "Agency"
+          },
+          {
+            "name": "DETAIL",
+            "alias": "Weblink",
+            "visible": false
+          }
+        ]
+      },
+     "links": {
+        "link": [
+          {
+            "alias": "{DETAIL}",
+            "disablelinksifnull": true,
+            "disableinpopup": false,
+            "popuptype": "text",
+            "content": "{DETAIL}",
+            "icon": "./images/w_link.png"
+          }
+        ]
+      },
+      "showattachments": null,
+      "layersymbolfrom": "config"
+    },
+  {
+      "name": "Blue Water Trails",
+      "url": "http://kygisserver.ky.gov/arcgis/rest/services/WGS84WM_Services/Ky_Recreational_Trails_WGS84WM/MapServer/5",
+      "definitionexpression": "",
+      "spatialsearchlayer": true,
+      "zoomScale": 10000,
+      "expressions": {
+        "expression": [
+          {
+            "alias": "Blue Water Trails",
+            "textsearchlabel": "Search by Blue Water Trail Name",
+            "values": {
+              "value": [
+                {
+                  "fieldObj": {
+                    "name": "Trail_Name",
+                    "label": "Hunting Area Name",
+                    "shortType": "string",
+                    "type": "esriFieldTypeString"
+                  },
+                  "valueObj": {
+                    "value": "Barren River Below the Dam"
+                  },
+                  "prompt": "Blue Water Trail Name is",
+                  "textsearchhint": "Barren River Below the Dam",
+                  "sqltext": "Trail_Name = '[value]'",
+                  "operation": "stringOperatorIs",
+                  "uniquevalsfromfield": "Trail_Name"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "titlefield": "Trail_Name",
+      "fields": {
+        "all": false,
+        "field": [
+          {
+            "name": "Trail_Name",
+            "alias": "Trail Name"
+          },
+          {
+            "name": "Miles",
+            "alias": "Miles"
+          },
+          {
+            "name": "Detail",
+            "alias": "Weblink",
+            "visible": false
+          }
+        ]
+      },
+     "links": {
+        "link": [
+          {
+            "alias": "{Detail}",
+            "disablelinksifnull": true,
+            "disableinpopup": false,
+            "popuptype": "text",
+            "content": "{Detail}",
+            "icon": "./images/w_link.png"
+          }
+        ]
+      },
+      "showattachments": null,
+      "layersymbolfrom": "config"
+    }
+  ],
+  "zoomScale": 50000,
+  "shareResult": false,
+  "initialView": "text",
+  "multipartgraphicsearchchecked": false,
+  "addpointtolerancechecked": false,
+  "keepgraphicalsearchenabled": true,
+  "autozoomtoresults": true,
+  "toleranceforpointgraphicalselection": 6,
+  "bufferDefaults": {
+    "bufferUnits": {
+      "bufferUnit": [
+        {
+          "name": "UNIT_FOOT",
+          "label": "Feet"
+        },
+        {
+          "name": "UNIT_STATUTE_MILE",
+          "label": "Miles"
+        },
+        {
+          "name": "UNIT_METER",
+          "label": "Meter"
+        }
+      ]
+    },
+    "bufferDefaultValue": 5,
+    "bufferWKID": 102003,
+    "simplefillsymbol": {
+      "color": [
+        1,
+        185,
+        253,
+        128
+      ],
+      "outline": {
+        "color": [
+          1,
+          185,
+          253,
+          204
+        ],
+        "width": 1,
+        "type": "esriSLS",
+        "style": "esriSLSSolid"
+      },
+      "type": "esriSFS",
+      "style": "esriSFSSolid"
+    }
+  },
+  "spatialrelationships": {
+    "spatialrelationship": [
+      {
+        "name": "esriSpatialRelContains",
+        "label": "entirely contained in"
+      },
+      {
+        "name": "esriSpatialRelIntersects",
+        "label": "intersected by"
+      },
+      {
+        "name": "esriSpatialRelEnvelopeIntersects",
+        "label": "intersected by envelope of"
+      }
+    ]
+  },
+  "symbols": {
+    "simplemarkersymbol": null,
+    "picturemarkersymbol": {
+      "url": "./widgets/eSearch/images/i_search.png",
+      "height": "20",
+      "width": "20",
+      "type": "esriPMS",
+      "angle": "0"
+    },
+    "simplelinesymbol": {
+      "type": "esriSLS",
+      "style": "esriSLSSolid",
+      "color": [
+          79,
+          129,
+          189,
+          252
+          ],
+      "width": 3.5
+    },
+    "simplefillsymbol": {
+      "color": [
+        255,
+        0,
+        0,
+        128
+      ],
+      "outline": {
+        "color": [
+          255,
+          0,
+          0,
+          204
+        ],
+        "width": 2,
+        "type": "esriSLS",
+        "style": "esriSLSSolid"
+      },
+      "type": "esriSFS",
+      "style": "esriSFSSolid"
+    }
+  }
+}

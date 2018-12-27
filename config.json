@@ -21,7 +21,6 @@
   ],
   "title": "Kentucky's Libraries",
   "subtitle": "",
-  "keepAppState": true,
   "logo": "images/app-logo.png",
   "geometryService": "https://utility.arcgisonline.com/arcgis/rest/services/Geometry/GeometryServer",
   "links": [],
@@ -52,31 +51,30 @@
         "name": "Scalebar"
       },
       {
-        "uri": "widgets/Search/Widget",
+        "uri": "widgets/Geocoder/Widget",
         "position": {
-          "left": 55,
-          "top": 5,
-          "relativeTo": "map"
+            "left": 45,
+            "top": 25
         },
-        "version": "2.10",
-        "id": "widgets_Search_Widget_3",
-        "name": "Search"
-      },
+        "version": "2.10"
+    },
       {
         "uri": "widgets/Coordinate/Widget",
         "position": {
-          "left": 7,
-          "bottom": 5,
+          "left": 25,
+          "bottom": 45,
           "relativeTo": "map"
         },
         "version": "2.10",
         "id": "widgets_Coordinate_Widget_4",
-        "name": "Coordinate"
+        "name": "Coordinate",
+        "label": "Coordinate",
+        "config": "configs/Coordinate/config_Coordinate.json"
       },
       {
         "position": {
-          "left": 55,
-          "top": 45,
+          "left": 45,
+          "top": 40,
           "relativeTo": "map"
         },
         "placeholderIndex": 1,
@@ -123,7 +121,7 @@
         "position": {
           "bottom": 0,
           "right": 0,
-          "zIndex": 1,
+        
           "relativeTo": "map"
         },
         "version": "2.10",
@@ -134,7 +132,7 @@
         "uri": "widgets/HomeButton/Widget",
         "position": {
           "left": 7,
-          "top": 75,
+          "top": 95,
           "relativeTo": "map"
         },
         "version": "2.10",
@@ -145,7 +143,7 @@
         "uri": "widgets/MyLocation/Widget",
         "position": {
           "left": 7,
-          "top": 110,
+          "top": 130,
           "relativeTo": "map"
         },
         "version": "2.10",
@@ -174,7 +172,7 @@
       {
         "uri": "widgets/ZoomSlider/Widget",
         "position": {
-          "top": 5,
+          "top": 25,
           "left": 7,
           "relativeTo": "map"
         },
@@ -224,7 +222,18 @@
       "bottom": 0
     },
     "itemId": "0252e0ae80ce4c76a47dca4959b9e24e",
-    "mapOptions": {},
+    "mapOptions": {
+        "extent": {
+        "type": "extent",
+        "xmin": -1.0095676E7,
+        "ymin": 4065074,
+        "xmax": -8883696,
+        "ymax": 4963978.5,
+        "spatialReference": {
+            "wkid": 102100
+    }
+  }
+},
     "id": "map",
     "portalUrl": "http://kygeonet.maps.arcgis.com",
     "mapRefreshInterval": {
@@ -238,26 +247,99 @@
         "top": 5,
         "right": 5,
         "bottom": 5,
-        "zIndex": 5,
         "relativeTo": "map"
       }
     },
     "widgets": [
       {
-        "uri": "widgets/Legend/Widget",
-        "version": "2.10",
-        "id": "widgets_Legend_Widget_18",
-        "name": "Legend",
-        "index": 0
+          "name": "LocateFeatures",
+          "label": "Zoom to Activity",
+          "version": "0.0.1",
+          "uri": "widgets/LocateFeatures/Widget",
+          "config": "configs/LocateFeatures/config_LocateFeatures.json",
+          "index": 1,
+          "id": "widgets/LocateFeatures/Widget_18"
       },
       {
-        "uri": "widgets/LayerList/Widget",
-        "version": "2.10",
-        "id": "widgets_LayerList_Widget_19",
-        "name": "LayerList",
-        "index": 1
+          "uri": "widgets/Legend/Widget",
+          "version": 2.10,
+          "id": "widgets/Legend/Widget_14",
+          "index": 2,
+          "name": "Legend",
+          "label": "Legend"
+      },
+      {
+          "uri": "widgets/LayerList/Widget",
+          "version": 2.10,
+          "id": "widgets/LayerList/Widget_15",
+          "index": 3,
+          "name": "LayerList",
+          "label": "Layer List"
+      },
+      {
+          "name": "BasemapGallery",
+          "label": "Basemap Gallery",
+          "version": 2.10,
+          "uri": "widgets/BasemapGallery/Widget",
+          "config": "configs/BasemapGallery/config_Basemap Gallery.json",
+          "index": 4,
+          "id": "widgets/BasemapGallery/Widget_16"
+      },
+      {
+          "name": "Draw",
+          "label": "Draw",
+          "version": 2.10,
+          "uri": "widgets/Draw/Widget",
+          "config": "configs/Draw/config_Draw.json",
+          "index": 5,
+          "id": "widgets/Draw/Widget_17"
+      },
+      {
+          "name": "Print",
+          "label": "Print",
+          "version": 2.10,
+          "uri": "widgets/Print/Widget",
+          "config": "configs/Print/config_Print.json",
+          "index": 6,
+          "id": "widgets/Print/Widget_16"
+      },
+      {
+          "name": "Bookmark",
+          "label": "Bookmarks",
+          "version": 2.10,
+          "uri": "widgets/Bookmark/Widget",
+          "config": "configs/Bookmark/config_Bookmarks.json",
+          "index": 7,
+          "id": "widgets/Bookmark/Widget_17"
+      },
+      {
+          "name": "StreetView",
+          "label": "Google Street View",
+          "version": "1.1.0.2",
+          "uri": "widgets/StreetView/Widget",
+          "config": "configs/StreetView/config_Google Street View.json",
+          "index": 8,
+          "id": "widgets/StreetView/Widget"
+      },
+      {
+          "name": "Share",
+          "label": "Share Map",
+          "version": "1.1.0.2",
+          "uri": "widgets/Share/Widget",
+          "config": "configs/Share/config_Share.json",
+          "index": 9,
+          "id": "widgets/Share/Widget"
+      },
+      {
+          "name": "Help",
+          "label": "Help",
+          "version": "1.1.0.2",
+          "uri": "widgets/About/Widget",
+          "config": "configs/About/config_Help.json",
+          "index": 10,
+          "id": "widgets/About/Widget"
       }
-    ]
+  ]
   },
   "mobileLayout": {
     "widgetOnScreen": {

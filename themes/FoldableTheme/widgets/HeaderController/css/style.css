@@ -12,9 +12,9 @@
 .jimu-widget-header-controller .logo{
   cursor: pointer;
 }
-.jimu-widget-header-controller .hide-logo{
+/* .jimu-widget-header-controller .hide-logo{
   display: none;
-}
+} */
 
 .jimu-widget-header-controller .titles{
   height: 100%;
@@ -24,6 +24,9 @@
 .jimu-widget-header-controller .jimu-title{
   text-align: center;
   height: 100%;
+  color:#fff;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .jimu-widget-header-controller .jimu-subtitle{
@@ -36,6 +39,7 @@
   overflow: hidden;
 }
 .jimu-widget-header-controller .dynamic-section,
+.jimu-widget-header-controller .about-section,
 .jimu-widget-header-controller .signin-section{
   height: 100%;
 }
@@ -63,7 +67,7 @@
   opacity: 1;
 }
 .jimu-widget-header-controller .icon-node.jimu-state-selected{
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color:#697a8c;
   opacity: 1;
   border: none;
   border-top: 2px solid #8491a1;
@@ -85,10 +89,10 @@
 }
 .jimu-widget-header-controller .jimu-drop-menu .menu-item{
   overflow: hidden;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid #435063;
 }
 .jimu-widget-header-controller .jimu-drop-menu .menu-item:hover{
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #485566;
 }
 .jimu-widget-header-controller .jimu-drop-menu .menu-item img{
   width: 24px;
@@ -105,16 +109,17 @@
   color: white;
   min-width: 50px;
   text-align: center;
-  white-space: nowrap;
+  /*commenting out what KDFWR does not have*/
+  /* white-space: nowrap;   
   max-width: 300px;
   text-overflow: ellipsis;
   overflow: hidden;
-  padding-right: 8px;
+  padding-right: 8px; */
 }
 
-.jimu-rtl .jimu-widget-header-controller .jimu-drop-menu .menu-item .label{
+/* .jimu-rtl .jimu-widget-header-controller .jimu-drop-menu .menu-item .label{
   padding-left: 8px;
-}
+} */
 
 /**the popup link panel is not appended to container, so, don't add .jimu-widget-header-controller here**/
 .popup-links .popup-title{
@@ -152,7 +157,7 @@
   height: 100%;
   width: 95%;
   overflow: hidden;
-  display: inline-block;
+  /* display: inline-block; */
 }
 .popup-links .link-section.signin a{
   color: #d9dde0;
@@ -173,7 +178,7 @@
 .jimu-header-more-popup .points{
   position: absolute;
   overflow: hidden;
-  bottom: -15px;
+  bottom: -18px;
   left: 0px;
   right: 0px;
   text-align: center;
@@ -201,10 +206,10 @@
 }
 .jimu-header-more-popup .close{
   position: absolute;
-/*  width: 08.92857142857143%;50/560
-  height: 08.92857142857143%;*/
-  top: -3.125%;/*1/32*/
-  right: -3.125%;
+  width: 08.92857142857143%;/*50/560*/
+  height: 08.92857142857143%;
+  top: -04.46428571428571%;/**/
+  right: -04.46428571428571%;
   border-radius: 50%;/*the context is the node itself*/
   background-color: #697a8c;
   cursor: pointer;
@@ -229,8 +234,7 @@
   background-color: red;
 }
 .jimu-header-more-popup img{
-  width: 48px;
-  height: 48px;
+  width: 27.17391304347826%;/*50/184*/
   margin: auto;
   margin-top: 25%;
   display: block;
