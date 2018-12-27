@@ -4,12 +4,8 @@
     "styles": [
       "default",
       "black",
-      "blue",
-      "cyan",
       "green",
-      "purple",
-      "red",
-      "yellow"
+      "cyan"
     ],
     "version": "2.10",
     "sharedTheme": {
@@ -47,8 +43,8 @@
       {
         "uri": "widgets/Scalebar/Widget",
         "position": {
-          "left": 7,
-          "bottom": 25,
+          "left": 25,
+          "bottom": 20,
           "relativeTo": "map"
         },
         "version": "2.10",
