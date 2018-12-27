@@ -4,6 +4,7 @@
 .jimu-widget-header-controller .header-section{
   height: 100%;
   overflow: hidden;
+  font-size: 16px;
 }
 .jimu-widget-header-controller .container-section{
   height: 100%;
@@ -12,28 +13,27 @@
 .jimu-widget-header-controller .logo{
   cursor: pointer;
 }
-/* .jimu-widget-header-controller .hide-logo{
-  display: none;
-} */
 
 .jimu-widget-header-controller .titles{
   height: 100%;
   overflow: hidden;
 }
 
-.jimu-widget-header-controller .jimu-title{
+.jimu-widget-header-controller .title{
+  color:#fff;
   text-align: center;
   height: 100%;
-  color:#fff;
   font-size: 18px;
   font-weight: bold;
 }
 
-.jimu-widget-header-controller .jimu-subtitle{
+.jimu-widget-header-controller .subtitle{
+  color:#6d7685;
+  font-size: 12px;
   text-align: center;
   height: 100%;
+  font-weight: bold;
 }
-
 .jimu-widget-header-controller .links{
   height: 100%;
   overflow: hidden;
@@ -43,10 +43,14 @@
 .jimu-widget-header-controller .signin-section{
   height: 100%;
 }
-.jimu-widget-header-controller .links .jimu-link{
+.jimu-widget-header-controller .links .link{
+  color:#6d7685;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
   height: 100%;
 }
-.jimu-widget-header-controller .signin-section .jimu-link{
+.jimu-widget-header-controller .signin-section .link{
   color: #d9dde0;
 }
 
@@ -67,7 +71,7 @@
   opacity: 1;
 }
 .jimu-widget-header-controller .icon-node.jimu-state-selected{
-  background-color:#697a8c;
+  background-color: #697a8c;
   opacity: 1;
   border: none;
   border-top: 2px solid #8491a1;
@@ -85,6 +89,7 @@
 
 /****/
 .jimu-widget-header-controller .jimu-drop-menu{
+  background-color: #363455;
   box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.4);
 }
 .jimu-widget-header-controller .jimu-drop-menu .menu-item{
@@ -92,7 +97,7 @@
   border-top: 1px solid #435063;
 }
 .jimu-widget-header-controller .jimu-drop-menu .menu-item:hover{
-  background-color: #485566;
+  background-color: #485566;  
 }
 .jimu-widget-header-controller .jimu-drop-menu .menu-item img{
   width: 24px;
@@ -109,17 +114,7 @@
   color: white;
   min-width: 50px;
   text-align: center;
-  /*commenting out what KDFWR does not have*/
-  /* white-space: nowrap;   
-  max-width: 300px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  padding-right: 8px; */
 }
-
-/* .jimu-rtl .jimu-widget-header-controller .jimu-drop-menu .menu-item .label{
-  padding-left: 8px;
-} */
 
 /**the popup link panel is not appended to container, so, don't add .jimu-widget-header-controller here**/
 .popup-links .popup-title{
@@ -155,19 +150,18 @@
   margin-left: 20px;
   font-size: 14px;
   height: 100%;
-  width: 95%;
   overflow: hidden;
-  /* display: inline-block; */
+  display: inline-block;
 }
 .popup-links .link-section.signin a{
-  color: #d9dde0;
+  color: #d9dde0; 
 }
 
 /***/
 .jimu-header-more-popup{
   position: absolute;
   border-radius: 2px;
-  z-index: 111;/*same zindex with loading*/
+  z-index: 200;/*on the top of the pane, which z-index is 100*/
   background-color: #516070;
 }
 .jimu-header-more-popup .pages{
@@ -182,7 +176,6 @@
   left: 0px;
   right: 0px;
   text-align: center;
-  background-color: #bababa;
 }
 .jimu-header-more-popup .points-inner{
   display: inline-block;
@@ -246,7 +239,7 @@
   margin-top: 5px;
   color: white;
   overflow: hidden;
-  white-space: nowrap;
+  white-space: pre-line;
   text-overflow: ellipsis;
   display: inline-block;
 }
@@ -256,37 +249,10 @@
   }
 }
 .jimu-more-icon-cover{
-  z-index: 110;
+  z-index: 199;
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-}
-
-.esriPopup .titlePane {
-  background-color: rgba(72, 85, 102, 0.9);
-}
-/*flexbox layout*/
-.jimu-widget-header-controller{
-  display: flex;
-  justify-content: space-between;
-}
-.jimu-widget-header-controller .header-section,
-.jimu-widget-header-controller .container-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-.jimu-widget-header-controller .container-section {
-  flex-direction: row-reverse;
-}
-.jimu-widget-header-controller .titles,
-.jimu-widget-header-controller .links,
-.jimu-widget-header-controller .icon-node{
-  flex-shrink: 0;
-}
-.jimu-widget-header-controller .icon-node{
-  flex-basis: 40px;
 }
