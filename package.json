@@ -1,0 +1,27 @@
+{
+  "name": "ky-libraries",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "arcgis": "^1.0.2",
+    "arcgis-js-api": "^4.10.1",
+    "live-server": "^1.2.1",
+    "node": "^11.5.0",
+    "server.js": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rihorn/ky-libraries.git"
+  },
+  "author": "Ian Horn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rihorn/ky-libraries/issues"
+  },
+  "homepage": "https://github.com/rihorn/ky-libraries#readme"
+}
